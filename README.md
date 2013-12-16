@@ -36,7 +36,7 @@ This gets a little hairy. We use a lot of third-party code in this project-- see
 
 1. [FreeRTOS] is covered by a [modified version of the GPL](http://www.freertos.org/license.txt)
 2. [uIP] is [Copyright (c) 2001-2003, Adam Dunkels.](https://github.com/adamdunkels/uip/blob/master/uip/uip.h#L20)
-3. Anything and everything Actel / Microsemi / Libero is [(c) Copyright 2009 Actel Corporation.](#)
+3. Anything and everything Actel / Microsemi / Libero is [(c) Copyright 2009 Actel Corporation.]
 4. [JSMN] is covered by the [MIT license](http://www.opensource.org/licenses/mit-license.php)
 5. Anything that's left is all yours under [CC0](http://creativecommons.org/publicdomain/zero/1.0/)
 
@@ -66,4 +66,5 @@ This gets a little hairy. We use a lot of third-party code in this project-- see
 [Bart Kiley]:     mailto:bakiley@umich.edu
 [I]:              mailto:kylebs@umich.edu
 
-[`application_tasks/http_task.c`]: #
+[`application_tasks/http_task.c`]:        libero-project/SoftConsole/Webserver_MSS_CM3_0/Webserver_MSS_CM3_0_app/application_tasks/http_task.c#L74
+[(c) Copyright 2009 Actel Corporation.]:  libero-project/SoftConsole/Webserver_MSS_CM3_0/Webserver_MSS_CM3_0_hw_platform/CMSIS/startup_gcc/newlib_stubs.c#L2
