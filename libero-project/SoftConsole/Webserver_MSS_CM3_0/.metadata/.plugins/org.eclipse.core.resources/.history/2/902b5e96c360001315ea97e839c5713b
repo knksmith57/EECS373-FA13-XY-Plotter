@@ -1,0 +1,46 @@
+/* Standard Libs
+ * ========================================================================= */
+#include <stdio.h>
+#include <stdlib.h>
+#include <inttypes.h>
+
+/* Firmware
+ * ========================================================================= */
+#include "./hal/CortexM3/GNU/cpu_types.h"
+#include "./plotter/plotter_platform.h"
+
+/* FreeRTOS
+ * ========================================================================= */
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "semphr.h"
+
+/* Globals
+ * ========================================================================= */
+
+/* Static Glocals
+ * ========================================================================= */
+
+/* Externs
+ * ========================================================================= */
+extern xSemaphoreHandle       xSemHand_config;
+extern xTaskHandle			  xHand_config;
+
+extern PLOTTER_MODE plotter_current_mode;
+// delay function, stolen from reference code
+extern void delay ( volatile unsigned long int n);
+
+
+/* Macros
+ * ========================================================================= */
+
+// task to handle configuration
+void vTask_controller(void *para) {
+	while(1) {
+		// wait for the controller semaphore to become free
+		xSemaphoreTake( xSemHand_config, portMAX_DELAY );
+		// printf("in vTask_controller! \r\n");
+		printf("\r\n--- Config Setup ---\r\n\r\n");
+	}
+}

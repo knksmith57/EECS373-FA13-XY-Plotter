@@ -1,0 +1,32 @@
+# An example Apache Virtual Hosts file that you could use to get
+# a quick-and-dirty NodeJS proxied through your existing Apache webserver
+
+ServerName 123.123.123.123
+
+<VirtualHost *:80>
+  ServerName api.yourdomain.io
+  ProxyPass / http://localhost:8000/ retry=0
+  ProxyPassReverse / http://localhost:8000/
+  ProxyPreserveHost on
+
+  # this is a bit sketchy, maybe tighten it down a bit
+  Header set Access-Control-Allow-Origin "*"
+
+  <Location />
+    Order allow,deny
+    Allow from all
+  </Location>
+</VirtualHost>
+
+<VirtualHost *:80>
+  ServerName yourdomain.io
+  ServerAlias *.yourdomain.io
+  DocumentRoot /var/www/yourdomain.io
+
+  <Directory /var/www/yourdomain.io/>
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride All
+    Order allow,deny
+    allow from all
+  </Directory>
+</VirtualHost>

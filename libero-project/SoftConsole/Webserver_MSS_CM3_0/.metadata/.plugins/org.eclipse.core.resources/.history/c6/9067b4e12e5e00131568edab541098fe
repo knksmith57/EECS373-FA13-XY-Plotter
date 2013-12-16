@@ -1,0 +1,53 @@
+#ifndef PLOTTER_PLATFORM_H_
+#define PLOTTER_PLATFORM_H_
+
+#include "./TOP_hw_platform.h"
+#include "./hal/CortexM3/GNU/cpu_types.h"
+
+/* Global Macros (Optionally defined elsewhere)
+ * ========================================================================= */
+#ifndef PLOTTER_BASE_ADDR
+#define PLOTTER_BASE_ADDR	MOTOR_APB_INTERFACE_0
+#endif
+
+#ifndef BAUD_VALUE_9600
+#define BAUD_VALUE_9600    	324
+#endif
+
+
+/* Plotter Memory Mapped IO
+ * ========================================================================= */
+extern volatile uint32_t *numStepsX;
+extern volatile uint32_t *periodX;
+extern volatile uint32_t *numStepsY;
+extern volatile uint32_t *periodY;
+extern volatile uint32_t *GO;
+extern volatile uint32_t *globalPositionX;
+extern volatile uint32_t *globalPositionY;
+extern volatile uint32_t *finishedGlobalPositionX;
+extern volatile uint32_t *finishedGlobalPositionY;
+extern volatile uint32_t *penWrite;
+
+
+/* Plotter Constants
+ * ========================================================================= */
+#define PEN_UP 				130000
+#define	PEN_DOWN			135000
+
+
+/* LCD Tunnelling
+ * ========================================================================= */
+#ifdef ACTEL_STDIO_THRU_UART
+
+#ifndef LCD_UART_ADDR
+#define LCD_UART_ADDR      	COREUARTAPB_1
+#endif
+
+extern UART_instance_t g_lcd_uart;
+extern int g_lcd_uart_init_done;
+
+void _to_lcd_uart(char *ptr, int len );
+
+#endif	/* ACTEL_STDIO_THRU_UART */
+
+#endif /* PLOTTER_PLATFORM_H_*/

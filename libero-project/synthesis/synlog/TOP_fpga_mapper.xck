@@ -1,0 +1,3 @@
+CKID0001:@|S:stepper_motor_control_0.motor_output_RNIF5JG2[0]@|E:stepper_motor_control_0.next_state[0]@|F:@syn_sample_clock_path==CKID0001@|M:ClockId0001
+CKID0002:@|S:stepper_motor_control_1.motor_output_RNIOLFI3[0]@|E:stepper_motor_control_1.next_state[0]@|F:@syn_sample_clock_path==CKID0002@|M:ClockId0002
+CKID0003:@|S:Webserver_0@|E:uart_irq_delay_0.edge_detected@|F:@syn_sample_clock_path==CKID0003@|M:ClockId0003

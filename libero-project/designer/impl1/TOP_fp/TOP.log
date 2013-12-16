@@ -1,0 +1,141 @@
+Software Version: 11.0.0.23
+Warning: Unable to find file:
+         'F:\Webserver_uIPRTOS_SC_DF\HW\A2F200\VHDL\SmartFusion_Webserver_Demo\designer\impl1\T\
+         OP_fp\TOP.pdb'.
+Warning: Using local backup copy:
+         'C:\Users\kylebs\Desktop\FreeRTOS-lwIP\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_D\
+         emo\designer\impl1\TOP_fp\projectData\TOP.pdb'.
+PDB file
+'C:\Users\kylebs\Desktop\FreeRTOS-lwIP\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\desig\
+ner\impl1\TOP_fp\projectData\TOP.pdb' has been loaded successfully.
+DESIGN : TOP;  CHECKSUM : 18B0;  PDB_VERSION : 1.6
+Warning: One or more programming or configuration files have changed since generation.
+         To view details and update a PDB, you may click on Modify PDB button for the target
+         device.
+         To update a STAPL file, you may reload the file or reload the project.
+Driver : 3.0.0 build 1
+programmer '58943' : FlashPro3
+Warning: The programmer with id '58970' in the project file cannot be detected and connected.
+Warning: One or more programming or configuration files have changed since generation.
+         To view details and update a PDB, you may click on Modify PDB button for the target
+         device.
+         To update a STAPL file, you may reload the file or reload the project.
+Opened
+'C:\Users\kylebs\Desktop\FreeRTOS-lwIP\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\desig\
+ner\impl1\TOP_fp\TOP.pro'
+STAPL file
+'C:\Users\kylebs\Desktop\FreeRTOS-lwIP\Webserver_uIPRTOS_SC_PF\A2F200\Old_Oled\A2F200_Webserver\
+_Demo.stp' has been loaded successfully.
+DESIGN : TOP;  CHECKSUM : 1A77;  ALG_VERSION : 20
+programmer '58943' : Scan Chain...
+Warning: programmer '58943' : Vpump has been selected on programmer AND an externally provided
+         Vpump has also been detected. Using externally provided Vpump voltage source.
+programmer '58943' : Scan Chain PASSED.
+programmer '58943' : Executing action PROGRAM
+programmer '58943' : EXPORT FSN[48] = 01098a186c40
+programmer '58943' : Erase ...
+programmer '58943' : Completed erase
+programmer '58943' : Programming FPGA Array
+programmer '58943' : Verifying FPGA Array
+programmer '58943' :         Verifying FPGA Array -- pass
+programmer '58943' : Program System Init and Boot Clients...
+programmer '58943' : Program Embedded Flash Memory Module ALL....
+programmer '58943' : Verify System Init and Boot Clients...
+programmer '58943' : Verify Embedded Flash Memory Module ALL...
+programmer '58943' : Finished: Mon Nov 25 21:59:18 2013 (Elapsed time 00:00:55)
+programmer '58943' : Executing action PROGRAM PASSED.
+
+                        o - o - o - o - o - o
+
+STAPL file
+'C:\Users\kylebs\Desktop\FreeRTOS-lwIP\Webserver_uIPRTOS_SC_PF\A2F200\New_Oled\TOP.stp' has been
+loaded successfully.
+DESIGN : TOP;  CHECKSUM : 1A77;  ALG_VERSION : 20
+programmer '58943' : Scan Chain...
+Warning: programmer '58943' : Vpump has been selected on programmer AND an externally provided
+         Vpump has also been detected. Using externally provided Vpump voltage source.
+programmer '58943' : Scan Chain PASSED.
+programmer '58943' : Executing action PROGRAM
+programmer '58943' : EXPORT FSN[48] = 01098a186c40
+programmer '58943' : Erase ...
+programmer '58943' : Completed erase
+programmer '58943' : Programming FPGA Array
+programmer '58943' : Verifying FPGA Array
+programmer '58943' :         Verifying FPGA Array -- pass
+programmer '58943' : Program System Init and Boot Clients...
+programmer '58943' : Program Embedded Flash Memory Module ALL....
+programmer '58943' : Verify System Init and Boot Clients...
+programmer '58943' : Verify Embedded Flash Memory Module ALL...
+programmer '58943' : Finished: Mon Nov 25 22:02:47 2013 (Elapsed time 00:00:54)
+programmer '58943' : Executing action PROGRAM PASSED.
+
+                        o - o - o - o - o - o
+
+Error: Cannot run PDB configuration: you have to generate a PDB file and use it as the
+       programming file.
+STAPL file
+'C:\Users\kylebs\Desktop\FreeRTOS-lwIP\Webserver_uIPRTOS_SC_PF\A2F200\Old_Oled\A2F200_Webserver\
+_Demo.stp' has been loaded successfully.
+DESIGN : TOP;  CHECKSUM : 1A77;  ALG_VERSION : 20
+programmer '58943' : Scan Chain...
+Warning: programmer '58943' : Vpump has been selected on programmer AND an externally provided
+         Vpump has also been detected. Using externally provided Vpump voltage source.
+programmer '58943' : Scan Chain PASSED.
+programmer '58943' : Executing action PROGRAM
+programmer '58943' : EXPORT FSN[48] = 01098a186c40
+programmer '58943' : Erase ...
+programmer '58943' : Completed erase
+programmer '58943' : Programming FPGA Array
+programmer '58943' : Verifying FPGA Array
+programmer '58943' :         Verifying FPGA Array -- pass
+programmer '58943' : Program System Init and Boot Clients...
+programmer '58943' : Program Embedded Flash Memory Module ALL....
+programmer '58943' : Verify System Init and Boot Clients...
+programmer '58943' : Verify Embedded Flash Memory Module ALL...
+programmer '58943' : Finished: Mon Nov 25 22:04:40 2013 (Elapsed time 00:00:57)
+programmer '58943' : Executing action PROGRAM PASSED.
+
+                        o - o - o - o - o - o
+
+programmer '58943' : Scan Chain...
+Warning: programmer '58943' : Vpump has been selected on programmer AND an externally provided
+         Vpump has also been detected. Using externally provided Vpump voltage source.
+programmer '58943' : Scan Chain PASSED.
+programmer '58943' : Executing action PROGRAM
+programmer '58943' : EXPORT FSN[48] = 01098a186c40
+programmer '58943' : Erase ...
+programmer '58943' : Completed erase
+programmer '58943' : Programming FPGA Array
+programmer '58943' : Verifying FPGA Array
+programmer '58943' :         Verifying FPGA Array -- pass
+programmer '58943' : Program System Init and Boot Clients...
+programmer '58943' : Program Embedded Flash Memory Module ALL....
+programmer '58943' : Verify System Init and Boot Clients...
+programmer '58943' : Verify Embedded Flash Memory Module ALL...
+programmer '58943' : Finished: Mon Nov 25 22:11:16 2013 (Elapsed time 00:00:58)
+programmer '58943' : Executing action PROGRAM PASSED.
+
+                        o - o - o - o - o - o
+
+programmer '58943' : Scan Chain...
+Warning: programmer '58943' : Vpump has been selected on programmer AND an externally provided
+         Vpump has also been detected. Using externally provided Vpump voltage source.
+programmer '58943' : Scan Chain PASSED.
+programmer '58943' : Executing action PROGRAM
+programmer '58943' : EXPORT FSN[48] = 01098a186c40
+programmer '58943' : Erase ...
+programmer '58943' : Completed erase
+programmer '58943' : Programming FPGA Array
+programmer '58943' : Verifying FPGA Array
+programmer '58943' :         Verifying FPGA Array -- pass
+programmer '58943' : Program System Init and Boot Clients...
+programmer '58943' : Program Embedded Flash Memory Module ALL....
+programmer '58943' : Verify System Init and Boot Clients...
+programmer '58943' : Verify Embedded Flash Memory Module ALL...
+programmer '58943' : Finished: Mon Nov 25 22:51:00 2013 (Elapsed time 00:00:57)
+programmer '58943' : Executing action PROGRAM PASSED.
+
+                        o - o - o - o - o - o
+
+Warning: Project 'TOP' has been modified. Do you want to save it? [NO]
+Project closed.

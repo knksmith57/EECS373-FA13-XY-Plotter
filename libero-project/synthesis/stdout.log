@@ -1,0 +1,43 @@
+
+Starting:    D:\Actel\Libero_v9.1\Synopsys\synplify_E201009A-1\bin\mbin\synplify.exe
+Install:     D:\Actel\Libero_v9.1\Synopsys\synplify_E201009A-1
+Date:        Fri Jan 28 14:34:34 2011
+Version:     E-2010.09A-1
+
+Arguments:   -product synplify_pro TOP_syn.prj
+ProductType: synplify_pro
+
+License checkout: synplifypro_actel
+License: synplifypro_actel from server reese 
+Licensed Vendor: actel
+License Feature: actel_oem
+
+
+
+
+Running synthesis on TOP_syn:synthesis
+
+log file: "D:\webserver\A2F_Webserver_uIPRTOS_SoftConsole_DF\HW\A2F200\Verilog\SmartFusion_Webserver_Demo\synthesis\TOP.srr"
+
+
+
+Running HDL Compiler...
+
+
+Compiler Completed with warnings
+Return Code: 1
+Run Time:00:00:01
+
+
+Running SmartFusion Mapper...
+
+
+SmartFusion Mapper Completed with warnings
+Return Code: 1
+Run Time:00:00:02
+
+exit status=0
+
+
+License checkin: synplifypro_actel
+

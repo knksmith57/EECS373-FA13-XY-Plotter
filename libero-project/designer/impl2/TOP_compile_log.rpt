@@ -1,0 +1,508 @@
+Actel Designer Software
+Version: 11.0.0.23
+Release: v11.0
+
+Info: The design TOP.adb was last modified by software version 11.0.0.23.
+Opened an existing Libero design TOP.adb.
+'BA_NAME' set to 'TOP_ba'
+'IDE_DESIGNERVIEW_NAME' set to 'Impl1'
+'IDE_DESIGNERVIEW_COUNT' set to '1'
+'IDE_DESIGNERVIEW_REV0' set to 'Impl1'
+'IDE_DESIGNERVIEW_REVNUM0' set to '2'
+'IDE_DESIGNERVIEW_ROOTDIR' set to
+'C:\Users\kylebs\Desktop\FreeRTOS-lwIP-takeDeux\FreeRTOS-lwIP\Webserver_uIPRTOS_SC_DF\EVAL_KIT\\
+SF_Webserver_Demo\designer'
+'IDE_DESIGNERVIEW_LASTREV' set to '2'
+
+ Netlist Reading Time = 1.0 seconds
+Imported the files:
+
+C:\Users\kylebs\Desktop\FreeRTOS-lwIP-takeDeux\FreeRTOS-lwIP\Webserver_uIPRTOS_SC_DF\EVAL_KIT\S\
+F_Webserver_Demo\synthesis\TOP.edn
+
+C:\Users\kylebs\Desktop\FreeRTOS-lwIP-takeDeux\FreeRTOS-lwIP\Webserver_uIPRTOS_SC_DF\EVAL_KIT\S\
+F_Webserver_Demo\component\work\TOP\TOP.pdc
+
+The Import command succeeded ( 00:00:10 )
+=====================================================================
+Parameters used to run compile:
+===============================
+
+Family      : SmartFusion
+Device      : A2F200M3F
+Package     : 484 FBGA
+Source      :
+C:\Users\kylebs\Desktop\FreeRTOS-lwIP-takeDeux\FreeRTOS-lwIP\Webserver_uIPRTOS_SC_DF\EVAL_KIT\S\
+F_Webserver_Demo\synthesis\TOP.edn
+
+C:\Users\kylebs\Desktop\FreeRTOS-lwIP-takeDeux\FreeRTOS-lwIP\Webserver_uIPRTOS_SC_DF\EVAL_KIT\S\
+F_Webserver_Demo\component\work\TOP\TOP.pdc
+Format      : EDIF
+Topcell     : TOP
+Speed grade : -1
+Temp        : 0:25:85
+Voltage     : 1.58:1.50:1.42
+
+Keep Existing Physical Constraints : Yes
+Keep Existing Timing Constraints   : Yes
+
+pdc_abort_on_error                 : Yes
+pdc_eco_display_unmatched_objects  : No
+pdc_eco_max_warnings               : 10000
+
+demote_globals                     : No
+promote_globals                    : No
+localclock_max_shared_instances    : 12
+localclock_buffer_tree_max_fanout  : 12
+
+combine_register                   : No
+delete_buffer_tree                 : No
+
+report_high_fanout_nets_limit      : 10
+
+=====================================================================
+Compile starts ...
+
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCRWn drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCDBOE drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_CALIBOUT drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_WDINT drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_DEEPSLEEP drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_SLEEP drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_TXEV drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_UART0RTSn drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_UART0DTRn drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_UART1RTSn drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_UART1DTRn drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_I2C0SMBUSNO drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_I2C1SMBUSNO drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_I2C0SMBALERTNO drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_I2C1SMBALERTNO drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_I2C0SDAO drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_I2C0SCLO drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_SPI1DO drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_SPI1DOE drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_SPI1CLKO drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_SPI1MODE drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_UART1TXD drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_MACM2FTXD[0] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_MACM2FTXD[1] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_MACM2FTXEN drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_MACM2FMDO drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_MACM2FMDEN drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_MACM2FMDC drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_PUFABn drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_LVTTL3 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_LVTTL6 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_VAREFOUT drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_LVTTL1 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_SDD2 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_LVTTL9 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_LVTTL2 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_SDD1 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_LVTTL5 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_SDD0 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_LVTTL10 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_LVTTL8 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_LVTTL0 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_LVTTL7 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_LVTTL4 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_LVTTL11 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_CMP0 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_CMP1 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_CMP2 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_CMP3 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_CMP4 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_CMP5 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_CMP6 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_CMP7 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_CMP8 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_CMP9 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_CMP10 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_CMP11 drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPREADY drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPSLVERR drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_VCC15GOOD drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_VCC33GOOD drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCBYTEN[0] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCBYTEN[1] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCAB[0] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCAB[1] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCAB[2] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCAB[3] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCAB[4] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCAB[5] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCAB[6] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCAB[7] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCAB[8] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCAB[9] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCAB[10] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCAB[11] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCAB[12] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCAB[13] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCAB[14] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCAB[15] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCAB[16] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCAB[17] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCAB[18] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCAB[19] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCAB[20] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCAB[21] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCAB[22] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCAB[23] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCAB[24] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCAB[25] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCOEN0n drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCOEN1n drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCWDB[0] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCWDB[1] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCWDB[2] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCWDB[3] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCWDB[4] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCWDB[5] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCWDB[6] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCWDB[7] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCWDB[8] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCWDB[9] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCWDB[10] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCWDB[11] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCWDB[12] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCWDB[13] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCWDB[14] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCWDB[15] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCCS0n drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_EMCCS1n drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[0] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[1] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[2] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[3] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[4] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[5] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[6] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[7] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[8] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[9] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[10] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[11] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[12] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[13] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[14] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[15] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[16] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[17] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[18] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[19] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[20] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[21] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[22] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[23] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[24] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[25] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[26] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[27] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[28] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[29] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[30] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_GPOE[31] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[0] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[1] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[2] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[3] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[4] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[5] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[6] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[7] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[8] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[9] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[11] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[12] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[13] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[14] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[15] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[16] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[17] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[18] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[19] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[20] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[21] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[22] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[23] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[24] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[25] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[26] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[27] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[28] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[29] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[30] drives no load.
+Warning: CMP201: Net Webserver_0/GPO_net_0[31] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_MSSINT[0] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_MSSINT[1] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_MSSINT[2] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_MSSINT[3] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_MSSINT[4] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_MSSINT[5] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_MSSINT[6] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_MSSINT[7] drives no load.
+Warning: CMP201: Net Webserver_0/SPI0SSO_net_0[1] drives no load.
+Warning: CMP201: Net Webserver_0/SPI0SSO_net_0[2] drives no load.
+Warning: CMP201: Net Webserver_0/SPI0SSO_net_0[3] drives no load.
+Warning: CMP201: Net Webserver_0/SPI0SSO_net_0[4] drives no load.
+Warning: CMP201: Net Webserver_0/SPI0SSO_net_0[5] drives no load.
+Warning: CMP201: Net Webserver_0/SPI0SSO_net_0[6] drives no load.
+Warning: CMP201: Net Webserver_0/SPI0SSO_net_0[7] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_SPI1SSO[0] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_SPI1SSO[1] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_SPI1SSO[2] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_SPI1SSO[3] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_SPI1SSO[4] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_SPI1SSO[5] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_SPI1SSO[6] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_SPI1SSO[7] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[0] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[1] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[2] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[3] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[4] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[5] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[6] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[7] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[8] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[9] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[10] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[11] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[12] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[13] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[14] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[15] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[16] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[17] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[18] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[19] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[20] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[21] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[22] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[23] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[24] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[25] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[26] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[27] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[28] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[29] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[30] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_ACEFLAGS[31] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[0] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[1] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[2] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[3] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[4] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[5] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[6] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[7] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[8] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[9] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[10] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[11] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[12] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[13] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[14] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[15] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[16] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[17] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[18] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[19] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[20] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[21] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[22] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[23] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[24] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[25] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[26] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[27] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[28] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[29] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[30] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_ADLIB_INST_FABPRDATA[31] drives no load.
+Warning: CMP201: Net Webserver_0/CoreAPB3_1_APBmslave0_PADDR[0] drives no load.
+Warning: CMP201: Net Webserver_0/CoreAPB3_1_APBmslave0_PADDR[1] drives no load.
+Warning: CMP201: Net Webserver_0/CoreAPB3_1_APBmslave0_PADDR[12] drives no load.
+Warning: CMP201: Net Webserver_0/CoreAPB3_1_APBmslave0_PADDR[13] drives no load.
+Warning: CMP201: Net Webserver_0/CoreAPB3_1_APBmslave0_PADDR[14] drives no load.
+Warning: CMP201: Net Webserver_0/CoreAPB3_1_APBmslave0_PADDR[15] drives no load.
+Warning: CMP201: Net Webserver_0/CoreAPB3_1_APBmslave0_PADDR[16] drives no load.
+Warning: CMP201: Net Webserver_0/CoreAPB3_1_APBmslave0_PADDR[17] drives no load.
+Warning: CMP201: Net Webserver_0/CoreAPB3_1_APBmslave0_PADDR[18] drives no load.
+Warning: CMP201: Net Webserver_0/CoreAPB3_1_APBmslave0_PADDR[19] drives no load.
+Warning: CMP201: Net Webserver_0/MSS_CCC_0/I_MSSCCC_GLA drives no load.
+Warning: CMP201: Net Webserver_0/MSS_CCC_0/I_MSSCCC_LOCK drives no load.
+Warning: CMP201: Net Webserver_0/MSS_CCC_0/I_MSSCCC_YB drives no load.
+Warning: CMP201: Net Webserver_0/MSS_CCC_0/I_MSSCCC_YC drives no load.
+
+Netlist Optimization Report
+===========================
+
+Optimized macros:
+  - Dangling net drivers:   0
+  - Buffers:                3
+  - Inverters:              0
+  - Tieoff:                 0
+  - Logic combining:        64
+
+    Total macros optimized  67
+
+There were 0 error(s) and 273 warning(s) in this design.
+=====================================================================
+
+Reading previous post-compile physical placement constraints.
+
+
+There were 0 error(s) and 0 warning(s).
+
+=====================================================================
+
+Reading user pdc (Physical Design Constraints) file(s) postcompile
+
+
+There were 0 error(s) and 0 warning(s) in reading the user pdc.
+
+=====================================================================
+Compile report:
+===============
+
+    Microcontroller Subsystem  Used:      1  Total:      1   (100.00%)
+    Fabric                     Used:   3045  Total:   4608   (66.08%)
+    Fabric IO (W/ clocks)      Used:     17  Total:     94   (18.09%)
+    Fabric Differential IO     Used:      0  Total:     47   (0.00%)
+    Dedicated Analog IO        Used:      0  Total:     32   (0.00%)
+    Dedicated MSS IO           Used:     18  Total:     43   (41.86%)
+    GLOBAL (Chip+Quadrant)     Used:      3  Total:     15   (20.00%)
+    MSS GLOBAL                 Used:      3  Total:      3   (100.00%)
+    On-chip RC oscillator      Used:      0  Total:      1   (0.00%)
+    Main Crystal oscillator    Used:      1  Total:      1   (100.00%)
+    32 KHz Crystal oscillator  Used:      0  Total:      1   (0.00%)
+    RAM/FIFO                   Used:      0  Total:      8   (0.00%)
+    User JTAG                  Used:      0  Total:      1   (0.00%)
+
+Global Information:
+
+    Type            | Used   | Total
+    ----------------|--------|--------------
+    Chip global     | 3      | 3  (100.00%)*
+    Quadrant global | 0      | 12 (0.00%)
+    MSS global      | 3      | 3  (100.00%)
+
+    (*) Chip globals may be assigned to Quadrant globals using the Multi-View Navigator (MVN)
+        or Physical Design Constraints (PDC).
+        They may also be assigned to Quadrant globals automatically during Layout.
+
+Core Information:
+
+    Type    | Instances    | Core tiles
+    --------|--------------|-----------
+    COMB    | 2503         | 2503
+    SEQ     | 542          | 542
+
+I/O Function:
+
+    Type                          | w/o register  | w/ register  | w/ DDR register
+    ------------------------------|---------------|--------------|----------------
+    Input I/O                     | 3             | 0            | 0
+    Output I/O                    | 14            | 0            | 0
+    Bidirectional I/O             | 0             | 0            | 0
+    Differential Input I/O Pairs  | 0             | 0            | 0
+    Differential Output I/O Pairs | 0             | 0            | 0
+
+I/O Technology:
+
+                                    |   Voltages    |             I/Os
+    --------------------------------|-------|-------|-------|--------|--------------
+    I/O Standard(s)                 | Vcci  | Vref  | Input | Output | Bidirectional
+    --------------------------------|-------|-------|-------|--------|--------------
+    LVTTL                           | 3.30v | N/A   | 3     | 14     | 0
+
+I/O Placement:
+
+    Locked  :  17 ( 100.00% )
+    Placed  :   0
+    UnPlaced:   0
+
+Net information report:
+=======================
+
+The following nets have been assigned to a chip global resource:
+    Fanout  Type          Name
+    --------------------------
+    535     CLK_NET       Net   : FAB_CLK
+                          Driver: Webserver_0/MSS_CCC_0/I_MSSCCC
+                          Source: ESSENTIAL
+    223     SET/RESET_NET Net   : Webserver_0_M2F_RESET_N
+                          Driver: Webserver_0/MSS_ADLIB_INST_RNIT6LE/U_CLKSRC
+                          Source: NETLIST
+    180     INT_NET       Net   : motor_apb_interface_0.numStepsRegister_x18
+                          Driver: I_251/U_CLKSRC
+                          Source: NETLIST
+    71      INT_NET       Net   : motor_apb_interface_0.write_enable
+                          Driver: I_252/U_CLKSRC
+                          Source: NETLIST
+    1       INT_NET       Net   : GLC_c
+                          Driver: Webserver_0/MSS_CCC_0/I_MSSCCC
+                          Source: ESSENTIAL
+
+High fanout nets in the post compile netlist:
+    Fanout  Type          Name
+    --------------------------
+    22      INT_NET       Net   : CoreAPB3_1_APBmslave0_PWDATA[5]
+                          Driver: Webserver_0/MSS_ADLIB_INST
+    21      INT_NET       Net   : CoreAPB3_1_APBmslave0_PADDR[3]
+                          Driver: Webserver_0/MSS_ADLIB_INST
+    21      INT_NET       Net   : CoreAPB3_1_APBmslave0_PADDR[5]
+                          Driver: Webserver_0/MSS_ADLIB_INST
+    21      INT_NET       Net   : CoreAPB3_1_APBmslave0_PWDATA[2]
+                          Driver: Webserver_0/MSS_ADLIB_INST
+    21      INT_NET       Net   : CoreAPB3_1_APBmslave0_PWDATA[7]
+                          Driver: Webserver_0/MSS_ADLIB_INST
+    21      INT_NET       Net   : CoreAPB3_1_APBmslave0_PADDR_0[5]
+                          Driver: Webserver_0/MSS_ADLIB_INST_RNIT6LE_1
+    20      INT_NET       Net   : CoreAPB3_1_APBmslave0_PWDATA[4]
+                          Driver: Webserver_0/MSS_ADLIB_INST
+    20      INT_NET       Net   : stepper_motor_control_1/step_backward_0
+                          Driver: stepper_motor_control_1/step_backward_0
+    20      INT_NET       Net   : stepper_motor_control_1/step_forward_0_0
+                          Driver: stepper_motor_control_1/step_forward_0_0
+    20      INT_NET       Net   : stepper_motor_control_1/step_backward
+                          Driver: stepper_motor_control_1/step_backward
+
+Nets that are candidates for clock assignment and the resulting fanout:
+    Fanout  Type          Name
+    --------------------------
+    41      INT_NET       Net   : CoreAPB3_1_APBmslave0_PADDR[5]
+                          Driver: Webserver_0/MSS_ADLIB_INST
+    29      INT_NET       Net   : CoreAPB3_1_APBmslave0_PADDR[2]
+                          Driver: Webserver_0/MSS_ADLIB_INST
+    22      INT_NET       Net   : CoreAPB3_1_APBmslave0_PWDATA[5]
+                          Driver: Webserver_0/MSS_ADLIB_INST
+    21      INT_NET       Net   : CoreAPB3_1_APBmslave0_PADDR[3]
+                          Driver: Webserver_0/MSS_ADLIB_INST
+    21      INT_NET       Net   : CoreAPB3_1_APBmslave0_PWDATA[2]
+                          Driver: Webserver_0/MSS_ADLIB_INST
+    21      INT_NET       Net   : CoreAPB3_1_APBmslave0_PWDATA[7]
+                          Driver: Webserver_0/MSS_ADLIB_INST
+    20      INT_NET       Net   : CoreAPB3_1_APBmslave0_PWDATA[4]
+                          Driver: Webserver_0/MSS_ADLIB_INST
+    20      INT_NET       Net   : stepper_motor_control_1/step_backward_0
+                          Driver: stepper_motor_control_1/step_backward_0
+    20      INT_NET       Net   : stepper_motor_control_1/step_forward_0_0
+                          Driver: stepper_motor_control_1/step_forward_0_0
+    20      INT_NET       Net   : stepper_motor_control_1/step_backward
+                          Driver: stepper_motor_control_1/step_backward
+
+The Compile command succeeded ( 00:00:06 )
+Wrote status report to file: TOP_compile_report.txt
+
+The Report command succeeded ( 00:00:00 )
+Design saved to file
+C:\Users\kylebs\Desktop\FreeRTOS-lwIP-takeDeux\FreeRTOS-lwIP\Webserver_uIPRTOS_SC_DF\EVAL_KIT\S\
+F_Webserver_Demo\designer\impl2\TOP.adb.
+
+The Execute Script command succeeded ( 00:00:19 )
+Design closed.
+

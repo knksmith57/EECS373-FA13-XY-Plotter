@@ -1,0 +1,268 @@
+/* Standard Libs
+ * ========================================================================= */
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <inttypes.h>
+
+/* Firmware
+ * ========================================================================= */
+#include "a2fxxxm3.h"
+#include "./hal/CortexM3/GNU/cpu_types.h"
+#include "./drivers/mss_i2c/mss_i2c.h"
+#include "./plotter/plotter_platform.h"
+
+
+/* FreeRTOS
+ * ========================================================================= */
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "semphr.h"
+
+/* Globals
+ * ========================================================================= */
+uint8_t config_step;
+
+/* Static Glocals
+ * ========================================================================= */
+static int ZC;
+static volatile int complete, i;
+// static char xaxis[15], yaxis[15];
+
+const static portTickType delay_6ms = 6 / portTICK_RATE_MS;
+const static portTickType delay_1ms = 1 / portTICK_RATE_MS;
+
+uint8_t transmit_buf[] 	= { 0x40, 0x00};
+uint8_t transmit_buf2[] = { 0x00 };
+uint8_t receive_buf[6];
+
+static unsigned char controller_status; //00LRUDCZ
+
+const static unsigned char 	LEFT 	= 0x20,
+							RIGHT 	= 0x10,
+							UP 		= 0x08,
+							DOWN 	= 0x04,
+							C 		= 0x02,
+							Z 		= 0x01;
+
+
+/* Externs
+ * ========================================================================= */
+extern void delay(volatile unsigned int n);
+extern xSemaphoreHandle       xSemHand_controller;
+extern xSemaphoreHandle       xSemHand_nunchuck;
+extern xSemaphoreHandle       xSemHand_http;
+extern xSemaphoreHandle       xSemHand_plotter;
+
+extern PLOTTER_MODE plotter_current_mode;
+
+
+/* Macros
+ * ========================================================================= */
+#define NUNCHUCK_SPEED 					300000
+#define NUNCHUCK_SPEED_SLOW 			1500000
+#define NUNCHUCK_TARGET_ADDRESS 		0xa4
+
+
+// task to initialize nunchuck via I2C
+void init_nunchuck(void) {
+
+	// make sure fabric IRQ is enabled
+	// NVIC_EnableIRQ(Fabric_IRQn);
+	config_step = 0;
+
+	// initialize the nunchuck controller
+	MSS_I2C_init(&g_mss_i2c1 , NUNCHUCK_TARGET_ADDRESS, MSS_I2C_PCLK_DIV_960 );
+
+	MSS_I2C_write (
+		&g_mss_i2c1,
+		NUNCHUCK_TARGET_ADDRESS,
+		transmit_buf,
+		sizeof(transmit_buf),
+		MSS_I2C_RELEASE_BUS
+	);
+
+	MSS_I2C_wait_complete(&g_mss_i2c1);
+	delay(delay_6ms); // NOTE: cannot use vTaskDelay here because WE AREN'T IN A TASK!
+
+	complete = 1;
+	ZC = 0x11;
+}
+
+// this task, while named nunchuck, is really the wrapper for manual mode. it is used for both config and free draw
+void vTask_nunchuck(void *para) {
+	printf("started vTask_nunchuck \r\n");
+
+	while(1) {
+		// wait for the nunchuck semaphore to become free
+		xSemaphoreTake( xSemHand_nunchuck, portMAX_DELAY );
+
+		// reset controller_status, we're updating it now
+		controller_status = 0;
+
+		MSS_I2C_write (
+			&g_mss_i2c1,
+			NUNCHUCK_TARGET_ADDRESS,
+			transmit_buf2,
+			sizeof(transmit_buf2),
+			MSS_I2C_RELEASE_BUS
+		);
+
+		MSS_I2C_wait_complete(&g_mss_i2c1);
+		vTaskDelay(delay_6ms); // delay after every read / write
+
+		MSS_I2C_read (
+				&g_mss_i2c1,
+				NUNCHUCK_TARGET_ADDRESS,
+				receive_buf,
+				sizeof(receive_buf),
+				MSS_I2C_RELEASE_BUS
+		 );
+
+		MSS_I2C_wait_complete(&g_mss_i2c1);
+
+		// parse Z and C keys
+		ZC = (receive_buf[5] % 4);
+		if(ZC < 3 ) {
+			if(ZC == 2) {
+				// both C and Z are pressed
+				controller_status |= C | Z;
+			}
+			else if(ZC == 1) {
+				// only C is pressed
+				controller_status |= C;
+			}
+			else {
+				// only Z is pressed
+				controller_status |= Z;
+			}
+		}
+
+		// parse joystick X axis
+		if (receive_buf[0] > 160) {
+			controller_status |= RIGHT;
+		}
+		else if (receive_buf[0] < 60) {
+			controller_status |= LEFT;
+		}
+
+		// parse joystick Y axis
+		if (receive_buf[1] > 160) {
+			controller_status |= UP;
+		}
+		else if (receive_buf[1] < 60) {
+			controller_status |= DOWN;
+		}
+
+
+
+
+		// printf("controller_status: %x \r\n", controller_status);
+		// printf("@ x = %d, y = %d \r\n", *globalPositionX, *globalPositionY);
+
+		if(plotter_current_mode == CONFIG) {
+			// we're in config mode
+			switch(config_step) {
+			case 0:
+				// setting origin
+				if(Z & controller_status) {
+					printf("setting origin to current position \r\n");
+					*globalPositionX = 0;
+					*globalPositionY = 0;
+					config_step++;
+				}
+				break;
+			case 1:
+				// setting max Y
+				if(Z & controller_status) {
+					printf("setting maximumY to: %d \r\n", *globalPositionY + 1);
+					*maximumY = *globalPositionY + 1;
+					config_step++;
+				}
+				break;
+			case 2:
+				// setting max X
+				if(Z & controller_status) {
+					printf("setting maximumX to: %d \r\n", *globalPositionX + 1);
+					*maximumX = *globalPositionX + 1;
+					config_step++;
+				}
+				break;
+			default:
+				// we're all done!
+				printf("exiting config mode \r\n");
+				plotter_current_mode = NUNCHUCK;
+			}
+		}
+		// else {
+			if(C & controller_status) {
+				*penWrite = PEN_DOWN;
+			}
+			else {
+				*penWrite = PEN_UP;
+			}
+
+			if(Z & controller_status) {
+				// we're moving super slow + precise
+				*periodX = NUNCHUCK_SPEED_SLOW;
+				*periodY = NUNCHUCK_SPEED_SLOW;
+
+				if(RIGHT & controller_status) {
+					*numStepsX = 4;
+				}
+				else if(LEFT & controller_status) {
+					*numStepsX = -4;
+				}
+
+				if(UP & controller_status) {
+					*numStepsY = 4;
+				}
+				else if(DOWN & controller_status) {
+					*numStepsY = -4;
+				}
+			}
+			else {
+				*periodX = NUNCHUCK_SPEED;
+				*periodY = NUNCHUCK_SPEED;
+
+				if(RIGHT & controller_status) {
+					*numStepsX = 7;
+				}
+				else if(LEFT & controller_status) {
+					*numStepsX = -7;
+				}
+
+				if(UP & controller_status) {
+					*numStepsY = 7;
+				}
+				else if(DOWN & controller_status) {
+					*numStepsY = -7;
+				}
+			// }
+
+
+			if (*numStepsX + *globalPositionX < 0) {
+				*numStepsX = *globalPositionX * -1;
+			}
+			if (*numStepsY + *globalPositionY < 0) {
+				*numStepsY = *globalPositionY * -1;
+			}
+		}
+
+
+		if((*numStepsX != 0) || (*numStepsY != 0)) {
+			// printf("read back from nunchuck~~  x: %s\ty: %s\r\n", xaxis, yaxis);
+			// printf("setting GO, x: %i y:%i\r\n", *numStepsX, *numStepsY);
+			*GO = 1;
+		}
+		else {
+			// printf("NO GO, x: %i y:%i\r\n", *numStepsX, *numStepsY);
+
+			// since no move detected, we are just going to loop back around and check again
+			// delay for 6ms (because of the first I2C write, and give the semaphore back to ourself
+			vTaskDelay( delay_6ms );
+			xSemaphoreGive( xSemHand_nunchuck );
+		}
+	}
+}

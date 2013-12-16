@@ -1,0 +1,4 @@
+1386584356784	Delete resource 'Webserver_MSS_CM3_0_app/application_tasks/lcd_task.c'
+1386584645692	Delete resource 'Webserver_MSS_CM3_0_hw_platform/Debug/libWebserver_MSS_CM3_0_hw_platform.a'
+1386584757427	Delete resource 'Webserver_MSS_CM3_0_hw_platform/CMSIS/startup_gcc/newlib_stubs.c'
+1386591297696	Delete resource 'Webserver_MSS_CM3_0_app/application_tasks/config_task.c'

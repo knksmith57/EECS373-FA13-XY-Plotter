@@ -1,0 +1,59 @@
+#ifndef PLOTTER_PLATFORM_H_
+#define PLOTTER_PLATFORM_H_
+
+#include "./TOP_hw_platform.h"
+
+/* Global Macros (Optionally defined elsewhere)
+ * ========================================================================= */
+#ifndef PLOTTER_BASE_ADDR
+#ifndef MOTOR_APB_INTERFACE_0
+#define PLOTTER_BASE_ADDR 	0x40050200U
+#else
+#define PLOTTER_BASE_ADDR	MOTOR_APB_INTERFACE_0
+#endif
+#endif
+
+#ifndef BAUD_VALUE_9600
+#define BAUD_VALUE_9600    	324
+#endif
+
+
+/* Plotter Memory Mapped IO
+ * ========================================================================= */
+volatile uint32_t *numStepsX 					= (uint32_t *)(PLOTTER_BASE_ADDR);
+volatile uint32_t *periodX 						= (uint32_t *)(PLOTTER_BASE_ADDR + 4);
+volatile uint32_t *numStepsY 					= (uint32_t *)(PLOTTER_BASE_ADDR + 8);
+volatile uint32_t *periodY 						= (uint32_t *)(PLOTTER_BASE_ADDR + 12);
+volatile uint32_t *GO 							= (uint32_t *)(PLOTTER_BASE_ADDR + 16);
+volatile uint32_t *globalPositionX 				= (uint32_t *)(PLOTTER_BASE_ADDR + 20);
+volatile uint32_t *globalPositionY 				= (uint32_t *)(PLOTTER_BASE_ADDR + 24);
+volatile uint32_t *finishedGlobalPositionX 		= (uint32_t *)(PLOTTER_BASE_ADDR + 28);
+volatile uint32_t *finishedGlobalPositionY 		= (uint32_t *)(PLOTTER_BASE_ADDR + 32);
+volatile uint32_t *penWrite 					= (uint32_t *)(PLOTTER_BASE_ADDR + 36);
+
+
+/* Plotter Constants
+ * ========================================================================= */
+#define PEN_UP 				130000
+#define	PEN_DOWN			135000
+
+
+/* LCD Tunnelling
+ * ========================================================================= */
+#ifdef ACTEL_STDIO_THRU_UART
+#include <string.h>
+#include "../drivers/mss_uart/mss_uart.h"
+#include "../drivers/CoreUARTapb/core_uart_apb.h"
+
+#ifndef LCD_UART_ADDR
+#define LCD_UART_ADDR      	COREUARTAPB_1
+#endif
+
+UART_instance_t g_lcd_uart;
+static int g_lcd_uart_init_done = 0;
+
+void _to_lcd_uart(char *ptr, int len );
+
+#endif	/* ACTEL_STDIO_THRU_UART */
+
+#endif /* PLOTTER_PLATFORM_H_*/

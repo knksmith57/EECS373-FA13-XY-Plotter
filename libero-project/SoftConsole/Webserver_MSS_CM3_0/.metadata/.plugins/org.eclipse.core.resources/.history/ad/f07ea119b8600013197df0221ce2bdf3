@@ -1,0 +1,229 @@
+/* Standard Libs
+ * ========================================================================= */
+#include <stdio.h>
+#include <stdlib.h>
+
+/* Firmware
+ * ========================================================================= */
+#include "a2fxxxm3.h"
+#include "./hal/CortexM3/GNU/cpu_types.h"
+#include "./drivers/mss_gpio/mss_gpio.h"
+#include "./drivers/mss_uart/mss_uart.h"
+#include "./drivers/CoreUARTapb/core_uart_apb.h"
+#include "./plotter/plotter_platform.h"
+
+/* FreeRTOS
+ * ========================================================================= */
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "semphr.h"
+
+/* Macros (stolen from reference code)
+ * ========================================================================= */
+#define SYS_TICK_CTRL_AND_STATUS_REG      0xE000E010
+#define SYS_TICK_CONFIG_REG               0xE0042038
+#define SYS_TICK_FCLK_DIV_32_NO_REF_CLK   0x31000000
+#define ENABLE_SYS_TICK                   0x7
+
+/* Globals
+ * ========================================================================= */
+// semaphore handles for task control
+xSemaphoreHandle
+  xSemHand_controller 	= NULL,
+  xSemHand_lcd 			= NULL,
+  xSemHand_nunchuck 	= NULL,
+  xSemHand_http 		= NULL,
+  xSemHand_plotter 		= NULL;
+
+// task handles
+xTaskHandle
+  xHand_controller 		= NULL,
+  xHand_lcd 			= NULL,
+  xHand_nunchuck 		= NULL,
+  xHand_http 			= NULL;
+
+/* Externs
+ * ========================================================================= */
+extern void delay(volatile unsigned int n);
+extern void vTask_controller(void *para);
+extern void vTask_lcd(void *para);
+extern void vTask_nunchuck(void *para);
+extern void vTask_http(void *para);
+extern void init_controller(void);
+extern void init_lcd(void);
+extern void init_nunchuck(void);
+extern void init_http(void);
+extern void controller_delegate_control(void);
+
+
+/* Default FreeRTOS Functions (must be defined, stolen from reference code)
+ * ========================================================================= */
+void vApplicationMallocFailedHook( void ) {
+	/* Called if a call to pvPortMalloc() fails because there is insufficient
+	free memory available in the FreeRTOS heap.  pvPortMalloc() is called
+	internally by FreeRTOS API functions that create tasks, queues, software
+	timers, and semaphores.  The size of the FreeRTOS heap is set by the
+	configTOTAL_HEAP_SIZE configuration constant in FreeRTOSConfig.h. */
+	for( ;; );
+}
+
+unsigned long ulGetRunTimeCounterValue( void ) {
+	return 0UL;
+}
+
+void vApplicationIdleHook( void ) {
+	/* This function is called on each cycle of the idle task.  In this case it
+	does nothing useful */
+}
+
+void vApplicationStackOverflowHook( xTaskHandle *pxTask, signed char *pcTaskName ) {
+	( void ) pcTaskName;
+	( void ) pxTask;
+
+	/* Run time stack overflow checking is performed if
+	configconfigCHECK_FOR_STACK_OVERFLOW is defined to 1 or 2.  This hook
+	function is called if a stack overflow is detected. */
+	for( ;; );
+}
+
+void vMainConfigureTimerForRunTimeStats( void ) {
+	/* This function is not used by the Blinky build configuration, but needs
+	to be defined as the Blinky and Full build configurations share a
+	FreeRTOSConfig.h header file. */
+}
+
+/* Interrupt Handlers
+ * ========================================================================= */
+
+// We use GPIO1 as an IRQ mechanism for handling keypad input
+// Anytime a key is pressed, hardware buffers the UART transaction and sets
+// GPIO1 high so that we can delegate control to the controller task and figure
+// out what was pressed / what we need to do
+__attribute__ ((interrupt)) void GPIO1_IRQHandler( void ) {
+    static signed portBASE_TYPE xHigherPriorityTaskWoken;
+	MSS_GPIO_disable_irq( MSS_GPIO_1 );
+	delay(20000); // don't call the interrupt until the UART transmission has finished, give it some time
+
+    xSemaphoreGiveFromISR( xSemHand_controller, &xHigherPriorityTaskWoken );
+
+    // clear the IRQ request
+    MSS_GPIO_clear_irq( MSS_GPIO_1 );
+    NVIC_ClearPendingIRQ( GPIO1_IRQn );
+	MSS_GPIO_enable_irq( MSS_GPIO_1 );
+}
+
+// Fabric IRQ is fired when the plotter has finished moving the pen to the desired location
+__attribute__ ((interrupt)) void Fabric_IRQHandler( void ) {
+	// printf("FabInt fired!\r\n");
+	controller_delegate_control();
+	NVIC_ClearPendingIRQ( Fabric_IRQn );
+}
+
+
+/* Initialize Hardware
+ * ========================================================================= */
+void init_system() {
+    // GPIO
+    MSS_GPIO_init();
+
+    // UART0 for tunneling communication
+    MSS_UART_init
+    (
+        &g_mss_uart0,
+        MSS_UART_57600_BAUD,
+        MSS_UART_DATA_8_BITS | MSS_UART_NO_PARITY | MSS_UART_ONE_STOP_BIT
+    );
+
+    init_lcd(); 		// LCD
+    init_controller(); 	// Keypad
+    init_nunchuck();	// Nunchuck
+    init_http();		// HTTP Client
+}
+
+/* Main (Bootstrap point)
+ * ========================================================================= */
+int main() {
+
+    printf("initializing:\t semaphores for task control...\r\n");
+    vSemaphoreCreateBinary( xSemHand_controller );
+    vSemaphoreCreateBinary( xSemHand_nunchuck );
+    vSemaphoreCreateBinary( xSemHand_http );
+    vSemaphoreCreateBinary( xSemHand_plotter );
+
+    // Initialize the hardware
+    init_system();
+
+    printf("initializing:\t setting up interrupt control...\r\n");
+    # if 1
+      // Enable Keypad Interrupt Control
+      NVIC_SetPriority( GPIO1_IRQn, configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY );
+      NVIC_EnableIRQ( GPIO1_IRQn );
+
+      // Enable Fabric Interrupt Control
+      NVIC_SetPriority( Fabric_IRQn, configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY - 1 );
+      NVIC_EnableIRQ( Fabric_IRQn );
+    #endif
+
+    // task related semaphores should be locked right away and only given to the tasks once needed
+    xSemaphoreTake( xSemHand_controller, portMAX_DELAY );
+    xSemaphoreTake( xSemHand_nunchuck, 	 portMAX_DELAY );
+    xSemaphoreTake( xSemHand_http, 		 portMAX_DELAY );
+
+    // xSemaphoreCreateBinary not available in v7.0.1
+    // xSemHand_controller  = xSemaphoreCreateBinary();
+    // xSemHand_nunchuck 	= xSemaphoreCreateBinary();
+    // xSemHand_http 		= xSemaphoreCreateBinary();
+    // xSemHand_plotter 	= xSemaphoreCreateBinary();
+
+    // Task Creation
+    xTaskCreate( vTask_lcd,
+                 ( signed portCHAR * ) "serial LCD task",
+                 configMINIMAL_STACK_SIZE,
+                 NULL,
+                 tskIDLE_PRIORITY,
+                 &xHand_lcd );
+
+    xTaskCreate( vTask_controller,
+                 ( signed portCHAR * ) "controller task",
+                 configMINIMAL_STACK_SIZE,
+                 NULL,
+                 // configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY - 2,
+                 tskIDLE_PRIORITY + 2,
+                 &xHand_controller );
+
+    xTaskCreate( vTask_nunchuck,
+                 ( signed portCHAR * ) "nunchuck task",
+                 configMINIMAL_STACK_SIZE,
+                 NULL,
+                 tskIDLE_PRIORITY,
+                 &xHand_nunchuck );
+
+    xTaskCreate( vTask_http,
+                 ( signed portCHAR * ) "http task",
+                 configMINIMAL_STACK_SIZE*3,
+                 NULL,
+                 tskIDLE_PRIORITY + 2,
+                 &xHand_http );
+
+	vTaskSuspend( xHand_nunchuck );
+	vTaskSuspend( xHand_http );
+
+	printf("\r\n--- GOOD TO GO! ---\r\n\r\n");
+
+    /* Enable the SYS TICK Timer and provide the divider and clock source
+     * this is required to enable the RTOS tick */
+
+    *(volatile unsigned long *)SYS_TICK_CTRL_AND_STATUS_REG = ENABLE_SYS_TICK;
+    *(volatile unsigned long *)SYS_TICK_CONFIG_REG          = SYS_TICK_FCLK_DIV_32_NO_REF_CLK;
+
+    /* Start the scheduler. */
+    vTaskStartScheduler();
+
+    /* Will only get here if there was not enough heap space to create the
+    idle task. */
+
+    printf("\n Test Case End: Should never Come here \n\r");
+
+    return 0;
+}

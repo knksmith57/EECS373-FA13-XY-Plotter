@@ -1,0 +1,190 @@
+/* Standard Libs
+ * ========================================================================= */
+#include <stdio.h>
+#include <stdlib.h>
+#include <inttypes.h>
+
+/* Firmware
+ * ========================================================================= */
+#include "./hal/CortexM3/GNU/cpu_types.h"
+#include "./drivers/mss_gpio/mss_gpio.h"
+#include "./drivers/mss_uart/mss_uart.h"
+#include "./drivers/CoreUARTapb/core_uart_apb.h"
+#include "./plotter/plotter_platform.h"
+
+/* FreeRTOS
+ * ========================================================================= */
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "semphr.h"
+
+/* Globals
+ * ========================================================================= */
+PLOTTER_MODE plotter_current_mode;
+
+// delay function, stolen from reference code
+void delay ( volatile unsigned long int n) {
+    while(n!=0) {
+        n--;
+    }
+}
+
+/* Static Glocals
+ * ========================================================================= */
+static UART_instance_t g_uart_rx;
+static unsigned short int plotter_mode_changed;
+
+
+/* Externs
+ * ========================================================================= */
+extern xSemaphoreHandle       xSemHand_controller;
+extern xSemaphoreHandle       xSemHand_nunchuck;
+extern xSemaphoreHandle       xSemHand_http;
+extern xSemaphoreHandle       xSemHand_plotter;
+extern xTaskHandle			  xHand_controller;
+extern xTaskHandle			  xHand_nunchuck;
+extern xTaskHandle			  xHand_http;
+
+
+/* Macros
+ * ========================================================================= */
+
+// task to initialize UART + GPIO1 for IRQ via Keypad + Fabric
+void init_controller( void ) {
+	UART_init(&g_uart_rx, COREUARTAPB_0, BAUD_VALUE_9600, (DATA_8_BITS | NO_PARITY));
+
+    NVIC_EnableIRQ(GPIO1_IRQn);
+	MSS_GPIO_config( MSS_GPIO_1, MSS_GPIO_INPUT_MODE | MSS_GPIO_IRQ_EDGE_POSITIVE );
+	MSS_GPIO_enable_irq( MSS_GPIO_1 );
+
+	// set the initial plotter operating mode to unknown
+	plotter_current_mode = UNKNOWN;
+	plotter_mode_changed = 0;
+
+	// reset ALL plotter registers
+	*numStepsX 			= 0;
+	*periodX 			= 0;
+	*numStepsY 			= 0;
+	*periodY 			= 0;
+	*GO 				= 0;
+	*penWrite 			= PEN_UP;
+	*maximumX 			= START_MAX_X;
+	*maximumY 			= START_MAX_Y;
+	*globalPositionX 	= START_MAX_X - 1;
+	*globalPositionY 	= START_MAX_Y - 1;
+}
+
+// called from Fabric_IRQHandler to determine which task to return control to
+void controller_delegate_control( void ) {
+	// printf("GO: %d\r\n@ %d, %d\r\nmax %d, %d\r\nfabIntStatus == %u \r\n", *GO, *globalPositionX, *globalPositionY, *maximumX, *maximumY, *fabIntStatus);
+
+	// reading shared data, must grab plotter semaphore first
+	static signed portBASE_TYPE xHigherPriorityTaskWoken;
+	xSemaphoreTake(xSemHand_plotter, portMAX_DELAY);
+
+	// now that hold lock, read the current mode into a local variable
+	PLOTTER_MODE cur_mode = plotter_current_mode;
+
+	// release the shared data semaphore
+	xSemaphoreGiveFromISR( xSemHand_plotter, &xHigherPriorityTaskWoken );
+
+	// figure out which mode we're in and give that task control again
+	switch(cur_mode) {
+		case HTTP:
+			xSemaphoreGiveFromISR( xSemHand_http, &xHigherPriorityTaskWoken );
+			if(plotter_mode_changed) {
+				// printf("delgating control to HTTP\r\n");
+				plotter_mode_changed = 0;
+				vTaskSuspend( xHand_nunchuck );
+				vTaskResume( xHand_http );
+			}
+			break;
+		case NUNCHUCK:
+		case CONFIG:
+			// printf("delgating control to Nunchuck\r\n");
+			xSemaphoreGiveFromISR( xSemHand_nunchuck, &xHigherPriorityTaskWoken );
+			if(plotter_mode_changed) {
+				plotter_mode_changed = 0;
+				vTaskSuspend( xHand_http );
+				vTaskResume( xHand_nunchuck );
+			}
+			break;
+		default:
+			printf("plotter is in unknown operating mode!\r\n");
+	}
+}
+
+// task to handle delegation of control via the Keypad
+void vTask_controller(void *para) {
+	while(1) {
+		// wait for the controller semaphore to become free
+		xSemaphoreTake( xSemHand_controller, portMAX_DELAY );
+
+		printf("\r\n--- Controller Interrupt ---\r\n\r\n");
+
+		uint8_t rx_data[2], rx_size = 0, try_count = 0;
+
+		// UART transmissions can be sketchy, make sure we empty the buffer and get the latest message
+		do {
+			rx_size = UART_get_rx( &g_uart_rx, rx_data, sizeof(rx_data) );
+		} while((rx_size != 1) && (++try_count < 100));
+
+		if(rx_size > 0) {
+			char inputCharacter = (char) rx_data[0];
+			switch(inputCharacter) {
+				case '0':
+				case '1':
+				case '2':
+				case '3':
+				case '4':
+				case '5':
+				case '6':
+				case '7':
+				case '8':
+				case '9':
+					printf("read number: %c \r\n", rx_data[0]);
+					break;
+				case '#':
+					printf("# == enter \r\n");
+					break;
+				case '*':
+					printf("* == START / STOP Motor Control \r\n");
+					break;
+				case 'A':
+				case 'B':
+				case 'C':
+				case 'D':
+					// changing shared data, must first get semaphore
+					xSemaphoreTake(xSemHand_plotter, portMAX_DELAY);
+					// printf("pressed letter: %c \r\n", rx_data[0]);
+					PLOTTER_MODE last_mode = plotter_current_mode;
+					// figure out the next mode
+					plotter_current_mode =
+							inputCharacter == 'A' ? HTTP :
+							inputCharacter == 'B' ? NUNCHUCK :
+							inputCharacter == 'C' ? CONFIG :
+							MAX; // default to MAX
+
+					if(plotter_current_mode != last_mode) {
+						// changed tasks
+						plotter_mode_changed = 1;
+					}
+
+					// now release the shared data semaphore
+					static signed portBASE_TYPE xHigherPriorityTaskWoken;
+					xSemaphoreGiveFromISR( xSemHand_plotter, &xHigherPriorityTaskWoken );
+
+					// now call delegate control to wake up the task we just switched control to
+					controller_delegate_control();
+
+					break;
+				default:
+					printf("wtf did you press? \r\n");
+			}
+		}
+		else {
+			printf("no data \r\n");
+		}
+	}
+}

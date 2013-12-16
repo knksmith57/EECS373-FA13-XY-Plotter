@@ -1,0 +1,12 @@
+F:\Microsemi\Libero_v9.1\Synopsys\synplify_E201009A-1\bin\m_proasic.exe  -prodtype synplify_pro -encrypt  -pro  -part A2F200M3F  -package FBGA484  -grade Std   -globalthreshold 50 -maxfan 24 -opcond COMWC     -report_path 0       -top_level_module  TOP  -mp 1 -prjfile  C:\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\synthesis\scratchproject.prs  -implementation synthesis -licensetype  synplifypro_actel  -oedif C:\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\synthesis\TOP.edn  -freq 100.000  C:\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\synthesis\TOP.srs  -sap  C:\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\synthesis\TOP.sap  -otap  C:\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\synthesis\TOP.tap  -omap  C:\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\synthesis\TOP.map  -devicelib  F:\Microsemi\Libero_v9.1\Synopsys\synplify_E201009A-1\lib\proasic\smartfusion.v  -sap  C:\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\synthesis\TOP.sap  -ologparam  C:\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\synthesis\syntmp\TOP.plg  -osyn  C:\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\synthesis\TOP.srm  -prjdir C:\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\synthesis\  -loga "C:\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\synthesis\TOP.srr"
+rc:1 success:1
+C:\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\synthesis\scratchproject.prs|o|1325940949
+C:\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\synthesis\TOP.srs|i|1325940950
+C:\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\synthesis\TOP.sap|o|0
+C:\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\synthesis\TOP.tap|o|0
+C:\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\synthesis\TOP.map|o|1322397658
+F:\Microsemi\Libero_v9.1\Synopsys\synplify_E201009A-1\lib\proasic\smartfusion.v|i|1286428904
+C:\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\synthesis\TOP.sap|o|0
+C:\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\synthesis\syntmp\TOP.plg|o|1322397658
+C:\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\synthesis\TOP.srm|o|1322397658
+F:\Microsemi\Libero_v9.1\Synopsys\synplify_E201009A-1\bin\m_proasic.exe|i|1286428882

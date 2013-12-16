@@ -1,0 +1,957 @@
+Synopsys Microsemi Technology Mapper, Version mapact, Build 904R, Built Feb 15 2013 10:53:22
+Copyright (C) 1994-2012, Synopsys, Inc. This software the associated documentation are confidential and proprietary to Synopsys, Inc. Your use or disclosure of this software subject to the terms and conditions of a written license agreement between you, or your company, and Synopsys, Inc.
+Product Version G-2012.09M-SP1 
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 91MB peak: 92MB)
+
+@N: MF248 |Running in 64-bit mode.
+@N: MF667 |Clock conversion disabled 
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 91MB peak: 92MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 91MB peak: 92MB)
+
+
+
+Starting Optimization and Mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 104MB peak: 104MB)
+
+@W: MO111 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\webserver\mss_ccc_0\webserver_tmp_mss_ccc_0_mss_ccc.v":64:7:64:18|Tristate driver LPXIN_CLKOUT on net LPXIN_CLKOUT has its enable tied to GND (module Webserver_tmp_MSS_CCC_0_MSS_CCC) 
+@W: MO111 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\webserver\mss_ccc_0\webserver_tmp_mss_ccc_0_mss_ccc.v":63:7:63:20|Tristate driver MAINXIN_CLKOUT on net MAINXIN_CLKOUT has its enable tied to GND (module Webserver_tmp_MSS_CCC_0_MSS_CCC) 
+@W: MO111 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\webserver\mss_ccc_0\webserver_tmp_mss_ccc_0_mss_ccc.v":62:7:62:18|Tristate driver RCOSC_CLKOUT on net RCOSC_CLKOUT has its enable tied to GND (module Webserver_tmp_MSS_CCC_0_MSS_CCC) 
+
+Available hyper_sources - for debug and ip models
+	None Found
+
+@W: MT462 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\hdl\stepper_motor.v":52:8:76:9|Net stepper_motor_control_1.un1_next_state62 appears to be an unidentified clock source. Assuming default frequency. 
+@W: MT462 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\hdl\stepper_motor.v":52:8:76:9|Net stepper_motor_control_0.un1_next_state62 appears to be an unidentified clock source. Assuming default frequency. 
+
+Finished RTL optimizations (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 104MB peak: 106MB)
+
+@N:"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_0\rtl\vlog\core_obfuscated\clock_gen.v":962:0:962:5|Found counter in view:work.TOP_CoreUARTapb_0_Clock_gen_0s(verilog) inst genblk1\.genblk2\.CUARTO0[12:0]
+@N:"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_0\rtl\vlog\core_obfuscated\clock_gen.v":1039:0:1039:5|Found counter in view:work.TOP_CoreUARTapb_0_Clock_gen_0s(verilog) inst CUARTO1[3:0]
+@N:"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_0\rtl\vlog\core_obfuscated\tx_async.v":550:0:550:5|Found counter in view:work.TOP_CoreUARTapb_0_Tx_async_0s_0s_1s_2s_3s_4s_5s_6s(verilog) inst CUARTOO0l[3:0]
+Encoding state machine CUARTO1ll[5:0] (view:work.TOP_CoreUARTapb_0_Tx_async_0s_0s_1s_2s_3s_4s_5s_6s(verilog))
+original code -> new code
+   00000000000000000000000000000000 -> 000001
+   00000000000000000000000000000001 -> 000010
+   00000000000000000000000000000010 -> 000100
+   00000000000000000000000000000011 -> 001000
+   00000000000000000000000000000100 -> 010000
+   00000000000000000000000000000101 -> 100000
+@N:"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_0\rtl\vlog\core_obfuscated\rx_async.v":967:0:967:5|Found counter in view:work.TOP_CoreUARTapb_0_Rx_async_0s_0s_1s_2s(verilog) inst CUARTOOIl[3:0]
+@N:"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_0\rtl\vlog\core_obfuscated\rx_async.v":422:0:422:5|Found counter in view:work.TOP_CoreUARTapb_0_Rx_async_0s_0s_1s_2s(verilog) inst CUARTl0Ol[3:0]
+Encoding state machine CUARTOl0[2:0] (view:work.TOP_CoreUARTapb_0_Rx_async_0s_0s_1s_2s(verilog))
+original code -> new code
+   00 -> 00
+   01 -> 01
+   10 -> 10
+@N:"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_1\rtl\vlog\core_obfuscated\clock_gen.v":962:0:962:5|Found counter in view:work.TOP_CoreUARTapb_1_Clock_gen_0s(verilog) inst genblk1\.genblk2\.CUARTO0[12:0]
+@N:"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_1\rtl\vlog\core_obfuscated\clock_gen.v":1039:0:1039:5|Found counter in view:work.TOP_CoreUARTapb_1_Clock_gen_0s(verilog) inst CUARTO1[3:0]
+@N:"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_1\rtl\vlog\core_obfuscated\tx_async.v":550:0:550:5|Found counter in view:work.TOP_CoreUARTapb_1_Tx_async_0s_0s_1s_2s_3s_4s_5s_6s(verilog) inst CUARTOO0l[3:0]
+Encoding state machine CUARTO1ll[5:0] (view:work.TOP_CoreUARTapb_1_Tx_async_0s_0s_1s_2s_3s_4s_5s_6s(verilog))
+original code -> new code
+   00000000000000000000000000000000 -> 000001
+   00000000000000000000000000000001 -> 000010
+   00000000000000000000000000000010 -> 000100
+   00000000000000000000000000000011 -> 001000
+   00000000000000000000000000000100 -> 010000
+   00000000000000000000000000000101 -> 100000
+@N:"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_1\rtl\vlog\core_obfuscated\rx_async.v":967:0:967:5|Found counter in view:work.TOP_CoreUARTapb_1_Rx_async_0s_0s_1s_2s(verilog) inst CUARTOOIl[3:0]
+@N:"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_1\rtl\vlog\core_obfuscated\rx_async.v":422:0:422:5|Found counter in view:work.TOP_CoreUARTapb_1_Rx_async_0s_0s_1s_2s(verilog) inst CUARTl0Ol[3:0]
+Encoding state machine CUARTOl0[2:0] (view:work.TOP_CoreUARTapb_1_Rx_async_0s_0s_1s_2s(verilog))
+original code -> new code
+   00 -> 00
+   01 -> 01
+   10 -> 10
+@N: MF176 |Default generator successful 
+@N: MF176 |Default generator successful 
+@N: MF179 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\hdl\servo_pwm.v":30:6:30:26|Found 20 bit by 20 bit '<' comparator, 'un1_write_pen'
+@N: MF238 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\hdl\servo_pwm.v":25:14:25:25|Found 20-bit incrementor, 'un3_counter_1[19:0]'
+@N:"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\hdl\stepper_motor.v":107:1:107:6|Found counter in view:work.stepper_motor_control(verilog) inst counter[32:0]
+@N: MF238 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\hdl\stepper_motor.v":124:29:125:65|Found 16-bit incrementor, 'un1_global_position_1[15:0]'
+@N: MF239 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\hdl\stepper_motor.v":127:32:128:74|Found 16-bit decrementor, 'un1_num_step_movements_1[15:0]'
+@N: MF239 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\hdl\stepper_motor.v":124:29:125:65|Found 16-bit decrementor, 'un1_global_position_0_dec[15:0]'
+@N: MF238 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\hdl\stepper_motor.v":127:32:128:74|Found 16-bit incrementor, 'un1_num_step_movements_0_inc[15:0]'
+@N: MF179 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\hdl\stepper_motor.v":36:58:36:89|Found 33 bit by 33 bit '<' comparator, 'un8_step_forward'
+@N:"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\hdl\uart_irq_delay.v":28:0:28:5|Found counter in view:work.uart_irq_delay(verilog) inst counter[15:0]
+
+Finished factoring (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 114MB peak: 114MB)
+
+@N: BN362 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_1\rtl\vlog\core_obfuscated\rx_async.v":1414:0:1414:5|Removing sequential instance CoreUARTapb_1.CUARTOOlI.CUARTIl1.CUARTllI of view:PrimLib.dffs(prim) in hierarchy view:work.TOP(verilog) because there are no references to its outputs 
+@N: BN362 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_1\rtl\vlog\core_obfuscated\rx_async.v":1414:0:1414:5|Removing sequential instance CoreUARTapb_1.CUARTOOlI.CUARTIl1.CUARTl1l_1 of view:PrimLib.dffr(prim) in hierarchy view:work.TOP(verilog) because there are no references to its outputs 
+@N: BN362 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_0\rtl\vlog\core_obfuscated\coreuart.v":356:0:356:5|Removing sequential instance CoreUARTapb_0.CUARTOOlI.CUARTI0I[7] of view:PrimLib.dffr(prim) in hierarchy view:work.TOP(verilog) because there are no references to its outputs 
+@N: BN362 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_0\rtl\vlog\core_obfuscated\coreuart.v":356:0:356:5|Removing sequential instance CoreUARTapb_0.CUARTOOlI.CUARTI0I[6] of view:PrimLib.dffr(prim) in hierarchy view:work.TOP(verilog) because there are no references to its outputs 
+@N: BN362 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_0\rtl\vlog\core_obfuscated\coreuart.v":356:0:356:5|Removing sequential instance CoreUARTapb_0.CUARTOOlI.CUARTI0I[5] of view:PrimLib.dffr(prim) in hierarchy view:work.TOP(verilog) because there are no references to its outputs 
+@N: BN362 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_0\rtl\vlog\core_obfuscated\coreuart.v":356:0:356:5|Removing sequential instance CoreUARTapb_0.CUARTOOlI.CUARTI0I[4] of view:PrimLib.dffr(prim) in hierarchy view:work.TOP(verilog) because there are no references to its outputs 
+@N: BN362 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_0\rtl\vlog\core_obfuscated\coreuart.v":356:0:356:5|Removing sequential instance CoreUARTapb_0.CUARTOOlI.CUARTI0I[3] of view:PrimLib.dffr(prim) in hierarchy view:work.TOP(verilog) because there are no references to its outputs 
+@N: BN362 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_0\rtl\vlog\core_obfuscated\coreuart.v":356:0:356:5|Removing sequential instance CoreUARTapb_0.CUARTOOlI.CUARTI0I[2] of view:PrimLib.dffr(prim) in hierarchy view:work.TOP(verilog) because there are no references to its outputs 
+@N: BN362 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_0\rtl\vlog\core_obfuscated\coreuart.v":356:0:356:5|Removing sequential instance CoreUARTapb_0.CUARTOOlI.CUARTI0I[1] of view:PrimLib.dffr(prim) in hierarchy view:work.TOP(verilog) because there are no references to its outputs 
+@N: BN362 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_0\rtl\vlog\core_obfuscated\coreuart.v":356:0:356:5|Removing sequential instance CoreUARTapb_0.CUARTOOlI.CUARTI0I[0] of view:PrimLib.dffr(prim) in hierarchy view:work.TOP(verilog) because there are no references to its outputs 
+@N: BN362 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_0\rtl\vlog\core_obfuscated\rx_async.v":1414:0:1414:5|Removing sequential instance CoreUARTapb_0.CUARTOOlI.CUARTIl1.CUARTllI of view:PrimLib.dffs(prim) in hierarchy view:work.TOP(verilog) because there are no references to its outputs 
+@N: BN362 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_0\rtl\vlog\core_obfuscated\rx_async.v":1414:0:1414:5|Removing sequential instance CoreUARTapb_0.CUARTOOlI.CUARTIl1.CUARTl1l_1 of view:PrimLib.dffr(prim) in hierarchy view:work.TOP(verilog) because there are no references to its outputs 
+@N: BN362 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_0\rtl\vlog\core_obfuscated\tx_async.v":253:0:253:5|Removing sequential instance CoreUARTapb_0.CUARTOOlI.CUARTl10.CUARTl1ll[7] of view:PrimLib.dffr(prim) in hierarchy view:work.TOP(verilog) because there are no references to its outputs 
+@N: BN362 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_0\rtl\vlog\core_obfuscated\tx_async.v":253:0:253:5|Removing sequential instance CoreUARTapb_0.CUARTOOlI.CUARTl10.CUARTl1ll[6] of view:PrimLib.dffr(prim) in hierarchy view:work.TOP(verilog) because there are no references to its outputs 
+@N: BN362 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_0\rtl\vlog\core_obfuscated\tx_async.v":253:0:253:5|Removing sequential instance CoreUARTapb_0.CUARTOOlI.CUARTl10.CUARTl1ll[5] of view:PrimLib.dffr(prim) in hierarchy view:work.TOP(verilog) because there are no references to its outputs 
+@N: BN362 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_0\rtl\vlog\core_obfuscated\tx_async.v":253:0:253:5|Removing sequential instance CoreUARTapb_0.CUARTOOlI.CUARTl10.CUARTl1ll[4] of view:PrimLib.dffr(prim) in hierarchy view:work.TOP(verilog) because there are no references to its outputs 
+@N: BN362 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_0\rtl\vlog\core_obfuscated\tx_async.v":253:0:253:5|Removing sequential instance CoreUARTapb_0.CUARTOOlI.CUARTl10.CUARTl1ll[3] of view:PrimLib.dffr(prim) in hierarchy view:work.TOP(verilog) because there are no references to its outputs 
+@N: BN362 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_0\rtl\vlog\core_obfuscated\tx_async.v":253:0:253:5|Removing sequential instance CoreUARTapb_0.CUARTOOlI.CUARTl10.CUARTl1ll[2] of view:PrimLib.dffr(prim) in hierarchy view:work.TOP(verilog) because there are no references to its outputs 
+@N: BN362 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_0\rtl\vlog\core_obfuscated\tx_async.v":253:0:253:5|Removing sequential instance CoreUARTapb_0.CUARTOOlI.CUARTl10.CUARTl1ll[1] of view:PrimLib.dffr(prim) in hierarchy view:work.TOP(verilog) because there are no references to its outputs 
+@N: BN362 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_0\rtl\vlog\core_obfuscated\tx_async.v":253:0:253:5|Removing sequential instance CoreUARTapb_0.CUARTOOlI.CUARTl10.CUARTl1ll[0] of view:PrimLib.dffr(prim) in hierarchy view:work.TOP(verilog) because there are no references to its outputs 
+@N: BN362 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_0\rtl\vlog\core_obfuscated\tx_async.v":610:0:610:5|Removing sequential instance CoreUARTapb_0.CUARTOOlI.CUARTl10.CUARTOl1 of view:PrimLib.dffs(prim) in hierarchy view:work.TOP(verilog) because there are no references to its outputs 
+@N: BN362 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\top\coreuartapb_0\rtl\vlog\core_obfuscated\tx_async.v":739:0:739:5|Removing sequential instance CoreUARTapb_0.CUARTOOlI.CUARTl10.CUARTIO0l of view:PrimLib.dffr(prim) in hierarchy view:work.TOP(verilog) because there are no references to its outputs 
+
+Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 111MB peak: 115MB)
+
+
+Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 115MB peak: 120MB)
+
+
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 116MB peak: 120MB)
+
+
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:06s; Memory used current: 134MB peak: 135MB)
+
+
+Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:07s; Memory used current: 134MB peak: 135MB)
+
+
+Finished preparing to map (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:07s; Memory used current: 133MB peak: 135MB)
+
+
+High Fanout Net Report
+**********************
+
+Driver Instance / Pin Name                                       Fanout, notes                   
+-------------------------------------------------------------------------------------------------
+Webserver_0.MSS_ADLIB_INST / MSSPADDR[2]                         27                              
+Webserver_0.MSS_ADLIB_INST / MSSPADDR[5]                         39                              
+Webserver_0.MSS_ADLIB_INST / M2FRESETn                           219 : 204 asynchronous set/reset
+CoreUARTapb_1.CUARTOOlI.CUARTI10.genblk1.genblk2.CUARTI0 / Q     29                              
+CoreUARTapb_0.CUARTOOlI.CUARTI10.genblk1.genblk2.CUARTI0 / Q     25                              
+motor_apb_interface_0.PRDATA19_1 / Y                             51                              
+motor_apb_interface_0.un1_write_enable_4 / Y                     32                              
+motor_apb_interface_0.un1_write_enable_5 / Y                     32                              
+motor_apb_interface_0.write_enable / Y                           71                              
+motor_apb_interface_0.numStepsRegister_x18 / Y                   180                             
+stepper_motor_control_0.step_backward / Y                        39                              
+stepper_motor_control_0.step_forward / Y                         39                              
+stepper_motor_control_1.step_backward / Y                        40                              
+stepper_motor_control_1.step_forward / Y                         39                              
+stepper_motor_control_0.un1_step_forward_i_i_o4 / Y              35                              
+stepper_motor_control_1.un1_step_forward_i_i_o4 / Y              35                              
+motor_apb_interface_0.numStepsRegister_x6_2 / Y                  52                              
+motor_apb_interface_0.un1_PADDR_2 / Y                            34                              
+motor_apb_interface_0.un1_numStepsRegister_x12_1 / Y             32                              
+CoreAPB3_1.CAPB3O0OI_1[0] / Y                                    36                              
+CoreAPB3_1.CAPB3O0OI_2[2] / Y                                    34                              
+=================================================================================================
+
+@N: FP130 |Promoting Net Webserver_0_M2F_RESET_N on CLKINT  I_250 
+@N: FP130 |Promoting Net motor_apb_interface_0.numStepsRegister_x18 on CLKINT  I_251 
+@N: FP130 |Promoting Net motor_apb_interface_0.write_enable on CLKINT  I_252 
+
+Finished technology mapping (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:07s; Memory used current: 157MB peak: 159MB)
+
+
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:08s; CPU Time elapsed 0h:00m:07s; Memory used current: 157MB peak: 159MB)
+
+Replicating Combinational Instance CoreAPB3_1.CAPB3O0OI_2[2], fanout 34 segments 2
+Replicating Combinational Instance CoreAPB3_1.CAPB3O0OI_1[0], fanout 36 segments 2
+Replicating Combinational Instance motor_apb_interface_0.un1_numStepsRegister_x12_1, fanout 32 segments 2
+Replicating Combinational Instance motor_apb_interface_0.un1_PADDR_2, fanout 34 segments 2
+Replicating Combinational Instance motor_apb_interface_0.numStepsRegister_x6_2, fanout 52 segments 3
+Replicating Combinational Instance stepper_motor_control_1.un1_step_forward_i_i_o4, fanout 35 segments 2
+Replicating Combinational Instance stepper_motor_control_0.un1_step_forward_i_i_o4, fanout 35 segments 2
+Replicating Combinational Instance stepper_motor_control_1.step_forward, fanout 39 segments 2
+Replicating Combinational Instance stepper_motor_control_1.step_backward, fanout 40 segments 2
+Replicating Combinational Instance stepper_motor_control_0.step_forward, fanout 39 segments 2
+Replicating Combinational Instance stepper_motor_control_0.step_backward, fanout 39 segments 2
+Replicating Combinational Instance motor_apb_interface_0.un1_write_enable_5, fanout 32 segments 2
+Replicating Combinational Instance motor_apb_interface_0.un1_write_enable_4, fanout 32 segments 2
+Replicating Combinational Instance motor_apb_interface_0.PRDATA19_1, fanout 51 segments 3
+Replicating Sequential Instance CoreUARTapb_0.CUARTOOlI.CUARTI10.genblk1.genblk2.CUARTI0, fanout 25 segments 2
+Replicating Sequential Instance CoreUARTapb_1.CUARTOOlI.CUARTI10.genblk1.genblk2.CUARTI0, fanout 29 segments 2
+Buffering CoreAPB3_1_APBmslave0_PADDR[5], fanout 41 segments 2
+Buffering CoreAPB3_1_APBmslave0_PADDR[2], fanout 29 segments 2
+
+Added 2 Buffers
+Added 18 Cells via replication
+	Added 2 Sequential Cells via replication
+	Added 16 Combinational Cells via replication
+
+Finished restoring hierarchy (Real Time elapsed 0h:00m:08s; CPU Time elapsed 0h:00m:07s; Memory used current: 157MB peak: 159MB)
+
+
+
+#### START OF CLOCK OPTIMIZATION REPORT #####[
+
+Clock optimization not enabled
+1 non-gated/non-generated clock tree(s) driving 534 clock pin(s) of sequential element(s)
+2 gated/generated clock tree(s) driving 8 clock pin(s) of sequential element(s)
+0 instances converted, 8 sequential instances remain driven by gated/generated clocks
+
+=================================== Non-Gated/Non-Generated Clocks ===================================
+Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance               
+------------------------------------------------------------------------------------------------------
+@K:CKID0003       Webserver_0         hierarchy              534        uart_irq_delay_0.edge_detected
+======================================================================================================
+========================================================================== Gated/Generated Clocks ==========================================================================
+Clock Tree ID     Driving Element                                      Drive Element Type     Fanout     Sample Instance                           Explanation              
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+@K:CKID0001       stepper_motor_control_0.motor_output_RNIF5JG2[0]     OR3                    4          stepper_motor_control_0.next_state[0]     No clocks found on inputs
+@K:CKID0002       stepper_motor_control_1.motor_output_RNIOLFI3[0]     OR3                    4          stepper_motor_control_1.next_state[0]     No clocks found on inputs
+============================================================================================================================================================================
+
+
+##### END OF CLOCK OPTIMIZATION REPORT ######]
+
+Writing Analyst data base C:\Users\kylebs\Desktop\FreeRTOS-lwIP-takeDeux\FreeRTOS-lwIP\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\synthesis\TOP.srm
+
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:08s; CPU Time elapsed 0h:00m:08s; Memory used current: 154MB peak: 159MB)
+
+Writing EDIF Netlist and constraint files
+G-2012.09M-SP1 
+
+Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:09s; CPU Time elapsed 0h:00m:08s; Memory used current: 156MB peak: 159MB)
+
+@W: MT246 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\webserver\webserver.v":739:7:739:19|Blackbox MSSINT is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results) 
+@W: MT246 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\webserver\webserver.v":678:0:678:11|Blackbox TRIBUFF_MSS is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results) 
+@W: MT246 :"c:\users\kylebs\desktop\freertos-lwip-takedeux\freertos-lwip\webserver_uiprtos_sc_df\eval_kit\sf_webserver_demo\component\work\webserver\mss_ccc_0\webserver_tmp_mss_ccc_0_mss_ccc.v":95:15:95:22|Blackbox MSS_XTLOSC is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results) 
+Found clock FAB_CLK with period 20.00ns 
+Found clock FCLK with period 20.00ns 
+
+
+##### START OF TIMING REPORT #####[
+# Timing Report written on Mon Dec 09 11:49:37 2013
+#
+
+
+Top view:               TOP
+Library name:           smartfusion
+Operating conditions:   COMWCSTD ( T = 70.0, V = 1.42, P = 1.74, tree_type = balanced_tree )
+Requested Frequency:    50.0 MHz
+Wire load mode:         top
+Wire load model:        smartfusion
+Paths requested:        5
+Constraint File(s):    C:\Users\kylebs\Desktop\FreeRTOS-lwIP-takeDeux\FreeRTOS-lwIP\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\component\work\Webserver\mss_tshell_syn.sdc
+                       
+@N: MT320 |Timing report estimates place and route data. Please look at the place and route timing report for final timing.
+
+@N: MT322 |Clock constraints cover only FF-to-FF paths associated with the clock.
+
+
+
+Performance Summary 
+*******************
+
+
+Worst slack in design: -0.562
+
+                   Requested     Estimated     Requested     Estimated                Clock        Clock          
+Starting Clock     Frequency     Frequency     Period        Period        Slack      Type         Group          
+------------------------------------------------------------------------------------------------------------------
+FAB_CLK            50.0 MHz      48.6 MHz      20.000        20.562        -0.562     declared     clk_group_0    
+FCLK               50.0 MHz      NA            20.000        NA            NA         declared     clk_group_0    
+System             100.0 MHz     131.4 MHz     10.000        7.611         2.389      system       system_clkgroup
+==================================================================================================================
+
+
+
+
+
+Clock Relationships
+*******************
+
+Clocks             |    rise  to  rise    |    fall  to  fall   |    rise  to  fall   |    fall  to  rise 
+----------------------------------------------------------------------------------------------------------
+Starting  Ending   |  constraint  slack   |  constraint  slack  |  constraint  slack  |  constraint  slack
+----------------------------------------------------------------------------------------------------------
+System    System   |  10.000      2.389   |  No paths    -      |  No paths    -      |  No paths    -    
+System    FAB_CLK  |  20.000      0.350   |  No paths    -      |  No paths    -      |  No paths    -    
+FAB_CLK   System   |  20.000      3.182   |  No paths    -      |  No paths    -      |  No paths    -    
+FAB_CLK   FAB_CLK  |  20.000      -0.562  |  No paths    -      |  No paths    -      |  No paths    -    
+==========================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+
+Interface Information 
+*********************
+
+No IO constraint found
+
+
+
+====================================
+Detailed Report for Clock: FAB_CLK
+====================================
+
+
+
+Starting Points with Worst Slack
+********************************
+
+                                               Starting                                                                        Arrival           
+Instance                                       Reference     Type     Pin     Net                                              Time        Slack 
+                                               Clock                                                                                             
+-------------------------------------------------------------------------------------------------------------------------------------------------
+motor_apb_interface_0.global_position_y[3]     FAB_CLK       DFN1     Q       motor_apb_interface_0_global_position_y_0[3]     0.737       -0.562
+motor_apb_interface_0.global_position_y[0]     FAB_CLK       DFN1     Q       motor_apb_interface_0_global_position_y_0[0]     0.737       -0.271
+motor_apb_interface_0.global_position_y[2]     FAB_CLK       DFN1     Q       motor_apb_interface_0_global_position_y_0[2]     0.737       -0.150
+motor_apb_interface_0.global_position_x[0]     FAB_CLK       DFN1     Q       motor_apb_interface_0_global_position_x_0[0]     0.737       1.493 
+motor_apb_interface_0.global_position_x[3]     FAB_CLK       DFN1     Q       motor_apb_interface_0_global_position_x_0[3]     0.737       1.575 
+motor_apb_interface_0.global_position_x[4]     FAB_CLK       DFN1     Q       motor_apb_interface_0_global_position_x_0[4]     0.737       1.669 
+stepper_motor_control_1.counter[20]            FAB_CLK       DFN1     Q       counter[20]                                      0.737       1.766 
+motor_apb_interface_0.global_position_x[2]     FAB_CLK       DFN1     Q       motor_apb_interface_0_global_position_x_0[2]     0.737       1.823 
+stepper_motor_control_1.counter[6]             FAB_CLK       DFN1     Q       counter[6]                                       0.737       1.868 
+stepper_motor_control_1.counter[11]            FAB_CLK       DFN1     Q       counter[11]                                      0.737       1.868 
+=================================================================================================================================================
+
+
+Ending Points with Worst Slack
+******************************
+
+                                                               Starting                                                                    Required           
+Instance                                                       Reference     Type     Pin     Net                                          Time         Slack 
+                                                               Clock                                                                                          
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+motor_apb_interface_0.finishedGlobalPositionRegister_y[14]     FAB_CLK       DFN1     D       finishedGlobalPositionRegister_y_RNO[14]     19.461       -0.562
+motor_apb_interface_0.finishedGlobalPositionRegister_y[15]     FAB_CLK       DFN1     D       finishedGlobalPositionRegister_y_RNO[15]     19.427       -0.425
+motor_apb_interface_0.finishedGlobalPositionRegister_y[13]     FAB_CLK       DFN1     D       finishedGlobalPositionRegister_y_RNO[13]     19.461       -0.224
+motor_apb_interface_0.finishedGlobalPositionRegister_y[12]     FAB_CLK       DFN1     D       finishedGlobalPositionRegister_y_RNO[12]     19.427       1.307 
+motor_apb_interface_0.finishedGlobalPositionRegister_x[15]     FAB_CLK       DFN1     D       finishedGlobalPositionRegister_x_RNO[15]     19.427       1.493 
+motor_apb_interface_0.global_position_y[0]                     FAB_CLK       DFN1     D       global_position_y_RNO[0]                     19.427       1.766 
+motor_apb_interface_0.num_step_movement_y[0]                   FAB_CLK       DFN1     D       num_step_movement_y_RNO[0]                   19.427       1.766 
+motor_apb_interface_0.global_position_y[1]                     FAB_CLK       DFN1     D       global_position_y_RNO[1]                     19.427       1.778 
+motor_apb_interface_0.global_position_y[2]                     FAB_CLK       DFN1     D       global_position_y_RNO[2]                     19.427       1.778 
+motor_apb_interface_0.global_position_y[3]                     FAB_CLK       DFN1     D       global_position_y_RNO[3]                     19.427       1.778 
+==============================================================================================================================================================
+
+
+
+Worst Path Information
+***********************
+
+
+Path information for path number 1: 
+      Requested Period:                      20.000
+    - Setup time:                            0.539
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         19.461
+
+    - Propagation time:                      20.024
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (critical) :                     -0.562
+
+    Number of logic level(s):                16
+    Starting point:                          motor_apb_interface_0.global_position_y[3] / Q
+    Ending point:                            motor_apb_interface_0.finishedGlobalPositionRegister_y[14] / D
+    The start point is clocked by            FAB_CLK [rising] on pin CLK
+    The end   point is clocked by            FAB_CLK [rising] on pin CLK
+
+Instance / Net                                                                                     Pin      Pin               Arrival     No. of    
+Name                                                                                     Type      Name     Dir     Delay     Time        Fan Out(s)
+----------------------------------------------------------------------------------------------------------------------------------------------------
+motor_apb_interface_0.global_position_y[3]                                               DFN1      Q        Out     0.737     0.737       -         
+motor_apb_interface_0_global_position_y_0[3]                                             Net       -        -       2.127     -           15        
+motor_apb_interface_0.global_position_y_RNILLGP[3]                                       XOR2      B        In      -         2.864       -         
+motor_apb_interface_0.global_position_y_RNILLGP[3]                                       XOR2      Y        Out     0.937     3.801       -         
+d_N_9_4                                                                                  Net       -        -       0.806     -           3         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m7_3                      NOR3C     A        In      -         4.607       -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m7_3                      NOR3C     Y        Out     0.525     5.132       -         
+ADD_i5_mux_1                                                                             Net       -        -       0.386     -           2         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I3_CO1_1_s     NOR2A     B        In      -         5.518       -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I3_CO1_1_s     NOR2A     Y        Out     0.386     5.904       -         
+ADD_16x16_slow_I3_CO1_1_s                                                                Net       -        -       0.386     -           2         
+motor_apb_interface_0.global_position_y_RNI4H8E4[5]                                      XA1B      C        In      -         6.290       -         
+motor_apb_interface_0.global_position_y_RNI4H8E4[5]                                      XA1B      Y        Out     0.490     6.780       -         
+N_1907                                                                                   Net       -        -       0.322     -           1         
+motor_apb_interface_0.global_position_y_RNIC7IFA[5]                                      MX2B      S        In      -         7.101       -         
+motor_apb_interface_0.global_position_y_RNIC7IFA[5]                                      MX2B      Y        Out     0.480     7.581       -         
+d_i3_mux_2                                                                               Net       -        -       0.322     -           1         
+motor_apb_interface_0.global_position_y_RNI4039B[6]                                      AO18      B        In      -         7.902       -         
+motor_apb_interface_0.global_position_y_RNI4039B[6]                                      AO18      Y        Out     0.645     8.547       -         
+d_i5_mux_2                                                                               Net       -        -       1.184     -           4         
+Webserver_0.MSS_ADLIB_INST_RNI17ONB                                                      XNOR2     B        In      -         9.730       -         
+Webserver_0.MSS_ADLIB_INST_RNI17ONB                                                      XNOR2     Y        Out     0.937     10.667      -         
+r_N_2_0                                                                                  Net       -        -       0.322     -           1         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m7_4                      MX2       A        In      -         10.989      -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m7_4                      MX2       Y        Out     0.568     11.557      -         
+ADD_i5_mux                                                                               Net       -        -       0.386     -           2         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I9_CO1_1       MX2A      S        In      -         11.943      -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I9_CO1_1       MX2A      Y        Out     0.480     12.422      -         
+N224                                                                                     Net       -        -       0.386     -           2         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m3                        XA1       B        In      -         12.808      -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m3                        XA1       Y        Out     0.987     13.795      -         
+ADD_N_8_mux                                                                              Net       -        -       0.806     -           3         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m6                        NOR2A     B        In      -         14.602      -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m6                        NOR2A     Y        Out     0.407     15.008      -         
+ADD_i6_mux                                                                               Net       -        -       0.322     -           1         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I13_CO1_1      MX2C      S        In      -         15.330      -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I13_CO1_1      MX2C      Y        Out     0.480     15.809      -         
+N232                                                                                     Net       -        -       0.322     -           1         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I14_S          XOR2      B        In      -         16.131      -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I14_S          XOR2      Y        Out     0.937     17.068      -         
+un1_finishedGlobalPositionRegister_y[14]                                                 Net       -        -       0.322     -           1         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO_1[14]                         MX2       B        In      -         17.389      -         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO_1[14]                         MX2       Y        Out     0.586     17.975      -         
+finishedGlobalPositionRegister_y_5[14]                                                   Net       -        -       0.322     -           1         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO_0[14]                         MX2       A        In      -         18.296      -         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO_0[14]                         MX2       Y        Out     0.568     18.865      -         
+N_190                                                                                    Net       -        -       0.322     -           1         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO[14]                           NOR2A     A        In      -         19.186      -         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO[14]                           NOR2A     Y        Out     0.516     19.702      -         
+finishedGlobalPositionRegister_y_RNO[14]                                                 Net       -        -       0.322     -           1         
+motor_apb_interface_0.finishedGlobalPositionRegister_y[14]                               DFN1      D        In      -         20.024      -         
+====================================================================================================================================================
+Total path delay (propagation time + setup) of 20.562 is 11.202(54.5%) logic and 9.360(45.5%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+Path information for path number 2: 
+      Requested Period:                      20.000
+    - Setup time:                            0.573
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         19.427
+
+    - Propagation time:                      19.852
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (non-critical) :                 -0.425
+
+    Number of logic level(s):                16
+    Starting point:                          motor_apb_interface_0.global_position_y[3] / Q
+    Ending point:                            motor_apb_interface_0.finishedGlobalPositionRegister_y[15] / D
+    The start point is clocked by            FAB_CLK [rising] on pin CLK
+    The end   point is clocked by            FAB_CLK [rising] on pin CLK
+
+Instance / Net                                                                                     Pin      Pin               Arrival     No. of    
+Name                                                                                     Type      Name     Dir     Delay     Time        Fan Out(s)
+----------------------------------------------------------------------------------------------------------------------------------------------------
+motor_apb_interface_0.global_position_y[3]                                               DFN1      Q        Out     0.737     0.737       -         
+motor_apb_interface_0_global_position_y_0[3]                                             Net       -        -       2.127     -           15        
+motor_apb_interface_0.global_position_y_RNILLGP[3]                                       XOR2      B        In      -         2.864       -         
+motor_apb_interface_0.global_position_y_RNILLGP[3]                                       XOR2      Y        Out     0.937     3.801       -         
+d_N_9_4                                                                                  Net       -        -       0.806     -           3         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m7_3                      NOR3C     A        In      -         4.607       -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m7_3                      NOR3C     Y        Out     0.525     5.132       -         
+ADD_i5_mux_1                                                                             Net       -        -       0.386     -           2         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I3_CO1_1_s     NOR2A     B        In      -         5.518       -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I3_CO1_1_s     NOR2A     Y        Out     0.386     5.904       -         
+ADD_16x16_slow_I3_CO1_1_s                                                                Net       -        -       0.386     -           2         
+motor_apb_interface_0.global_position_y_RNI4H8E4[5]                                      XA1B      C        In      -         6.290       -         
+motor_apb_interface_0.global_position_y_RNI4H8E4[5]                                      XA1B      Y        Out     0.490     6.780       -         
+N_1907                                                                                   Net       -        -       0.322     -           1         
+motor_apb_interface_0.global_position_y_RNIC7IFA[5]                                      MX2B      S        In      -         7.101       -         
+motor_apb_interface_0.global_position_y_RNIC7IFA[5]                                      MX2B      Y        Out     0.480     7.581       -         
+d_i3_mux_2                                                                               Net       -        -       0.322     -           1         
+motor_apb_interface_0.global_position_y_RNI4039B[6]                                      AO18      B        In      -         7.902       -         
+motor_apb_interface_0.global_position_y_RNI4039B[6]                                      AO18      Y        Out     0.645     8.547       -         
+d_i5_mux_2                                                                               Net       -        -       1.184     -           4         
+Webserver_0.MSS_ADLIB_INST_RNI17ONB                                                      XNOR2     B        In      -         9.730       -         
+Webserver_0.MSS_ADLIB_INST_RNI17ONB                                                      XNOR2     Y        Out     0.937     10.667      -         
+r_N_2_0                                                                                  Net       -        -       0.322     -           1         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m7_4                      MX2       A        In      -         10.989      -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m7_4                      MX2       Y        Out     0.568     11.557      -         
+ADD_i5_mux                                                                               Net       -        -       0.386     -           2         
+motor_apb_interface_0.global_position_y_RNIFPFAR[11]                                     NOR2A     B        In      -         11.943      -         
+motor_apb_interface_0.global_position_y_RNIFPFAR[11]                                     NOR2A     Y        Out     0.386     12.329      -         
+N_1901                                                                                   Net       -        -       0.322     -           1         
+motor_apb_interface_0.global_position_y_RNI0OG2M1[11]                                    MX2       S        In      -         12.650      -         
+motor_apb_interface_0.global_position_y_RNI0OG2M1[11]                                    MX2       Y        Out     0.480     13.130      -         
+d_i3_mux_4                                                                               Net       -        -       0.322     -           1         
+motor_apb_interface_0.global_position_y_RNI5OCNM1[12]                                    AO18      B        In      -         13.451      -         
+motor_apb_interface_0.global_position_y_RNI5OCNM1[12]                                    AO18      Y        Out     0.645     14.096      -         
+d_i5_mux_4                                                                               Net       -        -       0.806     -           3         
+motor_apb_interface_0.global_position_y_RNIDR8CN1[15]                                    XNOR3     C        In      -         14.902      -         
+motor_apb_interface_0.global_position_y_RNIDR8CN1[15]                                    XNOR3     Y        Out     0.985     15.888      -         
+r_N_2                                                                                    Net       -        -       0.322     -           1         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I15_Y_1        MX2B      A        In      -         16.209      -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I15_Y_1        MX2B      Y        Out     0.579     16.788      -         
+un1_finishedGlobalPositionRegister_y[15]                                                 Net       -        -       0.322     -           1         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO_1[15]                         MX2       B        In      -         17.109      -         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO_1[15]                         MX2       Y        Out     0.572     17.681      -         
+finishedGlobalPositionRegister_y_5[15]                                                   Net       -        -       0.322     -           1         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO_0[15]                         MX2       A        In      -         18.003      -         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO_0[15]                         MX2       Y        Out     0.579     18.581      -         
+N_191                                                                                    Net       -        -       0.322     -           1         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO[15]                           NOR2A     A        In      -         18.903      -         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO[15]                           NOR2A     Y        Out     0.627     19.530      -         
+finishedGlobalPositionRegister_y_RNO[15]                                                 Net       -        -       0.322     -           1         
+motor_apb_interface_0.finishedGlobalPositionRegister_y[15]                               DFN1      D        In      -         19.852      -         
+====================================================================================================================================================
+Total path delay (propagation time + setup) of 20.425 is 11.129(54.5%) logic and 9.296(45.5%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+Path information for path number 3: 
+      Requested Period:                      20.000
+    - Setup time:                            0.539
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         19.461
+
+    - Propagation time:                      19.732
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (non-critical) :                 -0.270
+
+    Number of logic level(s):                16
+    Starting point:                          motor_apb_interface_0.global_position_y[0] / Q
+    Ending point:                            motor_apb_interface_0.finishedGlobalPositionRegister_y[14] / D
+    The start point is clocked by            FAB_CLK [rising] on pin CLK
+    The end   point is clocked by            FAB_CLK [rising] on pin CLK
+
+Instance / Net                                                                                     Pin      Pin               Arrival     No. of    
+Name                                                                                     Type      Name     Dir     Delay     Time        Fan Out(s)
+----------------------------------------------------------------------------------------------------------------------------------------------------
+motor_apb_interface_0.global_position_y[0]                                               DFN1      Q        Out     0.737     0.737       -         
+motor_apb_interface_0_global_position_y_0[0]                                             Net       -        -       2.172     -           16        
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m2_3                      AX1C      A        In      -         2.909       -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m2_3                      AX1C      Y        Out     0.944     3.853       -         
+ADD_N_3_4                                                                                Net       -        -       0.322     -           1         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m7_3                      NOR3C     C        In      -         4.175       -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m7_3                      NOR3C     Y        Out     0.666     4.840       -         
+ADD_i5_mux_1                                                                             Net       -        -       0.386     -           2         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I3_CO1_1_s     NOR2A     B        In      -         5.226       -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I3_CO1_1_s     NOR2A     Y        Out     0.386     5.612       -         
+ADD_16x16_slow_I3_CO1_1_s                                                                Net       -        -       0.386     -           2         
+motor_apb_interface_0.global_position_y_RNI4H8E4[5]                                      XA1B      C        In      -         5.998       -         
+motor_apb_interface_0.global_position_y_RNI4H8E4[5]                                      XA1B      Y        Out     0.490     6.488       -         
+N_1907                                                                                   Net       -        -       0.322     -           1         
+motor_apb_interface_0.global_position_y_RNIC7IFA[5]                                      MX2B      S        In      -         6.809       -         
+motor_apb_interface_0.global_position_y_RNIC7IFA[5]                                      MX2B      Y        Out     0.480     7.289       -         
+d_i3_mux_2                                                                               Net       -        -       0.322     -           1         
+motor_apb_interface_0.global_position_y_RNI4039B[6]                                      AO18      B        In      -         7.610       -         
+motor_apb_interface_0.global_position_y_RNI4039B[6]                                      AO18      Y        Out     0.645     8.255       -         
+d_i5_mux_2                                                                               Net       -        -       1.184     -           4         
+Webserver_0.MSS_ADLIB_INST_RNI17ONB                                                      XNOR2     B        In      -         9.439       -         
+Webserver_0.MSS_ADLIB_INST_RNI17ONB                                                      XNOR2     Y        Out     0.937     10.375      -         
+r_N_2_0                                                                                  Net       -        -       0.322     -           1         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m7_4                      MX2       A        In      -         10.697      -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m7_4                      MX2       Y        Out     0.568     11.265      -         
+ADD_i5_mux                                                                               Net       -        -       0.386     -           2         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I9_CO1_1       MX2A      S        In      -         11.651      -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I9_CO1_1       MX2A      Y        Out     0.480     12.131      -         
+N224                                                                                     Net       -        -       0.386     -           2         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m3                        XA1       B        In      -         12.516      -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m3                        XA1       Y        Out     0.987     13.503      -         
+ADD_N_8_mux                                                                              Net       -        -       0.806     -           3         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m6                        NOR2A     B        In      -         14.310      -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m6                        NOR2A     Y        Out     0.407     14.716      -         
+ADD_i6_mux                                                                               Net       -        -       0.322     -           1         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I13_CO1_1      MX2C      S        In      -         15.038      -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I13_CO1_1      MX2C      Y        Out     0.480     15.518      -         
+N232                                                                                     Net       -        -       0.322     -           1         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I14_S          XOR2      B        In      -         15.839      -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I14_S          XOR2      Y        Out     0.937     16.776      -         
+un1_finishedGlobalPositionRegister_y[14]                                                 Net       -        -       0.322     -           1         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO_1[14]                         MX2       B        In      -         17.097      -         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO_1[14]                         MX2       Y        Out     0.586     17.683      -         
+finishedGlobalPositionRegister_y_5[14]                                                   Net       -        -       0.322     -           1         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO_0[14]                         MX2       A        In      -         18.004      -         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO_0[14]                         MX2       Y        Out     0.568     18.573      -         
+N_190                                                                                    Net       -        -       0.322     -           1         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO[14]                           NOR2A     A        In      -         18.894      -         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO[14]                           NOR2A     Y        Out     0.516     19.410      -         
+finishedGlobalPositionRegister_y_RNO[14]                                                 Net       -        -       0.322     -           1         
+motor_apb_interface_0.finishedGlobalPositionRegister_y[14]                               DFN1      D        In      -         19.732      -         
+====================================================================================================================================================
+Total path delay (propagation time + setup) of 20.270 is 11.350(56.0%) logic and 8.921(44.0%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+Path information for path number 4: 
+      Requested Period:                      20.000
+    - Setup time:                            0.539
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         19.461
+
+    - Propagation time:                      19.702
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (non-critical) :                 -0.241
+
+    Number of logic level(s):                16
+    Starting point:                          motor_apb_interface_0.global_position_y[3] / Q
+    Ending point:                            motor_apb_interface_0.finishedGlobalPositionRegister_y[14] / D
+    The start point is clocked by            FAB_CLK [rising] on pin CLK
+    The end   point is clocked by            FAB_CLK [rising] on pin CLK
+
+Instance / Net                                                                                     Pin      Pin               Arrival     No. of    
+Name                                                                                     Type      Name     Dir     Delay     Time        Fan Out(s)
+----------------------------------------------------------------------------------------------------------------------------------------------------
+motor_apb_interface_0.global_position_y[3]                                               DFN1      Q        Out     0.737     0.737       -         
+motor_apb_interface_0_global_position_y_0[3]                                             Net       -        -       2.127     -           15        
+motor_apb_interface_0.global_position_y_RNILLGP[3]                                       XOR2      B        In      -         2.864       -         
+motor_apb_interface_0.global_position_y_RNILLGP[3]                                       XOR2      Y        Out     0.937     3.801       -         
+d_N_9_4                                                                                  Net       -        -       0.806     -           3         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m7_3                      NOR3C     A        In      -         4.607       -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m7_3                      NOR3C     Y        Out     0.525     5.132       -         
+ADD_i5_mux_1                                                                             Net       -        -       0.386     -           2         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I3_CO1_1_s     NOR2A     B        In      -         5.518       -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I3_CO1_1_s     NOR2A     Y        Out     0.386     5.904       -         
+ADD_16x16_slow_I3_CO1_1_s                                                                Net       -        -       0.386     -           2         
+motor_apb_interface_0.global_position_y_RNI4H8E4[5]                                      XA1B      C        In      -         6.290       -         
+motor_apb_interface_0.global_position_y_RNI4H8E4[5]                                      XA1B      Y        Out     0.490     6.780       -         
+N_1907                                                                                   Net       -        -       0.322     -           1         
+motor_apb_interface_0.global_position_y_RNIC7IFA[5]                                      MX2B      S        In      -         7.101       -         
+motor_apb_interface_0.global_position_y_RNIC7IFA[5]                                      MX2B      Y        Out     0.480     7.581       -         
+d_i3_mux_2                                                                               Net       -        -       0.322     -           1         
+motor_apb_interface_0.global_position_y_RNI4039B[6]                                      AO18      B        In      -         7.902       -         
+motor_apb_interface_0.global_position_y_RNI4039B[6]                                      AO18      Y        Out     0.645     8.547       -         
+d_i5_mux_2                                                                               Net       -        -       1.184     -           4         
+Webserver_0.MSS_ADLIB_INST_RNI17ONB                                                      XNOR2     B        In      -         9.730       -         
+Webserver_0.MSS_ADLIB_INST_RNI17ONB                                                      XNOR2     Y        Out     0.937     10.667      -         
+r_N_2_0                                                                                  Net       -        -       0.322     -           1         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m7_4                      MX2       A        In      -         10.989      -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m7_4                      MX2       Y        Out     0.568     11.557      -         
+ADD_i5_mux                                                                               Net       -        -       0.386     -           2         
+motor_apb_interface_0.global_position_y_RNIFPFAR[11]                                     NOR2A     B        In      -         11.943      -         
+motor_apb_interface_0.global_position_y_RNIFPFAR[11]                                     NOR2A     Y        Out     0.386     12.329      -         
+N_1901                                                                                   Net       -        -       0.322     -           1         
+motor_apb_interface_0.global_position_y_RNI0OG2M1[11]                                    MX2       S        In      -         12.650      -         
+motor_apb_interface_0.global_position_y_RNI0OG2M1[11]                                    MX2       Y        Out     0.480     13.130      -         
+d_i3_mux_4                                                                               Net       -        -       0.322     -           1         
+motor_apb_interface_0.global_position_y_RNI5OCNM1[12]                                    AO18      B        In      -         13.451      -         
+motor_apb_interface_0.global_position_y_RNI5OCNM1[12]                                    AO18      Y        Out     0.645     14.096      -         
+d_i5_mux_4                                                                               Net       -        -       0.806     -           3         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I13_CO1_1      MX2C      B        In      -         14.902      -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I13_CO1_1      MX2C      Y        Out     0.586     15.488      -         
+N232                                                                                     Net       -        -       0.322     -           1         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I14_S          XOR2      B        In      -         15.810      -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I14_S          XOR2      Y        Out     0.937     16.746      -         
+un1_finishedGlobalPositionRegister_y[14]                                                 Net       -        -       0.322     -           1         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO_1[14]                         MX2       B        In      -         17.068      -         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO_1[14]                         MX2       Y        Out     0.586     17.653      -         
+finishedGlobalPositionRegister_y_5[14]                                                   Net       -        -       0.322     -           1         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO_0[14]                         MX2       A        In      -         17.975      -         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO_0[14]                         MX2       Y        Out     0.568     18.543      -         
+N_190                                                                                    Net       -        -       0.322     -           1         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO[14]                           NOR2A     A        In      -         18.865      -         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO[14]                           NOR2A     Y        Out     0.516     19.381      -         
+finishedGlobalPositionRegister_y_RNO[14]                                                 Net       -        -       0.322     -           1         
+motor_apb_interface_0.finishedGlobalPositionRegister_y[14]                               DFN1      D        In      -         19.702      -         
+====================================================================================================================================================
+Total path delay (propagation time + setup) of 20.241 is 10.945(54.1%) logic and 9.296(45.9%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+Path information for path number 5: 
+      Requested Period:                      20.000
+    - Setup time:                            0.539
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         19.461
+
+    - Propagation time:                      19.685
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (non-critical) :                 -0.224
+
+    Number of logic level(s):                16
+    Starting point:                          motor_apb_interface_0.global_position_y[3] / Q
+    Ending point:                            motor_apb_interface_0.finishedGlobalPositionRegister_y[13] / D
+    The start point is clocked by            FAB_CLK [rising] on pin CLK
+    The end   point is clocked by            FAB_CLK [rising] on pin CLK
+
+Instance / Net                                                                                        Pin      Pin               Arrival     No. of    
+Name                                                                                        Type      Name     Dir     Delay     Time        Fan Out(s)
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+motor_apb_interface_0.global_position_y[3]                                                  DFN1      Q        Out     0.737     0.737       -         
+motor_apb_interface_0_global_position_y_0[3]                                                Net       -        -       2.127     -           15        
+motor_apb_interface_0.global_position_y_RNILLGP[3]                                          XOR2      B        In      -         2.864       -         
+motor_apb_interface_0.global_position_y_RNILLGP[3]                                          XOR2      Y        Out     0.937     3.801       -         
+d_N_9_4                                                                                     Net       -        -       0.806     -           3         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m7_3                         NOR3C     A        In      -         4.607       -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m7_3                         NOR3C     Y        Out     0.525     5.132       -         
+ADD_i5_mux_1                                                                                Net       -        -       0.386     -           2         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I3_CO1_1_s        NOR2A     B        In      -         5.518       -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I3_CO1_1_s        NOR2A     Y        Out     0.386     5.904       -         
+ADD_16x16_slow_I3_CO1_1_s                                                                   Net       -        -       0.386     -           2         
+motor_apb_interface_0.global_position_y_RNI4H8E4[5]                                         XA1B      C        In      -         6.290       -         
+motor_apb_interface_0.global_position_y_RNI4H8E4[5]                                         XA1B      Y        Out     0.490     6.780       -         
+N_1907                                                                                      Net       -        -       0.322     -           1         
+motor_apb_interface_0.global_position_y_RNIC7IFA[5]                                         MX2B      S        In      -         7.101       -         
+motor_apb_interface_0.global_position_y_RNIC7IFA[5]                                         MX2B      Y        Out     0.480     7.581       -         
+d_i3_mux_2                                                                                  Net       -        -       0.322     -           1         
+motor_apb_interface_0.global_position_y_RNI4039B[6]                                         AO18      B        In      -         7.902       -         
+motor_apb_interface_0.global_position_y_RNI4039B[6]                                         AO18      Y        Out     0.645     8.547       -         
+d_i5_mux_2                                                                                  Net       -        -       1.184     -           4         
+Webserver_0.MSS_ADLIB_INST_RNI17ONB                                                         XNOR2     B        In      -         9.730       -         
+Webserver_0.MSS_ADLIB_INST_RNI17ONB                                                         XNOR2     Y        Out     0.937     10.667      -         
+r_N_2_0                                                                                     Net       -        -       0.322     -           1         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m7_4                         MX2       A        In      -         10.989      -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m7_4                         MX2       Y        Out     0.568     11.557      -         
+ADD_i5_mux                                                                                  Net       -        -       0.386     -           2         
+motor_apb_interface_0.global_position_y_RNIFPFAR[11]                                        NOR2A     B        In      -         11.943      -         
+motor_apb_interface_0.global_position_y_RNIFPFAR[11]                                        NOR2A     Y        Out     0.386     12.329      -         
+N_1901                                                                                      Net       -        -       0.322     -           1         
+motor_apb_interface_0.global_position_y_RNI0OG2M1[11]                                       MX2       S        In      -         12.650      -         
+motor_apb_interface_0.global_position_y_RNI0OG2M1[11]                                       MX2       Y        Out     0.480     13.130      -         
+d_i3_mux_4                                                                                  Net       -        -       0.322     -           1         
+motor_apb_interface_0.global_position_y_RNI5OCNM1[12]                                       AO18      B        In      -         13.451      -         
+motor_apb_interface_0.global_position_y_RNI5OCNM1[12]                                       AO18      Y        Out     0.645     14.096      -         
+d_i5_mux_4                                                                                  Net       -        -       0.806     -           3         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I12_un1_CO1_1     MX2A      A        In      -         14.902      -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I12_un1_CO1_1     MX2A      Y        Out     0.568     15.471      -         
+I12_un1_CO1                                                                                 Net       -        -       0.322     -           1         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I13_S             XOR2      B        In      -         15.792      -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I13_S             XOR2      Y        Out     0.937     16.729      -         
+un1_finishedGlobalPositionRegister_y[13]                                                    Net       -        -       0.322     -           1         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO_1[13]                            MX2       B        In      -         17.050      -         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO_1[13]                            MX2       Y        Out     0.586     17.636      -         
+finishedGlobalPositionRegister_y_5[13]                                                      Net       -        -       0.322     -           1         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO_0[13]                            MX2       A        In      -         17.958      -         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO_0[13]                            MX2       Y        Out     0.568     18.526      -         
+N_189                                                                                       Net       -        -       0.322     -           1         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO[13]                              NOR2A     A        In      -         18.847      -         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO[13]                              NOR2A     Y        Out     0.516     19.363      -         
+finishedGlobalPositionRegister_y_RNO[13]                                                    Net       -        -       0.322     -           1         
+motor_apb_interface_0.finishedGlobalPositionRegister_y[13]                                  DFN1      D        In      -         19.685      -         
+=======================================================================================================================================================
+Total path delay (propagation time + setup) of 20.224 is 10.927(54.0%) logic and 9.296(46.0%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+
+
+====================================
+Detailed Report for Clock: System
+====================================
+
+
+
+Starting Points with Worst Slack
+********************************
+
+                               Starting                                                                        Arrival          
+Instance                       Reference     Type        Pin              Net                                  Time        Slack
+                               Clock                                                                                            
+--------------------------------------------------------------------------------------------------------------------------------
+Webserver_0.MSS_ADLIB_INST     System        MSS_APB     MSSPWDATA[0]     CoreAPB3_1_APBmslave0_PWDATA[0]      0.000       0.350
+Webserver_0.MSS_ADLIB_INST     System        MSS_APB     MSSPWDATA[3]     CoreAPB3_1_APBmslave0_PWDATA[3]      0.000       0.442
+Webserver_0.MSS_ADLIB_INST     System        MSS_APB     MSSPWDATA[2]     CoreAPB3_1_APBmslave0_PWDATA[2]      0.000       0.691
+Webserver_0.MSS_ADLIB_INST     System        MSS_APB     MSSPWDATA[1]     CoreAPB3_1_APBmslave0_PWDATA[1]      0.000       0.786
+Webserver_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[10]     CoreAPB3_1_APBmslave0_PADDR[10]      0.000       2.389
+Webserver_0.MSS_ADLIB_INST     System        MSS_APB     MSSPSEL          Webserver_0_MSS_MASTER_APB_PSELx     0.000       2.389
+Webserver_0.MSS_ADLIB_INST     System        MSS_APB     MSSPWDATA[4]     CoreAPB3_1_APBmslave0_PWDATA[4]      0.000       2.426
+Webserver_0.MSS_ADLIB_INST     System        MSS_APB     MSSPADDR[11]     CoreAPB3_1_APBmslave0_PADDR[11]      0.000       2.671
+Webserver_0.MSS_ADLIB_INST     System        MSS_APB     MSSPWDATA[7]     CoreAPB3_1_APBmslave0_PWDATA[7]      0.000       2.842
+Webserver_0.MSS_ADLIB_INST     System        MSS_APB     MSSPWDATA[5]     CoreAPB3_1_APBmslave0_PWDATA[5]      0.000       3.155
+================================================================================================================================
+
+
+Ending Points with Worst Slack
+******************************
+
+                                                               Starting                                                                                Required          
+Instance                                                       Reference     Type        Pin              Net                                          Time         Slack
+                                                               Clock                                                                                                     
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+motor_apb_interface_0.finishedGlobalPositionRegister_y[14]     System        DFN1        D                finishedGlobalPositionRegister_y_RNO[14]     19.461       0.350
+motor_apb_interface_0.finishedGlobalPositionRegister_y[15]     System        DFN1        D                finishedGlobalPositionRegister_y_RNO[15]     19.427       0.487
+motor_apb_interface_0.finishedGlobalPositionRegister_y[13]     System        DFN1        D                finishedGlobalPositionRegister_y_RNO[13]     19.461       0.689
+motor_apb_interface_0.finishedGlobalPositionRegister_x[15]     System        DFN1        D                finishedGlobalPositionRegister_x_RNO[15]     19.427       1.981
+motor_apb_interface_0.finishedGlobalPositionRegister_y[12]     System        DFN1        D                finishedGlobalPositionRegister_y_RNO[12]     19.427       2.220
+Webserver_0.MSS_ADLIB_INST                                     System        MSS_APB     MSSPRDATA[0]     Webserver_0_MSS_MASTER_APB_PRDATA[0]         10.000       2.389
+Webserver_0.MSS_ADLIB_INST                                     System        MSS_APB     MSSPRDATA[1]     Webserver_0_MSS_MASTER_APB_PRDATA[1]         10.000       2.389
+Webserver_0.MSS_ADLIB_INST                                     System        MSS_APB     MSSPRDATA[2]     Webserver_0_MSS_MASTER_APB_PRDATA[2]         10.000       2.389
+Webserver_0.MSS_ADLIB_INST                                     System        MSS_APB     MSSPRDATA[3]     Webserver_0_MSS_MASTER_APB_PRDATA[3]         10.000       2.389
+Webserver_0.MSS_ADLIB_INST                                     System        MSS_APB     MSSPRDATA[4]     Webserver_0_MSS_MASTER_APB_PRDATA[4]         10.000       2.389
+=========================================================================================================================================================================
+
+
+
+Worst Path Information
+***********************
+
+
+Path information for path number 1: 
+      Requested Period:                      20.000
+    - Setup time:                            0.539
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         19.461
+
+    - Propagation time:                      19.111
+    - Clock delay at starting point:         0.000 (ideal)
+    - Estimated clock delay at start point:  -0.000
+    = Slack (non-critical) :                 0.350
+
+    Number of logic level(s):                16
+    Starting point:                          Webserver_0.MSS_ADLIB_INST / MSSPWDATA[0]
+    Ending point:                            motor_apb_interface_0.finishedGlobalPositionRegister_y[14] / D
+    The start point is clocked by            System [rising]
+    The end   point is clocked by            FAB_CLK [rising] on pin CLK
+
+Instance / Net                                                                                       Pin              Pin               Arrival     No. of    
+Name                                                                                     Type        Name             Dir     Delay     Time        Fan Out(s)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+Webserver_0.MSS_ADLIB_INST                                                               MSS_APB     MSSPWDATA[0]     Out     0.000     0.000       -         
+CoreAPB3_1_APBmslave0_PWDATA[0]                                                          Net         -                -       2.263     -           18        
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m2_3                      AX1C        B                In      -         2.263       -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m2_3                      AX1C        Y                Out     0.970     3.233       -         
+ADD_N_3_4                                                                                Net         -                -       0.322     -           1         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m7_3                      NOR3C       C                In      -         3.554       -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m7_3                      NOR3C       Y                Out     0.666     4.220       -         
+ADD_i5_mux_1                                                                             Net         -                -       0.386     -           2         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I3_CO1_1_s     NOR2A       B                In      -         4.606       -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I3_CO1_1_s     NOR2A       Y                Out     0.386     4.991       -         
+ADD_16x16_slow_I3_CO1_1_s                                                                Net         -                -       0.386     -           2         
+motor_apb_interface_0.global_position_y_RNI4H8E4[5]                                      XA1B        C                In      -         5.377       -         
+motor_apb_interface_0.global_position_y_RNI4H8E4[5]                                      XA1B        Y                Out     0.490     5.867       -         
+N_1907                                                                                   Net         -                -       0.322     -           1         
+motor_apb_interface_0.global_position_y_RNIC7IFA[5]                                      MX2B        S                In      -         6.189       -         
+motor_apb_interface_0.global_position_y_RNIC7IFA[5]                                      MX2B        Y                Out     0.480     6.668       -         
+d_i3_mux_2                                                                               Net         -                -       0.322     -           1         
+motor_apb_interface_0.global_position_y_RNI4039B[6]                                      AO18        B                In      -         6.990       -         
+motor_apb_interface_0.global_position_y_RNI4039B[6]                                      AO18        Y                Out     0.645     7.635       -         
+d_i5_mux_2                                                                               Net         -                -       1.184     -           4         
+Webserver_0.MSS_ADLIB_INST_RNI17ONB                                                      XNOR2       B                In      -         8.818       -         
+Webserver_0.MSS_ADLIB_INST_RNI17ONB                                                      XNOR2       Y                Out     0.937     9.755       -         
+r_N_2_0                                                                                  Net         -                -       0.322     -           1         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m7_4                      MX2         A                In      -         10.076      -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m7_4                      MX2         Y                Out     0.568     10.645      -         
+ADD_i5_mux                                                                               Net         -                -       0.386     -           2         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I9_CO1_1       MX2A        S                In      -         11.031      -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I9_CO1_1       MX2A        Y                Out     0.480     11.510      -         
+N224                                                                                     Net         -                -       0.386     -           2         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m3                        XA1         B                In      -         11.896      -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m3                        XA1         Y                Out     0.987     12.883      -         
+ADD_N_8_mux                                                                              Net         -                -       0.806     -           3         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m6                        NOR2A       B                In      -         13.689      -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_m6                        NOR2A       Y                Out     0.407     14.096      -         
+ADD_i6_mux                                                                               Net         -                -       0.322     -           1         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I13_CO1_1      MX2C        S                In      -         14.418      -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I13_CO1_1      MX2C        Y                Out     0.480     14.897      -         
+N232                                                                                     Net         -                -       0.322     -           1         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I14_S          XOR2        B                In      -         15.219      -         
+motor_apb_interface_0.un1_finishedGlobalPositionRegister_y.ADD_16x16_slow_I14_S          XOR2        Y                Out     0.937     16.155      -         
+un1_finishedGlobalPositionRegister_y[14]                                                 Net         -                -       0.322     -           1         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO_1[14]                         MX2         B                In      -         16.477      -         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO_1[14]                         MX2         Y                Out     0.586     17.063      -         
+finishedGlobalPositionRegister_y_5[14]                                                   Net         -                -       0.322     -           1         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO_0[14]                         MX2         A                In      -         17.384      -         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO_0[14]                         MX2         Y                Out     0.568     17.952      -         
+N_190                                                                                    Net         -                -       0.322     -           1         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO[14]                           NOR2A       A                In      -         18.274      -         
+motor_apb_interface_0.finishedGlobalPositionRegister_y_RNO[14]                           NOR2A       Y                Out     0.516     18.790      -         
+finishedGlobalPositionRegister_y_RNO[14]                                                 Net         -                -       0.322     -           1         
+motor_apb_interface_0.finishedGlobalPositionRegister_y[14]                               DFN1        D                In      -         19.111      -         
+==============================================================================================================================================================
+Total path delay (propagation time + setup) of 19.650 is 10.639(54.1%) logic and 9.011(45.9%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+
+##### END OF TIMING REPORT #####]
+
+--------------------------------------------------------------------------------
+Target Part: A2F200M3F_FBGA484_Std
+Report for cell TOP.verilog
+  Core Cell usage:
+              cell count     area count*area
+              AND2    32      1.0       32.0
+             AND2A     8      1.0        8.0
+              AND3   123      1.0      123.0
+             AND3A     2      1.0        2.0
+               AO1   104      1.0      104.0
+              AO18    10      1.0       10.0
+              AO1A     5      1.0        5.0
+              AO1B     8      1.0        8.0
+              AO1C    38      1.0       38.0
+              AO1D     2      1.0        2.0
+              AOI1    19      1.0       19.0
+             AOI1A    16      1.0       16.0
+             AOI1B     2      1.0        2.0
+               AX1     1      1.0        1.0
+              AX1A     3      1.0        3.0
+              AX1B     1      1.0        1.0
+              AX1C     4      1.0        4.0
+              AX1D     8      1.0        8.0
+              AXO1     1      1.0        1.0
+              AXO6     1      1.0        1.0
+             AXOI3     3      1.0        3.0
+             AXOI4     1      1.0        1.0
+             AXOI7     2      1.0        2.0
+              BUFF     2      1.0        2.0
+            CLKINT     3      0.0        0.0
+               GND    20      0.0        0.0
+               INV     1      1.0        1.0
+              MAJ3    16      1.0       16.0
+              MIN3     9      1.0        9.0
+            MSSINT     3      0.0        0.0
+           MSS_APB     1      0.0        0.0
+           MSS_CCC     1      0.0        0.0
+               MX2   409      1.0      409.0
+              MX2A     7      1.0        7.0
+              MX2B    13      1.0       13.0
+              MX2C     6      1.0        6.0
+              NOR2    45      1.0       45.0
+             NOR2A   283      1.0      283.0
+             NOR2B   192      1.0      192.0
+              NOR3    15      1.0       15.0
+             NOR3A    52      1.0       52.0
+             NOR3B    58      1.0       58.0
+             NOR3C   114      1.0      114.0
+               OA1    24      1.0       24.0
+              OA1A    25      1.0       25.0
+              OA1B     2      1.0        2.0
+              OA1C    29      1.0       29.0
+              OAI1     1      1.0        1.0
+               OR2    99      1.0       99.0
+              OR2A   117      1.0      117.0
+              OR2B    25      1.0       25.0
+               OR3   152      1.0      152.0
+              OR3A     3      1.0        3.0
+              OR3B    19      1.0       19.0
+              OR3C    10      1.0       10.0
+               VCC    20      0.0        0.0
+               XA1    10      1.0       10.0
+              XA1A     3      1.0        3.0
+              XA1B    24      1.0       24.0
+              XA1C    75      1.0       75.0
+             XNOR2   163      1.0      163.0
+             XNOR3     3      1.0        3.0
+              XOR2   152      1.0      152.0
+              XOR3    15      1.0       15.0
+
+
+              DFN1   278      1.0      278.0
+            DFN1C0    56      1.0       56.0
+            DFN1E0    49      1.0       49.0
+          DFN1E0C0    24      1.0       24.0
+          DFN1E0P0     1      1.0        1.0
+            DFN1E1     1      1.0        1.0
+          DFN1E1C0   118      1.0      118.0
+          DFN1E1P0     2      1.0        2.0
+            DFN1P0     5      1.0        5.0
+              DLN1     8      1.0        8.0
+                   -----          ----------
+             TOTAL  3157              3109.0
+
+
+  IO Cell usage:
+              cell count
+         BIBUF_MSS     3
+   BIBUF_OPEND_MSS     2
+             INBUF     3
+         INBUF_MSS     7
+        MSS_XTLOSC     1
+            OUTBUF    14
+        OUTBUF_MSS     5
+       TRIBUFF_MSS     1
+                   -----
+             TOTAL    36
+
+
+Core Cells         : 3109 of 4608 (67%)
+IO Cells           : 36
+
+  RAM/ROM Usage Summary
+Block Rams : 0 of 8 (0%)
+
+Mapper successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:09s; CPU Time elapsed 0h:00m:09s; Memory used current: 44MB peak: 159MB)
+
+Process took 0h:00m:09s realtime, 0h:00m:09s cputime
+# Mon Dec 09 11:49:37 2013
+
+###########################################################]

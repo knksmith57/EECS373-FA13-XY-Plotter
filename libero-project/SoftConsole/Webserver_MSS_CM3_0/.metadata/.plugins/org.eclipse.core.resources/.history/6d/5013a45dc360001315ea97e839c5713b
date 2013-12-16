@@ -1,0 +1,123 @@
+/* Standard Libs
+ * ========================================================================= */
+#include <stdio.h>
+#include <stdlib.h>
+#include <inttypes.h>
+
+/* Firmware
+ * ========================================================================= */
+#include "./hal/CortexM3/GNU/cpu_types.h"
+#include "./plotter/plotter_platform.h"
+
+/* FreeRTOS
+ * ========================================================================= */
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "semphr.h"
+
+/* Globals
+ * ========================================================================= */
+
+/* Static Glocals
+ * ========================================================================= */
+
+/* Externs
+ * ========================================================================= */
+extern xSemaphoreHandle       xSemHand_config;
+extern xTaskHandle			  xHand_config;
+
+extern PLOTTER_MODE plotter_current_mode;
+// delay function, stolen from reference code
+extern void delay ( volatile unsigned long int n);
+
+
+/* Macros
+ * ========================================================================= */
+
+// task to handle configuration
+void vTask_controller(void *para) {
+	while(1) {
+		// wait for the controller semaphore to become free
+		xSemaphoreTake( xSemHand_controller, portMAX_DELAY );
+		// printf("in vTask_controller! \r\n");
+		printf("\r\n--- Controller Interrupt ---\r\n\r\n");
+
+		uint8_t rx_data[2], rx_size = 0, try_count = 0;
+
+		// UART transmissions can be sketchy, make sure we empty the buffer and get the latest message
+		do {
+			rx_size = UART_get_rx( &g_uart_rx, rx_data, sizeof(rx_data) );
+		} while((rx_size != 1) && (++try_count < 100));
+
+		if(rx_size > 0) {
+			char inputCharacter = (char) rx_data[0];
+			switch(inputCharacter) {
+				case '0':
+				case '1':
+				case '2':
+				case '3':
+				case '4':
+				case '5':
+				case '6':
+				case '7':
+				case '8':
+				case '9':
+					printf("read number: %c \r\n", rx_data[0]);
+					break;
+				case '#':
+					printf("# == enter \r\n");
+					break;
+				case '*':
+					printf("* == START / STOP Motor Control \r\n");
+					volatile uint16_t isOn = *GO;
+					if(isOn == 0) {
+						printf("STARTing motor \r\n");
+						*GO = 1;
+					}
+					else if(isOn == 1) {
+						printf("STOPping motor \r\n");
+						*GO = 0;
+					}
+					else {
+						printf("\r\nINVALID VALUE FOR *GO: %u\r\n", isOn);
+						*GO = 0;
+					}
+					break;
+				case 'A':
+				case 'B':
+				case 'C':
+				case 'D':
+					// changing shared data, must first get semaphore
+					xSemaphoreTake(xSemHand_plotter, portMAX_DELAY);
+					// printf("pressed letter: %c \r\n", rx_data[0]);
+					PLOTTER_MODE last_mode = plotter_current_mode;
+					// figure out the next mode
+					plotter_current_mode =
+							inputCharacter == 'A' ? HTTP :
+							inputCharacter == 'B' ? NUNCHUCK :
+							inputCharacter == 'C' ? CONFIG :
+							MAX; // default to MAX
+
+					if(plotter_current_mode != last_mode) {
+						// changed tasks
+						plotter_mode_changed = 1;
+					}
+
+					// now release the shared data semaphore
+					static signed portBASE_TYPE xHigherPriorityTaskWoken;
+					xSemaphoreGiveFromISR( xSemHand_plotter, &xHigherPriorityTaskWoken );
+
+					// now call delegate control to wake up the task we just switched control to
+					controller_delegate_control();
+
+					break;
+				default:
+					printf("wtf did you press? \r\n");
+			}
+		}
+		else {
+			printf("no data \r\n");
+		}
+	}
+}

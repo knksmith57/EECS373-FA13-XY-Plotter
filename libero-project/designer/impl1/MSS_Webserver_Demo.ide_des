@@ -1,0 +1,10 @@
+KEY IDE_DES_TOOL "Ide"
+KEY IDE_DES_ADB_PATH "F:\Webserver_uIPRTOS_SC_DF\HW\A2F200\VHDL\SmartFusion_Webserver_Demo\designer\impl1\MSS_Webserver_Demo.adb"
+LIST SOURCE_FILES
+VALUE "F:\Webserver_uIPRTOS_SC_DF\HW\A2F200\VHDL\SmartFusion_Webserver_Demo\component\work\MSS_Webserver_Demo\MSS_Webserver_Demo.pdc;pdc"
+ENDLIST
+LIST OPTIONAL_FILES
+VALUE "F:\Webserver_uIPRTOS_SC_DF\HW\A2F200\VHDL\SmartFusion_Webserver_Demo\component\work\MSS_Webserver_Demo\MSS_Webserver_Demo.pdc;Used"
+ENDLIST
+LIST VCD_FILES
+ENDLIST

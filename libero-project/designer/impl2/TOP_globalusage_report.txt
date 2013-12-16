@@ -1,0 +1,29 @@
+********************************************************************
+                            Global Usage Report
+********************************************************************
+  
+Product: Designer
+Release: v11.0
+Version: 11.0.0.23
+Date: Mon Dec 09 11:51:44 2013
+Design Name: TOP  Family: SmartFusion  Die: A2F200M3F  Package: 484 FBGA
+Design State: Post-Layout
+
+The following nets have been routed to a chip global resource:
+
+    Fanout            Name
+    ----------------------
+    535               Net   : FAB_CLK
+                      Driver: Webserver_0/MSS_CCC_0/I_MSSCCC/U_TILE2
+    223               Net   : Webserver_0_M2F_RESET_N
+                      Driver: Webserver_0/MSS_ADLIB_INST_RNIT6LE/U_CLKSRC/U_GL
+    1                 Net   : GLC_c
+                      Driver: Webserver_0/MSS_CCC_0/I_MSSCCC/U_TILE3
+    71                Net   : motor_apb_interface_0.write_enable
+                      Driver: I_252/U_CLKSRC/U_GL
+    180               Net   : motor_apb_interface_0.numStepsRegister_x18
+                      Driver: I_251/U_CLKSRC/U_GL
+
+
+
+

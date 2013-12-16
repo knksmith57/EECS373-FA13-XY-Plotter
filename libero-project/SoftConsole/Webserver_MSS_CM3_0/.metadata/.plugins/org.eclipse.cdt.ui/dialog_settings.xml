@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="" key="LastUsedSourceTemplate"/>
+	<section name="completion_proposal_size">
+	</section>
+	<section name="org.eclipse.cdt.internal.ui.includebrowser.IBViewPart">
+		<item value="true" key="includedBy"/>
+		<item value="false" key="inactiveFilter"/>
+		<item value="false" key="showFolders"/>
+		<item value="false" key="systemFilter"/>
+	</section>
+	<section name="PDOMSearchPage">
+		<item value="227191" key="searchFlags"/>
+		<item value="false" key="caseSensitive"/>
+		<list key="previousPatterns">
+			<item value="xSemHand_plotter"/>
+			<item value="do_next_instruction"/>
+			<item value="PLOTTER_printCoord"/>
+			<item value="ready_for_next_instruction"/>
+			<item value="uip_send"/>
+			<item value="uip_udp_send"/>
+			<item value="uip_poll"/>
+			<item value="uip_newdata"/>
+			<item value="resolv_conn"/>
+			<item value="uip_udp_conn"/>
+			<item value="uip_udp_remove"/>
+			<item value="uip_udp_new"/>
+			<item value="UIP_UDP"/>
+			<item value="UIP_CONF_UDP"/>
+			<item value="drop"/>
+			<item value="appsend"/>
+			<item value="udp_send"/>
+			<item value="UIP_APPCALL"/>
+			<item value="resolv_lookup"/>
+			<item value="uip_ip4addr_t"/>
+			<item value="uip_ipaddr_t"/>
+			<item value="uip_ipaddr_copy"/>
+			<item value="uip_sethostaddr"/>
+			<item value="resolv_conf"/>
+			<item value="uip_connect"/>
+			<item value="eTaskState"/>
+			<item value="UIP_UDP_APPCALL"/>
+			<item value="uip_appdata"/>
+			<item value="process_arp_packet"/>
+			<item value="process_packet"/>
+			<item value="send_bootp_packet"/>
+			<item value="uIP_init"/>
+			<item value="OPEN_IP"/>
+		</list>
+	</section>
+	<section name="org.eclipse.cdt.ui.text.hover.CMacroExpansionExploration.internal">
+		<item value="814" key="size.width"/>
+		<item value="180" key="size.height"/>
+	</section>
+	<section name="org.eclipse.cdt.ui.text.hover.CMacroExpansionExploration">
+	</section>
+</section>

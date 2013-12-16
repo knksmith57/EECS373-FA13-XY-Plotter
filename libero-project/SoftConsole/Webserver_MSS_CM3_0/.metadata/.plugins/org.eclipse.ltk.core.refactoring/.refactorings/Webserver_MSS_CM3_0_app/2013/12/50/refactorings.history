@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Webserver_MSS_CM3_0_app/jsmn/Makefile&apos; to &apos;Makefile.jsmn&apos;" description="Rename resource &apos;Makefile&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="jsmn/Makefile" name="Makefile.jsmn" stamp="1386480354880" updateReferences="true"/>
+</session>

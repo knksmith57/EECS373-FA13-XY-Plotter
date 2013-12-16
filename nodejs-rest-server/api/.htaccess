@@ -1,0 +1,2 @@
+# this API directory is node-specific and shouldn't be browsable
+deny from all

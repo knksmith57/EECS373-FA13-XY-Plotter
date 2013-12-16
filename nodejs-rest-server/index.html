@@ -1,0 +1,65 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Drawing Robot</title>
+
+  <meta name="author" content="Kyle Smith">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+</head>
+<body>
+
+  <style>
+
+    body {
+      font-family: sans-serif;
+      text-align: center;
+
+      padding: 2em 1em;
+    }
+
+    h1 {
+      text-align: center,
+    }
+
+    code {
+      display: block;
+      margin-top: 1em;
+    }
+
+    input {
+      display: inline-block;
+    }
+  </style>
+
+  <h1>Click a Button Below to Load a Job</h1>
+
+  <input type='button' data-job='mblock' value='MBLOCK' />
+  <input type='button' data-job='square' value='SQUARE' />
+
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+  <code>
+    curl http://api.plotter.ksmith.io/load/{job-name}
+  </code>
+
+  <script>
+    $(function() {
+      $('input').click(function() {
+        var job = $(this).data('job');
+        console.log('loading ' + job);
+        $.get( 'http://api.plotter.ksmith.io/load/' + job, function( data ) {
+          console.log(data);
+        });
+      });
+    });
+  </script>
+
+</body>

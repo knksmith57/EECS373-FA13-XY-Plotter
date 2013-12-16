@@ -1,0 +1,26 @@
+#include "plotter_platform.h"
+
+/* Plotter Memory Mapped IO
+ * ========================================================================= */
+volatile uint16_t *numStepsX 					= (uint16_t *)(0x40050200U);
+volatile uint32_t *periodX 						= (uint32_t *)(PLOTTER_BASE_ADDR + 4);
+volatile uint16_t *numStepsY 					= (uint16_t *)(PLOTTER_BASE_ADDR + 8);
+volatile uint32_t *periodY 						= (uint32_t *)(PLOTTER_BASE_ADDR + 12);
+volatile uint16_t *GO 							= (uint16_t *)(PLOTTER_BASE_ADDR + 16);
+volatile uint16_t *globalPositionX 				= (uint16_t *)(PLOTTER_BASE_ADDR + 20);
+volatile uint16_t *globalPositionY 				= (uint16_t *)(PLOTTER_BASE_ADDR + 24);
+volatile uint16_t *finishedGlobalPositionX 		= (uint16_t *)(PLOTTER_BASE_ADDR + 28);
+volatile uint16_t *finishedGlobalPositionY 		= (uint16_t *)(PLOTTER_BASE_ADDR + 32);
+volatile uint32_t *penWrite 					= (uint32_t *)(PLOTTER_BASE_ADDR + 36);
+volatile uint16_t *maximumX						= (uint16_t *)(PLOTTER_BASE_ADDR + 40);
+volatile uint16_t *maximumY						= (uint16_t *)(PLOTTER_BASE_ADDR + 44);
+volatile uint16_t *fabIntStatus					= (uint16_t *)(PLOTTER_BASE_ADDR + 48);
+
+
+/* Serial LCD Hook for printf()
+ *
+ * ~~~ MOVED TO lcd_task.c ~~~
+ *
+ * ========================================================================= */
+// void _to_lcd_uart(char *ptr, int len );
+

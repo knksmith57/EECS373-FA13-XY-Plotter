@@ -1,0 +1,186 @@
+/* Standard Libs
+ * ========================================================================= */
+#include <stdio.h>
+#include <stdlib.h>
+#include <inttypes.h>
+
+/* Firmware
+ * ========================================================================= */
+#include "./hal/CortexM3/GNU/cpu_types.h"
+// #include "./drivers/mss_gpio/mss_gpio.h"
+// #include "./drivers/mss_uart/mss_uart.h"
+#include "./drivers/CoreUARTapb/core_uart_apb.h"
+#include "./plotter/plotter_platform.h"
+
+/* FreeRTOS
+ * ========================================================================= */
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "semphr.h"
+
+
+/* Macros
+ * ========================================================================= */
+#define CLEAR_COMMAND_LEN 		4
+#define OUTPUT_BUFFER_LEN	  	80
+
+
+/* Globals
+ * ========================================================================= */
+
+
+/* Static Glocals
+ * ========================================================================= */
+
+const static portTickType 		delay_200ms = 200 / portTICK_RATE_MS;
+
+static uint8_t 					debug_mode = 0;
+static uint8_t 					cursor_pos = 0; // used in debug mode for scrolling messages
+
+// default commands to clear the screen + print text at the origin (ie: starting at the top left corner)
+static unsigned char 			clear_command[CLEAR_COMMAND_LEN] = {254, 128, 254, 1};
+static unsigned char 			output_buffer[OUTPUT_BUFFER_LEN];
+
+static unsigned char 			httpScreen[] = {	' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
+													' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'H', 'T', 'T', 'P', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
+													' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '-', '-', '-', '-', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
+													' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '
+												};
+
+static unsigned char 		nunchuckScreen[] = {	' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
+													' ', ' ', ' ', ' ', ' ', ' ', 'N', 'U', 'N', 'C', 'H', 'U', 'C', 'K', ' ', ' ', ' ', ' ', ' ', ' ',
+													' ', ' ', ' ', ' ', ' ', ' ', '-', '-', '-', '-', '-', '-', '-', '-', ' ', ' ', ' ', ' ', ' ', ' ',
+													' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '
+												};
+
+static unsigned char 		configScreen[] 	= {		' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
+													' ', ' ', ' ', ' ', ' ', ' ', ' ', 'C', 'O', 'N', 'F', 'I', 'G', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
+													' ', ' ', ' ', ' ', ' ', ' ', '-', '-', '-', '-', '-', '-', '-', '-', ' ', ' ', ' ', ' ', ' ', ' ',
+													' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '
+												};
+
+/* Externs
+ * ========================================================================= */
+// must hold xSemHand_lcd when accessing the output buffer
+extern xSemaphoreHandle 	  	xSemHand_lcd;
+extern xSemaphoreHandle       	xSemHand_plotter;
+extern xTaskHandle			  	xHand_lcd;
+
+
+extern PLOTTER_MODE plotter_current_mode;
+extern void delay ( volatile unsigned long int n);
+
+
+// task to initialize UART for Serial LCD
+void init_lcd( void ) {
+	vSemaphoreCreateBinary( xSemHand_lcd );
+	// xSemaphoreTake( xSemHand_lcd, portMAX_DELAY );
+
+	// fill the output buffer with whitespace
+	memset(output_buffer, ' ', OUTPUT_BUFFER_LEN);
+
+	// initialize the UART using settings defined in plotter_platform.h
+	UART_init(&g_lcd_uart, LCD_UART_ADDR, BAUD_VALUE_9600, (DATA_8_BITS | NO_PARITY));
+
+	// clear the screen and set the cursor back to the origin
+	UART_send(&g_lcd_uart, (uint8_t *)clear_command, CLEAR_COMMAND_LEN);
+
+	// set g_lcd_uart_init_done to 1 so that the vTask_lcd can run
+	g_lcd_uart_init_done = 1;
+	// xSemaphoreGive( xSemHand_lcd );
+}
+
+// task to handle outputting data to Serial LCD
+void vTask_lcd(void *para) {
+	/*
+	while(! g_lcd_uart_init_done) {
+		printf("ERROR! Must call init_lcd() before running vTask_lcd \r\n");
+		vTaskSuspend( NULL ); // can't use the LCD, suspend this task
+	}
+	*/
+
+	while(1) {
+		// printf("lcd\r\n");
+		// reading shared data, must grab plotter semaphore first
+		// xSemaphoreTake(xSemHand_plotter, portMAX_DELAY);
+
+		// now that hold lock, read the current mode into a local variable
+		PLOTTER_MODE cur_mode = plotter_current_mode;
+
+		// release the shared data semaphore
+		// xSemaphoreGive( xSemHand_plotter );
+
+		// clear the screen and set the cursor back to the origin
+		UART_send(&g_lcd_uart, (uint8_t *)clear_command, CLEAR_COMMAND_LEN);
+
+		// going to access the output buffer, grab the lcd lock
+		// xSemaphoreTake( xSemHand_lcd, portMAX_DELAY );
+
+		// figure out which mode we're in and give that task control again
+		switch(cur_mode) {
+			case HTTP:
+				memcpy(output_buffer, httpScreen, OUTPUT_BUFFER_LEN);
+				break;
+			case NUNCHUCK:
+				memcpy(output_buffer, nunchuckScreen, OUTPUT_BUFFER_LEN);
+				break;
+			case CONFIG:
+				memcpy(output_buffer, configScreen, OUTPUT_BUFFER_LEN);
+				break;
+			default:
+				break;
+				// unknown operating mode, probably still in boot up, just send the output buffer as is
+		}
+
+		// make sure not printing anything weird
+		for(cursor_pos = 0; cursor_pos < OUTPUT_BUFFER_LEN; ++cursor_pos) {
+			unsigned char c = output_buffer[cursor_pos];
+			if(c == '\0' || c == '\r' || c == '\n' || c == '\t') {
+				output_buffer[cursor_pos] = ' ';
+			}
+		}
+
+		// dump the output buffer to the LCD
+		UART_send(&g_lcd_uart, (uint8_t *)output_buffer, OUTPUT_BUFFER_LEN);
+
+		// done with the lock, release it
+		// xSemaphoreGive( xSemHand_lcd );
+		vTaskDelay(delay_200ms);
+	}
+}
+
+void lcd_set_debug( uint8_t enable ) {
+	// accessing shared data, grab the lcd lock
+	xSemaphoreTake( xSemHand_lcd, portMAX_DELAY );
+
+	debug_mode = enable;
+
+	// done with the lock, release it
+	xSemaphoreGive( xSemHand_lcd );
+}
+
+void _to_lcd_uart(char *ptr, int len ) {
+	// xSemaphoreTake(xSemHand_plotter, portMAX_DELAY); 	// reading shared data, must grab plotter semaphore first
+	PLOTTER_MODE cur_mode = plotter_current_mode; 		// now that hold lock, read the current mode into a local variable
+	// xSemaphoreGive( xSemHand_plotter ); 				// release the shared data semaphore
+
+	// xSemaphoreTake(xSemHand_lcd, portMAX_DELAY);
+
+	if(debug_mode || (cur_mode == UNKNOWN)) {
+		// need to gracefully print the supplied string to the LCD
+		if(len > OUTPUT_BUFFER_LEN) {
+			// message is so long that it isn't going to fit on the screen
+			memcpy(output_buffer, ptr + (len - OUTPUT_BUFFER_LEN), OUTPUT_BUFFER_LEN);
+		}
+		else {
+			// message will fit
+			memset(output_buffer, ' ', OUTPUT_BUFFER_LEN);
+			memcpy(output_buffer, ptr, len);
+			// memset(output_buffer + len, ' ', OUTPUT_BUFFER_LEN - len);
+		}
+	}
+	// if we're not debugging or in an UNKNOWN state, then we are only printing formatted data
+
+	// xSemaphoreGive( xSemHand_lcd );
+}

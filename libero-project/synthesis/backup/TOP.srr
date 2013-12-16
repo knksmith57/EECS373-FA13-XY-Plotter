@@ -1,0 +1,382 @@
+#Build: Synplify Pro E-2010.09A-1, Build 006R, Oct  6 2010
+#install: D:\Actel\Libero_v9.1\Synopsys\synplify_E201009A-1
+#OS: Windows XP 5.1
+#Hostname: WXPL-ODIGAS
+
+#Implementation: synthesis
+
+#Thu Jan 06 16:47:32 2011
+
+$ Start of Compile
+#Thu Jan 06 16:47:32 2011
+
+Synopsys Verilog Compiler, version comp520rcp1, Build 028R, built Sep 23 2010
+@N|Running in 32-bit mode
+Copyright (C) 1994-2010, Synopsys Inc.  All Rights Reserved
+
+@I::"D:\Actel\Libero_v9.1\Synopsys\synplify_E201009A-1\lib\proasic\smartfusion.v"
+@I::"D:\Actel\Libero_v9.1\Synopsys\synplify_E201009A-1\lib\vlog\hypermods.v"
+@I::"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\Actel\SmartFusionMSS\MSS\2.4.101\mss_comps.v"
+@I::"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\MSS_Webserver\MSS_CCC_0\MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC.v"
+@I::"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\MSS_Webserver\mss_tshell.v"
+@I::"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\MSS_Webserver\MSS_Webserver.v"
+@I::"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\TOP\TOP.v"
+Verilog syntax check successful!
+Selecting top level module TOP
+@N: CG364 :"D:\Actel\Libero_v9.1\Synopsys\synplify_E201009A-1\lib\proasic\smartfusion.v":2609:7:2609:13|Synthesizing module INBUF_A
+
+@N: CG364 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\Actel\SmartFusionMSS\MSS\2.4.101\mss_comps.v":23:7:23:15|Synthesizing module INBUF_MSS
+
+@N: CG364 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\Actel\SmartFusionMSS\MSS\2.4.101\mss_comps.v":85:7:85:21|Synthesizing module BIBUF_OPEND_MSS
+
+@N: CG364 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\Actel\SmartFusionMSS\MSS\2.4.101\mss_comps.v":145:7:145:12|Synthesizing module MSSINT
+
+@N: CG364 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\Actel\SmartFusionMSS\MSS\2.4.101\mss_comps.v":37:7:37:16|Synthesizing module OUTBUF_MSS
+
+@N: CG364 :"D:\Actel\Libero_v9.1\Synopsys\synplify_E201009A-1\lib\proasic\smartfusion.v":1814:7:1814:9|Synthesizing module VCC
+
+@N: CG364 :"D:\Actel\Libero_v9.1\Synopsys\synplify_E201009A-1\lib\proasic\smartfusion.v":1133:7:1133:9|Synthesizing module GND
+
+@N: CG364 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\Actel\SmartFusionMSS\MSS\2.4.101\mss_comps.v":151:7:151:13|Synthesizing module MSS_CCC
+
+@N: CG364 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\Actel\SmartFusionMSS\MSS\2.4.101\mss_comps.v":1:7:1:16|Synthesizing module MSS_XTLOSC
+
+@N: CG364 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\MSS_Webserver\MSS_CCC_0\MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC.v":5:7:5:41|Synthesizing module MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC
+
+@N: CG364 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\MSS_Webserver\mss_tshell.v":1:7:1:13|Synthesizing module MSS_APB
+
+@N: CG364 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\Actel\SmartFusionMSS\MSS\2.4.101\mss_comps.v":67:7:67:15|Synthesizing module BIBUF_MSS
+
+@N: CG364 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\MSS_Webserver\MSS_Webserver.v":5:7:5:19|Synthesizing module MSS_Webserver
+
+@N: CG364 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\TOP\TOP.v":5:7:5:9|Synthesizing module TOP
+
+@W: CL168 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\TOP\TOP.v":84:8:84:10|Pruning instance GND - not in use ...
+
+@W: CL168 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\TOP\TOP.v":83:8:83:10|Pruning instance VCC - not in use ...
+
+@W: CL157 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\MSS_Webserver\MSS_CCC_0\MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC.v":62:7:62:18|*Output RCOSC_CLKOUT has undriven bits - a simulation mismatch is possible 
+@W: CL157 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\MSS_Webserver\MSS_CCC_0\MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC.v":63:7:63:20|*Output MAINXIN_CLKOUT has undriven bits - a simulation mismatch is possible 
+@W: CL157 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\MSS_Webserver\MSS_CCC_0\MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC.v":64:7:64:18|*Output LPXIN_CLKOUT has undriven bits - a simulation mismatch is possible 
+@W: CL159 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\MSS_Webserver\MSS_CCC_0\MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC.v":36:7:36:10|Input CLKA is unused
+@W: CL159 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\MSS_Webserver\MSS_CCC_0\MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC.v":37:7:37:14|Input CLKA_PAD is unused
+@W: CL159 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\MSS_Webserver\MSS_CCC_0\MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC.v":38:7:38:15|Input CLKA_PADP is unused
+@W: CL159 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\MSS_Webserver\MSS_CCC_0\MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC.v":39:7:39:15|Input CLKA_PADN is unused
+@W: CL159 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\MSS_Webserver\MSS_CCC_0\MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC.v":40:7:40:10|Input CLKB is unused
+@W: CL159 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\MSS_Webserver\MSS_CCC_0\MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC.v":41:7:41:14|Input CLKB_PAD is unused
+@W: CL159 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\MSS_Webserver\MSS_CCC_0\MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC.v":42:7:42:15|Input CLKB_PADP is unused
+@W: CL159 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\MSS_Webserver\MSS_CCC_0\MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC.v":43:7:43:15|Input CLKB_PADN is unused
+@W: CL159 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\MSS_Webserver\MSS_CCC_0\MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC.v":44:7:44:10|Input CLKC is unused
+@W: CL159 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\MSS_Webserver\MSS_CCC_0\MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC.v":45:7:45:14|Input CLKC_PAD is unused
+@W: CL159 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\MSS_Webserver\MSS_CCC_0\MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC.v":46:7:46:15|Input CLKC_PADP is unused
+@W: CL159 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\MSS_Webserver\MSS_CCC_0\MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC.v":47:7:47:15|Input CLKC_PADN is unused
+@W: CL159 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\MSS_Webserver\MSS_CCC_0\MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC.v":49:7:49:11|Input LPXIN is unused
+@W: CL159 :"D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\component\work\MSS_Webserver\MSS_CCC_0\MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC.v":50:7:50:13|Input MAC_CLK is unused
+@END
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Thu Jan 06 16:47:33 2011
+
+###########################################################]
+Synopsys Actel Technology Mapper, Version mapact, Build 023R, Built Sep 29 2010 09:29:00
+Copyright (C) 1994-2010, Synopsys Inc.  All Rights Reserved
+Product Version E-2010.09A-1
+@N: MF249 |Running in 32-bit mode.
+@N: MF258 |Gated clock conversion disabled 
+
+@W: MO111 :"d:\data\projects\webserver\a2f_webserver_iar\hw\a2f500\verilog\smartfusion_webserver_demo\component\work\mss_webserver\mss_ccc_0\mss_webserver_tmp_mss_ccc_0_mss_ccc.v":62:7:62:18|tristate driver RCOSC_CLKOUT on net RCOSC_CLKOUT has its enable tied to GND (module MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC) 
+@W: MO111 :"d:\data\projects\webserver\a2f_webserver_iar\hw\a2f500\verilog\smartfusion_webserver_demo\component\work\mss_webserver\mss_ccc_0\mss_webserver_tmp_mss_ccc_0_mss_ccc.v":63:7:63:20|tristate driver MAINXIN_CLKOUT on net MAINXIN_CLKOUT has its enable tied to GND (module MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC) 
+@W: MO111 :"d:\data\projects\webserver\a2f_webserver_iar\hw\a2f500\verilog\smartfusion_webserver_demo\component\work\mss_webserver\mss_ccc_0\mss_webserver_tmp_mss_ccc_0_mss_ccc.v":64:7:64:18|tristate driver LPXIN_CLKOUT on net LPXIN_CLKOUT has its enable tied to GND (module MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC) 
+
+Available hyper_sources - for debug and ip models
+	None Found
+
+@W:"d:\data\projects\webserver\a2f_webserver_iar\hw\a2f500\verilog\smartfusion_webserver_demo\component\work\mss_webserver\mss_ccc_0\mss_webserver_tmp_mss_ccc_0_mss_ccc.v":78:41:78:48|Net MSS_Webserver_0.MSS_ADLIB_INST_FCLK appears to be a clock source which was not identfied. Assuming default frequency. 
+@W:"d:\data\projects\webserver\a2f_webserver_iar\hw\a2f500\verilog\smartfusion_webserver_demo\component\work\mss_webserver\mss_ccc_0\mss_webserver_tmp_mss_ccc_0_mss_ccc.v":78:41:78:48|Net MSS_Webserver_0.MSS_ADLIB_INST_MACCLKCCC appears to be a clock source which was not identfied. Assuming default frequency. 
+Finished RTL optimizations (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Finished factoring (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Finished gated-clock and generated-clock conversion (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Finished generic timing optimizations - Pass 1 (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Starting Early Timing Optimization (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Finished Early Timing Optimization (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Finished generic timing optimizations - Pass 2 (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Finished preparing to map (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Finished technology mapping (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Finished technology timing optimizations and critical path resynthesis (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+
+Added 0 Buffers
+Added 0 Cells via replication
+	Added 0 Sequential Cells via replication
+	Added 0 Combinational Cells via replication
+Finished restoring hierarchy (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Writing Analyst data base D:\DATA\PROJECTS\WEBSERVER\A2F_Webserver_IAR\HW\A2F500\Verilog\SmartFusion_Webserver_Demo\synthesis\TOP.srm
+Finished Writing Netlist Databases (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Writing EDIF Netlist and constraint files
+E-2010.09A-1
+Finished Writing EDIF Netlist and constraint files (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+@W: MT246 :"d:\data\projects\webserver\a2f_webserver_iar\hw\a2f500\verilog\smartfusion_webserver_demo\component\work\mss_webserver\mss_webserver.v":252:11:252:22|Blackbox MSSINT is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results) 
+@W: MT246 :"d:\data\projects\webserver\a2f_webserver_iar\hw\a2f500\verilog\smartfusion_webserver_demo\component\work\mss_webserver\mss_ccc_0\mss_webserver_tmp_mss_ccc_0_mss_ccc.v":96:15:96:22|Blackbox MSS_XTLOSC is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results) 
+@W: MT420 |Found inferred clock MSS_Webserver|MSS_ADLIB_INST_EMCCLK_inferred_clock with period 10.00ns. A user-defined clock should be declared on object "n:MSS_Webserver_0.MSS_ADLIB_INST_EMCCLK"
+
+@W: MT420 |Found inferred clock MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC|MSS_ADLIB_INST_MACCLKCCC_inferred_clock with period 10.00ns. A user-defined clock should be declared on object "n:MSS_Webserver_0.MSS_ADLIB_INST_MACCLKCCC"
+
+@W: MT420 |Found inferred clock MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC|MSS_ADLIB_INST_FCLK_inferred_clock with period 10.00ns. A user-defined clock should be declared on object "n:MSS_Webserver_0.MSS_ADLIB_INST_FCLK"
+
+
+
+##### START OF TIMING REPORT #####[
+# Timing Report written on Thu Jan 06 16:47:34 2011
+#
+
+
+Top view:               TOP
+Library name:           smartfusion
+Operating conditions:   COMWCSTD ( T = 70.0, V = 1.42, P = 1.74, tree_type = balanced_tree )
+Requested Frequency:    100.0 MHz
+Wire load mode:         top
+Wire load model:        smartfusion
+Paths requested:        5
+Constraint File(s):    
+@N: MT320 |This timing report estimates place and route data. Please look at the place and route timing report for final timing..
+
+@N: MT322 |Clock constraints cover only FF-to-FF paths associated with the clock..
+
+
+
+Performance Summary 
+*******************
+
+
+Worst slack in design: 5.547
+
+                                                                           Requested     Estimated      Requested     Estimated               Clock        Clock              
+Starting Clock                                                             Frequency     Frequency      Period        Period        Slack     Type         Group              
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC|MSS_ADLIB_INST_FCLK_inferred_clock     100.0 MHz     224.5 MHz      10.000        4.453         5.547     inferred     Inferred_clkgroup_1
+System                                                                     100.0 MHz     1194.2 MHz     10.000        0.837         9.163     system       system_clkgroup    
+==============================================================================================================================================================================
+
+
+
+
+
+Clock Relationships
+*******************
+
+Clocks                                                                                                                                          |    rise  to  rise   |    fall  to  fall   |    rise  to  fall   |    fall  to  rise 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Starting                                                                Ending                                                                  |  constraint  slack  |  constraint  slack  |  constraint  slack  |  constraint  slack
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+System                                                                  MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC|MSS_ADLIB_INST_FCLK_inferred_clock  |  10.000      9.163  |  No paths    -      |  No paths    -      |  No paths    -    
+MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC|MSS_ADLIB_INST_FCLK_inferred_clock  System                                                                  |  10.000      5.547  |  No paths    -      |  No paths    -      |  No paths    -    
+======================================================================================================================================================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+
+Interface Information 
+*********************
+
+		No IO constraint found 
+
+
+
+====================================
+Detailed Report for Clock: MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC|MSS_ADLIB_INST_FCLK_inferred_clock
+====================================
+
+
+
+Starting Points with Worst Slack
+********************************
+
+                                   Starting                                                                                                               Arrival          
+Instance                           Reference                                                                  Type        Pin         Net                 Time        Slack
+                                   Clock                                                                                                                                   
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+MSS_Webserver_0.MSS_ADLIB_INST     MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC|MSS_ADLIB_INST_FCLK_inferred_clock     MSS_APB     GPO[0]      MSSINT_GPO_0_A      4.132       5.547
+MSS_Webserver_0.MSS_ADLIB_INST     MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC|MSS_ADLIB_INST_FCLK_inferred_clock     MSS_APB     GPO[1]      MSSINT_GPO_1_A      4.132       5.547
+MSS_Webserver_0.MSS_ADLIB_INST     MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC|MSS_ADLIB_INST_FCLK_inferred_clock     MSS_APB     GPO[2]      MSSINT_GPO_2_A      4.132       5.547
+MSS_Webserver_0.MSS_ADLIB_INST     MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC|MSS_ADLIB_INST_FCLK_inferred_clock     MSS_APB     GPO[3]      MSSINT_GPO_3_A      4.132       5.547
+MSS_Webserver_0.MSS_ADLIB_INST     MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC|MSS_ADLIB_INST_FCLK_inferred_clock     MSS_APB     GPO[4]      MSSINT_GPO_4_A      4.132       5.547
+MSS_Webserver_0.MSS_ADLIB_INST     MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC|MSS_ADLIB_INST_FCLK_inferred_clock     MSS_APB     GPO[5]      MSSINT_GPO_5_A      4.132       5.547
+MSS_Webserver_0.MSS_ADLIB_INST     MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC|MSS_ADLIB_INST_FCLK_inferred_clock     MSS_APB     GPO[6]      MSSINT_GPO_6_A      4.132       5.547
+MSS_Webserver_0.MSS_ADLIB_INST     MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC|MSS_ADLIB_INST_FCLK_inferred_clock     MSS_APB     GPO[7]      MSSINT_GPO_7_A      4.132       5.547
+MSS_Webserver_0.MSS_ADLIB_INST     MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC|MSS_ADLIB_INST_FCLK_inferred_clock     MSS_APB     GPO[10]     MSSINT_GPO_10_A     4.132       5.547
+===========================================================================================================================================================================
+
+
+Ending Points with Worst Slack
+******************************
+
+                                  Starting                                                                                                          Required          
+Instance                          Reference                                                                  Type       Pin     Net                 Time         Slack
+                                  Clock                                                                                                                               
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+MSS_Webserver_0.MSSINT_GPO_0      MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC|MSS_ADLIB_INST_FCLK_inferred_clock     MSSINT     A       MSSINT_GPO_0_A      10.000       5.547
+MSS_Webserver_0.MSSINT_GPO_1      MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC|MSS_ADLIB_INST_FCLK_inferred_clock     MSSINT     A       MSSINT_GPO_1_A      10.000       5.547
+MSS_Webserver_0.MSSINT_GPO_2      MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC|MSS_ADLIB_INST_FCLK_inferred_clock     MSSINT     A       MSSINT_GPO_2_A      10.000       5.547
+MSS_Webserver_0.MSSINT_GPO_3      MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC|MSS_ADLIB_INST_FCLK_inferred_clock     MSSINT     A       MSSINT_GPO_3_A      10.000       5.547
+MSS_Webserver_0.MSSINT_GPO_4      MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC|MSS_ADLIB_INST_FCLK_inferred_clock     MSSINT     A       MSSINT_GPO_4_A      10.000       5.547
+MSS_Webserver_0.MSSINT_GPO_5      MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC|MSS_ADLIB_INST_FCLK_inferred_clock     MSSINT     A       MSSINT_GPO_5_A      10.000       5.547
+MSS_Webserver_0.MSSINT_GPO_6      MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC|MSS_ADLIB_INST_FCLK_inferred_clock     MSSINT     A       MSSINT_GPO_6_A      10.000       5.547
+MSS_Webserver_0.MSSINT_GPO_7      MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC|MSS_ADLIB_INST_FCLK_inferred_clock     MSSINT     A       MSSINT_GPO_7_A      10.000       5.547
+MSS_Webserver_0.MSSINT_GPO_10     MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC|MSS_ADLIB_INST_FCLK_inferred_clock     MSSINT     A       MSSINT_GPO_10_A     10.000       5.547
+======================================================================================================================================================================
+
+
+
+Worst Path Information
+***********************
+
+
+Path information for path number 1: 
+      Requested Period:                      10.000
+    - Setup time:                            0.000
+    + Clock delay at ending point:           0.000 (ideal)
+    + Estimated clock delay at ending point: 0.000
+    = Required time:                         10.000
+
+    - Propagation time:                      4.453
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (critical) :                     5.547
+
+    Number of logic level(s):                0
+    Starting point:                          MSS_Webserver_0.MSS_ADLIB_INST / GPO[0]
+    Ending point:                            MSS_Webserver_0.MSSINT_GPO_0 / A
+    The start point is clocked by            MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC|MSS_ADLIB_INST_FCLK_inferred_clock [rising] on pin FCLK
+    The end   point is clocked by            System [rising]
+
+Instance / Net                                 Pin        Pin               Arrival     No. of    
+Name                               Type        Name       Dir     Delay     Time        Fan Out(s)
+--------------------------------------------------------------------------------------------------
+MSS_Webserver_0.MSS_ADLIB_INST     MSS_APB     GPO[0]     Out     4.132     4.132       -         
+MSSINT_GPO_0_A                     Net         -          -       0.322     -           1         
+MSS_Webserver_0.MSSINT_GPO_0       MSSINT      A          In      -         4.453       -         
+==================================================================================================
+Total path delay (propagation time + setup) of 4.453 is 4.132(92.8%) logic and 0.322(7.2%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+
+
+====================================
+Detailed Report for Clock: System
+====================================
+
+
+
+Starting Points with Worst Slack
+********************************
+
+                                 Starting                                            Arrival          
+Instance                         Reference     Type       Pin     Net                Time        Slack
+                                 Clock                                                                
+------------------------------------------------------------------------------------------------------
+MSS_Webserver_0.MSSINT_GPI_8     System        MSSINT     Y       MSSINT_GPI_8_Y     0.000       9.163
+MSS_Webserver_0.MSSINT_GPI_9     System        MSSINT     Y       MSSINT_GPI_9_Y     0.000       9.163
+======================================================================================================
+
+
+Ending Points with Worst Slack
+******************************
+
+                                   Starting                                                Required          
+Instance                           Reference     Type        Pin        Net                Time         Slack
+                                   Clock                                                                     
+-------------------------------------------------------------------------------------------------------------
+MSS_Webserver_0.MSS_ADLIB_INST     System        MSS_APB     GPI[8]     MSSINT_GPI_8_Y     9.484        9.163
+MSS_Webserver_0.MSS_ADLIB_INST     System        MSS_APB     GPI[9]     MSSINT_GPI_9_Y     9.484        9.163
+=============================================================================================================
+
+
+
+Worst Path Information
+***********************
+
+
+Path information for path number 1: 
+      Requested Period:                      10.000
+    - Setup time:                            0.516
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         9.484
+
+    - Propagation time:                      0.322
+    - Clock delay at starting point:         0.000 (ideal)
+    - Estimated clock delay at start point:  -0.000
+    = Slack (non-critical) :                 9.163
+
+    Number of logic level(s):                0
+    Starting point:                          MSS_Webserver_0.MSSINT_GPI_8 / Y
+    Ending point:                            MSS_Webserver_0.MSS_ADLIB_INST / GPI[8]
+    The start point is clocked by            System [rising]
+    The end   point is clocked by            MSS_Webserver_tmp_MSS_CCC_0_MSS_CCC|MSS_ADLIB_INST_FCLK_inferred_clock [rising] on pin FCLK
+
+Instance / Net                                 Pin        Pin               Arrival     No. of    
+Name                               Type        Name       Dir     Delay     Time        Fan Out(s)
+--------------------------------------------------------------------------------------------------
+MSS_Webserver_0.MSSINT_GPI_8       MSSINT      Y          Out     0.000     0.000       -         
+MSSINT_GPI_8_Y                     Net         -          -       0.322     -           1         
+MSS_Webserver_0.MSS_ADLIB_INST     MSS_APB     GPI[8]     In      -         0.322       -         
+==================================================================================================
+Total path delay (propagation time + setup) of 0.837 is 0.516(61.6%) logic and 0.322(38.4%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+
+##### END OF TIMING REPORT #####]
+
+--------------------------------------------------------------------------------
+Target Part: A2F500M3G_FBGA256_Std
+Report for cell TOP.verilog
+  Core Cell usage:
+              cell count     area count*area
+               GND     3      0.0        0.0
+            MSSINT    11      0.0        0.0
+           MSS_CCC     1      0.0        0.0
+               VCC     3      0.0        0.0
+
+
+           MSS_APB     1      0.0        0.0
+                   -----          ----------
+             TOTAL    19                 0.0
+
+
+  IO Cell usage:
+              cell count
+         BIBUF_MSS     1
+   BIBUF_OPEND_MSS     2
+             INBUF     2
+           INBUF_A     5
+         INBUF_MSS     6
+        MSS_XTLOSC     1
+            OUTBUF    10
+        OUTBUF_MSS     5
+                   -----
+             TOTAL    32
+
+
+Core Cells         : 0 of 11520 (0%)
+IO Cells           : 32
+
+  RAM/ROM Usage Summary
+Block Rams : 0 of 24 (0%)
+
+Mapper successful!
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Thu Jan 06 16:47:34 2011
+
+###########################################################]

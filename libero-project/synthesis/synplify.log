@@ -1,0 +1,65 @@
+
+Starting:    C:\Microsemi\Libero_v11.0\Synopsys\synplify_G201209MSP1\win64\mbin\synbatch.exe
+Install:     C:\Microsemi\Libero_v11.0\Synopsys\synplify_G201209MSP1
+Date:        Mon Dec 09 11:49:24 2013
+Version:     G-2012.09M-SP1 
+
+Arguments:   -product synplify_pro  -licensetype synplifypro_actel -batch -log synplify.log TOP_syn.tcl
+ProductType: synplify_pro
+
+License checkout: synplifypro_actel
+License: synplifypro_actel node-locked 
+Licensed Vendor: actel
+License Option: actel_oem
+
+Running in Vendor Mode
+
+
+
+log file: "C:\Users\kylebs\Desktop\FreeRTOS-lwIP-takeDeux\FreeRTOS-lwIP\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\synthesis\TOP.srr"
+
+
+Running TOP_syn|synthesis
+
+Running Compile on TOP_syn|synthesis
+
+Running Compile Process on TOP_syn|synthesis
+
+Running Compile Input on TOP_syn|synthesis
+
+Copied C:\Users\kylebs\Desktop\FreeRTOS-lwIP-takeDeux\FreeRTOS-lwIP\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\synthesis\synwork\TOP_compiler.srs to C:\Users\kylebs\Desktop\FreeRTOS-lwIP-takeDeux\FreeRTOS-lwIP\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\synthesis\TOP.srs
+
+compiler Completed with warnings
+Return Code: 1
+Run Time:0h:00m:03s
+
+
+Job Compile Process completed on TOP_syn|synthesis
+
+Running Premap on TOP_syn|synthesis
+
+premap Completed with warnings
+Return Code: 1
+Run Time:0h:00m:01s
+
+
+Job Compile completed on TOP_syn|synthesis
+
+Running Map on TOP_syn|synthesis
+
+Running Map & Optimize on TOP_syn|synthesis
+
+fpga_mapper Completed with warnings
+Return Code: 1
+Run Time:0h:00m:09s
+
+
+Job Map completed on TOP_syn|synthesis
+
+Job Logic Synthesis completed on TOP_syn|synthesis
+
+TCL script complete: "TOP_syn.tcl"
+
+exit status=0
+
+

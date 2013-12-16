@@ -1,0 +1,2 @@
+@E: CL172 :"C:\Users\kylebs\Desktop\FreeRTOS-lwIP-takeDeux\FreeRTOS-lwIP\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\hdl\uart_irq_delay.v":18:6:18:20|Only one always block can assign a given variable counting_enable
+

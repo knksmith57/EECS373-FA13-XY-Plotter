@@ -1,0 +1,10 @@
+#ifndef PLOTTER_PLATFORM_H_
+#define PLOTTER_PLATFORM_H_
+
+
+#define COREUARTAPB_0                   0x40050000U
+#define COREUARTAPB_1                   0x40050100U
+#define MOTOR_APB_INTERFACE_0           0x40050200U
+
+
+#endif /* PLOTTER_PLATFORM_H_*/

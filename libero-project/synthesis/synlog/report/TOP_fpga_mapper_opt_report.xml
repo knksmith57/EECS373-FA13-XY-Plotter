@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- *************************************************************************************
+FILE DESCRIPTION
+The file contains the optimization information from mapper to be displayed as part of the summary report.
+*******************************************************************************************-->
+<report_table display_priority="3" name="Optimizations Summary">
+<parameter tooltip="Non-gated/non-generated clock trees / Gated/generated clock trees" name="Combined Clock Conversion">
+<data>1 / 2</data>
+<report_link name="more">
+<data>C:\Users\kylebs\Desktop\FreeRTOS-lwIP-takeDeux\FreeRTOS-lwIP\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\synthesis\synlog\report\TOP_fpga_mapper_combined_clk.rpt</data>
+</report_link>
+</parameter>
+</report_table>

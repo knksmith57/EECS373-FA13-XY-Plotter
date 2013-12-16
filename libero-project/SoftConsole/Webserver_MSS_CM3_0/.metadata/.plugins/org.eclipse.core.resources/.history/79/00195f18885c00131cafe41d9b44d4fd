@@ -1,0 +1,136 @@
+/***************************************************************************
+ * (c) Copyright 2009 Actel Corporation.  All rights reserved.
+ *
+ *  Application demo for Smartfusion
+ *
+ *
+ * Author : Actel Application Team
+ * Rev     : 1.0.0.3
+ *
+ **************************************************************************/
+
+/**************************************************************************/
+/* Standard Includes */
+/**************************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+/**************************************************************************/
+/* Driver Includes */
+/**************************************************************************/
+
+#include "../BSP/oled_driver/oled.h"
+#include "../drivers/mss_gpio/mss_gpio.h"
+
+/**************************************************************************/
+/* RTOS Includes */
+/**************************************************************************/
+
+#include "FreeRTOS.h"
+#include "semphr.h"
+
+/**************************************************************************/
+/* Extern Declarations */
+/**************************************************************************/
+
+extern void delay ( volatile unsigned int n);
+extern volatile unsigned char   std_menu;
+extern xSemaphoreHandle         switchOneSemHndl;
+struct oled_data                write_data;
+
+#define NB_OF_MENUS 3
+#define FIRST_CHARACTER 0
+
+char *std_menu_str[NB_OF_MENUS] = { "SW1: Multimeter",
+                                    "SW1: Web Server",
+                                    "SW1: LED Test"
+                                  };
+
+/**************************************************************************/
+/* Functions to show the menu on OLED */
+/**************************************************************************/
+
+void menu_show(char *line1, char *line2)
+{
+    write_data.string1        = line1;
+    write_data.string2        = line2;
+    OLED_write_data(&write_data,BOTH_LINES);
+    return;
+}
+
+/**************************************************************************/
+/* Initialzing and configuring the GPIOs for SW1 and SW2 */
+/**************************************************************************/
+
+void switch_init(void)
+{
+    NVIC_EnableIRQ(GPIO8_IRQn);
+    MSS_GPIO_config( MSS_GPIO_8,
+                     MSS_GPIO_INPUT_MODE |
+                     MSS_GPIO_IRQ_EDGE_NEGATIVE );
+    MSS_GPIO_enable_irq( MSS_GPIO_8 );
+
+    NVIC_EnableIRQ(GPIO9_IRQn);
+    MSS_GPIO_config( MSS_GPIO_9,
+                     MSS_GPIO_INPUT_MODE |
+                     MSS_GPIO_IRQ_EDGE_NEGATIVE );
+    MSS_GPIO_enable_irq( MSS_GPIO_9 );
+}
+
+/**************************************************************************/
+/* Function for the delay loop counter */
+/**************************************************************************/
+
+void delay ( volatile unsigned int n) {
+    while(n!=0)
+    {
+        n--;
+    }
+}
+
+/**************************************************************************/
+/* Function to display the welcome text on OLED */
+/**************************************************************************/
+
+void oled_welcome_display(void)
+{
+    uint8_t j;
+    write_data.line1          = FIRST_LINE;
+    write_data.char_offset1   = FIRST_CHARACTER;
+    write_data.string1        = "Hi I am SmartFusion";
+
+    write_data.line2          = SECOND_LINE;
+    write_data.char_offset2   = FIRST_CHARACTER;
+    write_data.string2        = "Want to Play?";
+
+    write_data.contrast_val                 = OLED_CONTRAST_VAL;
+    write_data.on_off                       = OLED_HORIZ_SCROLL_OFF;
+    write_data.column_scrool_per_step       = OLED_HORIZ_SCROLL_STEP;
+    write_data.start_page                   = OLED_START_PAGE;
+    write_data.time_intrval_btw_scroll_step = OLED_HORIZ_SCROLL_TINVL;
+    write_data.end_page                     = OLED_END_PAGE;
+
+    OLED_write_data(&write_data,BOTH_LINES);
+    /*This delay is requied to show the menu for some time */
+    for(j=0;j<100;j++)
+    {
+        delay(100000);
+    }
+}
+
+/**************************************************************************/
+/* Task for managing the user inputs through switches */
+/**************************************************************************/
+
+void switch_one_task(void *para)
+{
+    while(1)
+    {
+        /* This Semaphore waits for SW1 interrupt (USER input)*/
+        xSemaphoreTake( switchOneSemHndl, portMAX_DELAY) ;
+        std_menu = (std_menu +1)% NB_OF_MENUS;
+        menu_show( std_menu_str[std_menu], "SW2: Menu Scroll");
+    }
+}
+

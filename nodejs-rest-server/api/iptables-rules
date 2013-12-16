@@ -1,0 +1,13 @@
+# Example iptable rules generated via iptables-save v1.4.4
+# this would imply that you are running the NodeJS server on 
+# localhost:8000
+*filter
+:INPUT ACCEPT [66457:29884996]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [47925:30948598]
+:fail2ban-ssh - [0:0]
+-A INPUT -p tcp -m multiport --dports 22 -j fail2ban-ssh 
+-A INPUT -p tcp -m tcp --dport 8000 -j ACCEPT 
+-A OUTPUT -p tcp -m tcp --sport 8000 -j ACCEPT 
+-A fail2ban-ssh -j RETURN 
+COMMIT

@@ -1,0 +1,33 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+O_SRCS := 
+C_SRCS := 
+S_UPPER_SRCS := 
+S_SRCS := 
+OBJ_SRCS := 
+MEMORYMAP := 
+OBJS := 
+C_DEPS := 
+SRECFILES := 
+IHEXFILES := 
+LISTINGS := 
+EXECUTABLE := 
+
+# Every subdirectory with source files must be described here
+SUBDIRS := \
+webclient \
+uip \
+resolv \
+. \
+mac \
+jsmn \
+application_tasks \
+FreeRTOS \
+FreeRTOS/portable/MemMang \
+FreeRTOS/portable/GCC/ARM_CM3 \
+BSP/spi_flash_driver \
+BSP/i2c_driver \
+BSP/emc_driver \
+

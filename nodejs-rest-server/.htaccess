@@ -1,0 +1,4 @@
+RewriteEngine on
+
+# Drawing Robot YouTube Demo Permalink
+RewriteRule   ^youtube$                   http://youtu.be/XTHgjDJv2EY  [L,R=301,NC]

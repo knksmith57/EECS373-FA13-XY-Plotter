@@ -1,0 +1,595 @@
+/* Standard Libs
+ * ========================================================================= */
+#include <stdio.h>
+#include <stdlib.h>
+#include <inttypes.h>
+
+/* Firmware
+ * ========================================================================= */
+#include "./drivers/mss_ethernet_mac/mss_ethernet_mac.h"
+#include "./drivers/mss_gpio/mss_gpio.h"
+#include "tcpip.h"
+#include "./plotter/plotter_platform.h"
+
+/* FreeRTOS
+ * ========================================================================= */
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "semphr.h"
+
+/* TCP/IP + HTTP Includes
+ * ========================================================================= */
+#include "uip.h"
+#include "uip_arp.h"
+#include "jsmn.h"
+
+/* Externs
+ * ========================================================================= */
+extern void delay(volatile unsigned int n);
+extern xSemaphoreHandle       	xSemHand_controller;
+extern xSemaphoreHandle       	xSemHand_nunchuck;
+extern xSemaphoreHandle       	xSemHand_http;
+extern xSemaphoreHandle       	xSemHand_plotter;
+
+extern unsigned char            my_ip[4];
+extern unsigned int             num_pkt_rx;
+extern unsigned char           	ip_known;
+extern unsigned char        	dhcp_ip_found;
+
+
+/* Macros
+ * ========================================================================= */
+#define OPEN_IP
+#define BUF                       	((struct uip_eth_hdr *)&uip_buf[0])
+#ifndef DEFAULT_NETMASK0
+#define DEFAULT_NETMASK0          	255
+#endif
+
+#ifndef DEFAULT_NETMASK1
+#define DEFAULT_NETMASK1          	255
+#endif
+
+#ifndef DEFAULT_NETMASK2
+#define DEFAULT_NETMASK2          	255
+#endif
+
+#ifndef DEFAULT_NETMASK3
+#define DEFAULT_NETMASK3          	0
+#endif
+#define TCP_PKT_SIZE              	1600
+#define IP_ADDR_LEN               	4
+#define PHY_ADDRESS               	1
+#define DHCP_ATTEMPTS             	20
+#define USER_RX_BUFF_SIZE         	1600
+
+#define JSMN_NUM_TOKENS 		 	100
+
+
+/* Globals
+ * ========================================================================= */
+char ethAddr[6] = {0xB8,0x27,0xEB,0xA4,0xA1,0xF0};  // pi
+// char ethAddr[6] = {0xEE,0xC5,0x37,0x3F,0xA1,0x30};  // actel
+// char ethAddr[6] = {0x00,0x24,0x81,0xc4,0xdf,0xae};  // EECS373-12
+
+static unsigned char DNS_IP[IP_ADDR_LEN]={8,8,8,8};
+
+static jsmn_parser JSMN_parser;
+jsmntok_t JSMN_tokens[JSMN_NUM_TOKENS];
+
+#define JSON_BUFFER_MAX_SIZE 		2048
+unsigned int JSON_buffer_size 		= 0;
+char JSON_buffer[JSON_BUFFER_MAX_SIZE];
+static char temp_buf[JSON_BUFFER_MAX_SIZE];
+
+#define PLOTTER_MAX_NUM_INSTRUCTIONS 200
+pcoord_t plotter_instructions[PLOTTER_MAX_NUM_INSTRUCTIONS];
+uint16_t num_queued_jobs, next_job_id, num_instructions, cur_instruction;
+uint8_t ready_for_next_instruction;
+
+static uint8_t http_init_done = 0, json_requested = 1;
+
+
+/* Function Definitions
+ * ========================================================================= */
+void init_mac(void);
+void uIP_init(void);
+void parse_json( char *data );
+
+void do_next_instruction( void ) {
+	ready_for_next_instruction = 0;
+
+	void PLOTTER_printCoord(&(instrs[cur_instruction]));
+
+	if(++cur_instruction >= num_instructions) {
+		// all done!
+		json_requested = 1;
+	}
+}
+
+// task to initialize tcp/ip + http client
+void init_http(void) {
+	printf("initializing HTTP\r\n");
+	// initializing shared data, grab the plotter semaphore
+	// xSemaphoreTake(xSemHand_plotter, portMAX_DELAY);
+
+    init_mac(); 		// low-level hardware MAC init in fabric
+    uIP_init(); 		// TCP/IP init
+    resolv_init(); 		// DNS resolve init
+
+    // configure DNS resolver to use Google's Public DNS @ 8.8.8.8
+    uip_ipaddr_t dns_ipaddr;
+    uip_ipaddr(dns_ipaddr, DNS_IP[0], DNS_IP[1], DNS_IP[2], DNS_IP[3]);
+    resolv_conf(dns_ipaddr);
+
+    webclient_init(); 	// HTTP init
+
+	http_init_done = 1;
+	ready_for_next_instruction = 0;
+
+    printf("http initialized!\r\n");
+    // xSemaphoreGive(xSemHand_plotter);
+}
+
+void vTask_http(void *para) {
+
+	int first_time = 1;
+    long lPeriodicTimer, lARPTimer, lPacketLength;
+    unsigned long ulTemp;
+
+	while(1) {
+		// wait for the http semaphore to become free
+		xSemaphoreTake( xSemHand_http, portMAX_DELAY );
+		// printf("in vTask_http! \r\n");
+
+		while(! http_init_done ) {
+			init_http();
+			http_init_done = 1;
+		}
+
+        lPeriodicTimer = 0;
+        lARPTimer = 0;
+
+        while(1)
+        {
+        	if(ready_for_next_instruction) {
+        		do_next_instruction();
+        	}
+
+            lPacketLength = MSS_MAC_rx_packet( uip_buf,
+                                               sizeof(uip_buf),
+                                               MSS_MAC_BLOCKING);
+            if(lPacketLength > 0)
+            {
+                /*  Set uip_len for uIP stack usage.*/
+                uip_len = (unsigned short)lPacketLength;
+
+                /*  Process incoming IP packets here.*/
+                if(BUF->type == htons(UIP_ETHTYPE_IP))
+                {
+                    uip_arp_ipin();
+                    uip_input();
+
+                    /*  If the above function invocation resulted in data that
+                         should be sent out on the network, the global variable
+                         uip_len is set to a value > 0.*/
+
+                    if(uip_len > 0)
+                    {
+                        uip_arp_out();
+                        MSS_MAC_tx_packet( uip_buf,
+                                           uip_len,
+                                           MSS_MAC_NONBLOCKING);
+                        uip_len = 0;
+                    }
+                }
+
+                /*  Process incoming ARP packets here. */
+
+                else if(BUF->type == htons(UIP_ETHTYPE_ARP))
+                {
+                    uip_arp_arpin();
+
+                    /*  If the above function invocation resulted in data that
+                         should be sent out on the network, the global variable
+                         uip_len is set to a value > 0  */
+
+                    if(uip_len > 0)
+                    {
+                        MSS_MAC_tx_packet(uip_buf,
+                                          uip_len,
+                                          MSS_MAC_NONBLOCKING);
+                        uip_len = 0;
+                    }
+                }
+            }
+
+            for(ulTemp = 0; ulTemp < UIP_CONNS; ulTemp++)
+            {
+                uip_periodic(ulTemp);
+                /* If the above function invocation resulted in data that
+                    should be sent out on the network, the global variable
+                    uip_len is set to a value > 0 */
+
+                if(uip_len > 0)
+                {
+                    uip_arp_out();
+                    MSS_MAC_tx_packet(uip_buf,
+                                      uip_len,
+                                      MSS_MAC_NONBLOCKING);
+                    uip_len = 0;
+                }
+            }
+
+            uip_arp_timer();
+
+            if(json_requested == 1) {
+            	http_received = 0;
+            	json_requested = 0;
+            	JSON_buffer_size = 0;
+            	printf("issuing GET request!\r\n");
+            	webclient_get_custom("209.208.62.135", "api.plotter.ksmith.io", 80, "/status");
+            }
+        }
+
+		/* ----------------- */
+	}
+}
+
+
+/**************************************************************************/
+/* Upgraded HTTP Client */
+/**************************************************************************/
+/*
+unsigned char
+http_request(char *host, u16_t port, char *file)
+{
+  struct uip_conn *conn;
+  uip_ipaddr_t *ipaddr;
+  static uip_ipaddr_t addr;
+
+  // First check if the host is an IP address.
+  ipaddr = &addr;
+  if(uiplib_ipaddrconv(host, (unsigned char *)addr) == 0) {
+	printf("looking up IP for host: %s \r\n", host);
+    ipaddr = (uip_ipaddr_t *)resolv_lookup(host);
+
+    if(ipaddr == NULL) {
+      printf("resolv_lookup returned NULL, queing up that host for DNS resolve\r\n");
+      resolv_query(host);
+      return 0;
+    }
+    printf("resolv_lookup returned: %u %u\r\n", ipaddr[0], ipaddr[1]);
+  }
+
+  conn = uip_connect(ipaddr, htons(port));
+
+  if(conn == NULL) {
+    return 0;
+  }
+
+  s.port = port;
+  strncpy(s.file, file, sizeof(s.file));
+  strncpy(s.host, host, sizeof(s.host));
+
+  init_connection();
+  return 1;
+}
+*/
+
+/**************************************************************************/
+/* uIP "callbacks"  */
+/**************************************************************************/
+
+void uip_log(char *m) {
+  printf("uIP log message: %s\n", m);
+}
+
+void resolv_found(char *name, u16_t *ipaddr) {
+  u16_t *ipaddr2;
+
+  if(ipaddr == NULL) {
+    printf("Host '%s' not found.\n", name);
+  } else {
+    printf("Found name '%s' = %d.%d.%d.%d\n", name,
+	   htons(ipaddr[0]) >> 8,
+	   htons(ipaddr[0]) & 0xff,
+	   htons(ipaddr[1]) >> 8,
+	   htons(ipaddr[1]) & 0xff);
+    /*    webclient_get("www.sics.se", 80, "/~adam/uip");*/
+  }
+}
+
+void webclient_closed(void) {
+  printf("Webclient: connection closed\r\n");
+}
+
+void webclient_aborted(void) {
+  printf("Webclient: connection aborted\r\n");
+}
+
+void webclient_timedout(void) {
+  printf("Webclient: connection timed out\r\n");
+}
+
+void webclient_connected(void) {
+  printf("Webclient: connected, waiting for data...\r\n");
+}
+
+void webclient_datahandler(char *data, u16_t len) {
+  printf("Webclient: got %d bytes of data.\r\n", len);
+  if(len == 0) {
+	  // when len == 0, we are done receiving data
+	  printf("total size of received JSON: %d \r\n", JSON_buffer_size);
+	  // printf(data);
+	  if(! http_received) {
+		  http_received = 1;
+		  parse_json(JSON_buffer);
+	  }
+  }
+  else if(JSON_buffer_size + len <= JSON_BUFFER_MAX_SIZE) {
+	strncpy((char *)JSON_buffer + JSON_buffer_size, data, len);
+    JSON_buffer_size += len;
+  }
+  else {
+	  printf("ERROR! JSON is too big for buffer!\r\n");
+  }
+}
+
+/**************************************************************************/
+/* JSMN - JSON Parser Functions */
+/**************************************************************************/
+void path_to_instructions(char *path, size_t len, pcoord_t *instrs) {
+	char *start = path, *end = path + len, *cur = path;
+	int16_t x_steps;
+	int16_t y_steps;
+	int num_matches;
+	uint8_t i, doneX, i_len;
+	char tbuf[5];
+
+	num_instructions = 0;
+	for(i=0; i < PLOTTER_MAX_NUM_INSTRUCTIONS; ++i) {
+		instrs[i].type = NOT_INIT;
+	}
+
+	// printf("Path Length: %d \n\r%s\n\r", len, path);
+
+	while(cur != end) {
+		if(*cur == 'M') {
+			// M
+			instrs[num_instructions].type = PLOTTER_MOVE;
+			doneX = 0;
+			cur++;
+		}
+		else if(*cur == 'L') {
+			// L
+			instrs[num_instructions].type = PLOTTER_LINE;
+			doneX = 0;
+			cur++;
+		}
+		else if(*cur == ' ') {
+			// whitespace
+			cur++;
+		}
+		else {
+			// digit
+			start = cur;
+			i_len = 0;
+			while(*cur != ' ' && *cur != 'L' && *cur != 'M' && cur != end) {
+				cur++; i_len++;
+			}
+			// found the edge of the digit
+			memcpy(tbuf, start, i_len);
+			tbuf[i_len] = '\0';
+			// printf("doneX == %d\n\rtbuf == %s\n\r", doneX, tbuf);
+
+			if(doneX) {
+				sscanf(tbuf, "%d", &y_steps);
+				// now done with X and Y
+				instrs[num_instructions].y = y_steps;
+				num_instructions++;
+
+			}
+			else {
+				sscanf(tbuf, "%d", &x_steps);
+				instrs[num_instructions].x = x_steps;
+				doneX = 1;
+			}
+		}
+
+
+		/*
+		if(*cur == 'M') {
+			instrs[num_instructions].type = PLOTTER_MOVE;
+
+			cur++;
+
+			num_matches = sscanf(cur, " %d %d ", &x_steps, &y_steps);
+			instrs[num_instructions].x = x_steps;
+			instrs[num_instructions].y = y_steps;
+
+			while ((*cur != 'M' || *cur != 'L') && cur != end) { cur++; }
+			printf("cur: %p @ [%d]\r\n", cur, (cur - start));
+		}
+		else if(*cur == 'L') {
+			instrs[num_instructions].type = PLOTTER_LINE;
+
+			cur++;
+
+			num_matches = sscanf(cur, " %d %d ", &x_steps, &y_steps);
+			instrs[num_instructions].x = x_steps;
+			instrs[num_instructions].y = y_steps;
+
+			while ((*cur != 'M' || *cur != 'L') && cur != end) { cur++; }
+			printf("cur: %p @ [%d]\r\n", cur, (cur - start));
+		}
+		printf("cur: %p @ [%d]\r\n", cur, (cur - start));
+		num_instructions++;
+		*/
+	}
+
+	printf("received %d motor instructions \r\n", num_instructions);
+	for(i=0; i<num_instructions; ++i) {
+		if(instrs[i].type == PLOTTER_LINE) {
+			printf("LINE");
+		}
+		else {
+			printf("MOVE");
+		}
+		printf(" to %d, %d\r\n", instrs[i].x, instrs[i].y);
+	}
+
+	// send the first instruction and set the flags so that fabric will take over after
+	cur_instruction = 0;
+	do_next_instruction();
+}
+
+
+void parse_json( char *data ) {
+	uint16_t i;
+	jsmnerr_t parser_result;
+
+	jsmn_init(&JSMN_parser);
+	parser_result = jsmn_parse(&JSMN_parser, data, JSMN_tokens, JSMN_NUM_TOKENS);
+
+	if(parser_result == JSMN_SUCCESS) {
+		// printf("successfully parsed JSON! \r\n");
+		// printf("%s\r\n", data);
+		for(i=0; i<JSMN_NUM_TOKENS; ++i) {
+			jsmntok_t *curTok = JSMN_tokens + i;
+			if(curTok->type == JSMN_STRING) {
+				memcpy(temp_buf, (char *)data + (curTok->start), (curTok->end) - (curTok->start));
+				temp_buf[(curTok->end) - (curTok->start)] = '\0';
+				if(strcmp("queued_jobs", temp_buf) == 0) {
+					// the next token will be the number of queued jobs
+					curTok++; i++;
+					memcpy(temp_buf, (char *)data + (curTok->start), (curTok->end) - (curTok->start));
+					sscanf(temp_buf, "%u", &num_queued_jobs);
+				}
+				else if(strcmp("id", temp_buf) == 0) {
+					// the next token will be the job id
+					curTok++; i++;
+					memcpy(temp_buf, (char *)data + (curTok->start), (curTok->end) - (curTok->start));
+					sscanf(temp_buf, "%u", &next_job_id);
+				}
+				else if(strcmp("path", temp_buf) == 0) {
+					// the next token will be the SVG Path
+					curTok++; i++;
+					memcpy(temp_buf, (char *)data + (curTok->start), (curTok->end) - (curTok->start));
+
+					// Convert SVG Path to pinstr_t structs here...
+					// TODO
+					path_to_instructions(temp_buf, (curTok->end) - (curTok->start), plotter_instructions);
+				}
+			}
+			// printf(" %d -> %d \t(%d) \r\n", curTok->start, curTok->end, curTok->size);
+		}
+
+		printf("Current job: %d\r\nNumber of queued jobs: %d jobs\r\n", next_job_id, num_queued_jobs);
+	}
+	else {
+		printf("~~ ERROR parsing JSON :( \r\n");
+	}
+}
+
+
+/**************************************************************************/
+/* Function for uIP initialization */
+/**************************************************************************/
+void uIP_init() {
+	// printf("initializing uIP with IP: %u.%u.%u.%u \r\n", my_ip[0], my_ip[1], my_ip[2], my_ip[3]);
+    uip_ipaddr_t ipaddr;
+    static struct uip_eth_addr sTempAddr;
+
+    /* init tcp/ip stack */
+    uip_init();
+
+    uip_ipaddr(ipaddr, my_ip[0], my_ip[1], my_ip[2], my_ip[3]);
+    uip_sethostaddr(ipaddr);
+
+    uip_ipaddr(ipaddr, my_ip[0],my_ip[1],my_ip[2],1);
+      uip_setdraddr(ipaddr);
+
+    uip_ipaddr(ipaddr,
+               DEFAULT_NETMASK0,
+               DEFAULT_NETMASK1,
+               DEFAULT_NETMASK2,
+               DEFAULT_NETMASK3);
+    uip_setnetmask(ipaddr);
+
+    /* set mac address */
+    printf("initializing:\t ethernet MAC to %x:%x:%x:%x:%x:%x \r\n", ethAddr[0],ethAddr[1],ethAddr[2],ethAddr[3],ethAddr[4],ethAddr[5]);
+    sTempAddr.addr[0] = ethAddr[0];
+    sTempAddr.addr[1] = ethAddr[1];
+    sTempAddr.addr[2] = ethAddr[2];
+    sTempAddr.addr[3] = ethAddr[3];
+    sTempAddr.addr[4] = ethAddr[4];
+    sTempAddr.addr[5] = ethAddr[5];
+
+    uip_setethaddr(sTempAddr);
+}
+
+/**************************************************************************/
+/* Function to Initialize the MAC, setting the MAC address and */
+/* fetches the IP address */
+/**************************************************************************/
+void init_mac() {
+    uint32_t time_out = 0;
+    int32_t mac_cfg;
+    int32_t i;
+    int32_t rx_size;
+    uint8_t rx_buffer[USER_RX_BUFF_SIZE];
+    MSS_MAC_init(PHY_ADDRESS );
+
+    // Configure the MAC
+    mac_cfg = MSS_MAC_get_configuration();
+
+    mac_cfg &= ~( MSS_MAC_CFG_STORE_AND_FORWARD | MSS_MAC_CFG_PASS_BAD_FRAMES );
+    mac_cfg |=
+    MSS_MAC_CFG_RECEIVE_ALL |
+    MSS_MAC_CFG_PROMISCUOUS_MODE |
+    MSS_MAC_CFG_FULL_DUPLEX_MODE |
+    MSS_MAC_CFG_TRANSMIT_THRESHOLD_MODE |
+    MSS_MAC_CFG_THRESHOLD_CONTROL_00;
+    MSS_MAC_configure(mac_cfg );
+    MSS_MAC_set_mac_address((uint8_t *)ethAddr);
+    tcp_init();
+
+    ip_known = 0;
+    num_pkt_rx = 0;
+    time_out = 0;
+
+    for (i = 0; i < 1600; i++) {
+        rx_buffer[i] = 0;
+    }
+
+    /* Logic to get the open IP address */
+#ifdef OPEN_IP
+    printf( "initializing:\t DHCP client\r\ninitializing:\t Requesting dynamic IP" );
+    do
+    {
+    	printf(".");
+        for (i = 0; i < 1600; i++) {
+            rx_buffer[i] = 0;
+        }
+    	send_bootp_packet(0);
+        do
+        {
+            rx_size = MSS_MAC_rx_pckt_size();
+            time_out++;
+            if(dhcp_ip_found) {
+            	printf("\r\nDHCP IP found!");
+            	break;
+            }
+         }while ( rx_size == 0 && (time_out < 3000000));
+         MSS_MAC_rx_packet( rx_buffer, USER_RX_BUFF_SIZE, MSS_MAC_NONBLOCKING );
+         num_pkt_rx++;
+         process_packet( rx_buffer );
+    }while(!dhcp_ip_found);
+
+    if(dhcp_ip_found) {
+    	printf(" received IP address of %i.%i.%i.%i\r\n", my_ip[0], my_ip[1], my_ip[2], my_ip[3]);
+    }
+#endif
+
+}

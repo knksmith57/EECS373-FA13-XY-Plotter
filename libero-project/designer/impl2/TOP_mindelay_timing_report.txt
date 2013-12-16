@@ -1,0 +1,984 @@
+Timing Report Min Delay Analysis
+
+SmartTime Version v11.0
+Microsemi Corporation - Actel Designer Software Release v11.0 (Version 11.0.0.23)
+Copyright (c) 1989-2013
+Date: Mon Dec 09 11:51:52 2013
+
+
+Design: TOP
+Family: SmartFusion
+Die: A2F200M3F
+Package: 484 FBGA
+Temperature: COM
+Voltage: COM
+Speed Grade: -1
+Design State: Post-Layout
+Data source: Silicon verified
+Min Operating Condition: BEST
+Max Operating Condition: WORST
+Using Enhanced Min Delay Analysis
+Scenario for Timing Analysis: Primary
+
+
+-----------------------------------------------------
+SUMMARY
+
+Clock Domain:               mss_aclk
+Period (ns):                N/A
+Frequency (MHz):            N/A
+Required Period (ns):       N/A
+Required Frequency (MHz):   N/A
+External Setup (ns):        N/A
+External Hold (ns):         N/A
+Min Clock-To-Out (ns):      N/A
+Max Clock-To-Out (ns):      N/A
+
+Clock Domain:               mss_fabric_interface_clock
+Period (ns):                18.328
+Frequency (MHz):            54.561
+Required Period (ns):       N/A
+Required Frequency (MHz):   N/A
+External Setup (ns):        N/A
+External Hold (ns):         N/A
+Min Clock-To-Out (ns):      N/A
+Max Clock-To-Out (ns):      N/A
+
+Clock Domain:               mss_pclk1
+Period (ns):                N/A
+Frequency (MHz):            N/A
+Required Period (ns):       N/A
+Required Frequency (MHz):   N/A
+External Setup (ns):        3.362
+External Hold (ns):         -1.115
+Min Clock-To-Out (ns):      3.992
+Max Clock-To-Out (ns):      7.848
+
+Clock Domain:               mss_ccc_gla0
+Period (ns):                10.000
+Frequency (MHz):            100.000
+Required Period (ns):       N/A
+Required Frequency (MHz):   N/A
+External Setup (ns):        -1.574
+External Hold (ns):         1.448
+Min Clock-To-Out (ns):      N/A
+Max Clock-To-Out (ns):      N/A
+
+Clock Domain:               mss_ccc_glb
+Period (ns):                18.377
+Frequency (MHz):            54.416
+Required Period (ns):       N/A
+Required Frequency (MHz):   N/A
+External Setup (ns):        9.152
+External Hold (ns):         -0.801
+Min Clock-To-Out (ns):      2.030
+Max Clock-To-Out (ns):      13.149
+
+Clock Domain:               mss_ccc_macclk
+Period (ns):                20.000
+Frequency (MHz):            50.000
+Required Period (ns):       N/A
+Required Frequency (MHz):   N/A
+External Setup (ns):        N/A
+External Hold (ns):         N/A
+Min Clock-To-Out (ns):      N/A
+Max Clock-To-Out (ns):      N/A
+
+Clock Domain:               Webserver_0/MSS_CCC_0/I_XTLOSC:CLKOUT
+Period (ns):                N/A
+Frequency (MHz):            N/A
+Required Period (ns):       N/A
+Required Frequency (MHz):   N/A
+External Setup (ns):        N/A
+External Hold (ns):         N/A
+Min Clock-To-Out (ns):      2.634
+Max Clock-To-Out (ns):      5.040
+
+                            Input to Output
+Min Delay (ns):             N/A
+Max Delay (ns):             N/A
+
+END SUMMARY
+-----------------------------------------------------
+
+Clock Domain mss_aclk
+
+SET Register to Register
+
+No Path
+
+END SET Register to Register
+
+----------------------------------------------------
+
+SET External Hold
+
+No Path
+
+END SET External Hold
+
+----------------------------------------------------
+
+SET Clock to Output
+
+No Path
+
+END SET Clock to Output
+
+----------------------------------------------------
+
+SET Register to Asynchronous
+
+No Path
+
+END SET Register to Asynchronous
+
+----------------------------------------------------
+
+SET External Removal
+
+No Path
+
+END SET External Removal
+
+----------------------------------------------------
+
+SET Asynchronous to Register
+
+No Path
+
+END SET Asynchronous to Register
+
+----------------------------------------------------
+
+Clock Domain mss_fabric_interface_clock
+
+SET Register to Register
+
+Path 1
+  From:                        Webserver_0/MSS_ADLIB_INST/U_CORE:GLB
+  To:                          Webserver_0/MSS_ADLIB_INST/U_CORE:MSSPRDATA[15]
+  Delay (ns):                  3.401
+  Slack (ns):
+  Arrival (ns):                3.401
+  Required (ns):
+  Hold (ns):                   1.379
+
+Path 2
+  From:                        Webserver_0/MSS_ADLIB_INST/U_CORE:GLB
+  To:                          Webserver_0/MSS_ADLIB_INST/U_CORE:MSSPREADY
+  Delay (ns):                  3.144
+  Slack (ns):
+  Arrival (ns):                3.144
+  Required (ns):
+  Hold (ns):                   1.103
+
+Path 3
+  From:                        Webserver_0/MSS_ADLIB_INST/U_CORE:GLB
+  To:                          Webserver_0/MSS_ADLIB_INST/U_CORE:MSSPRDATA[8]
+  Delay (ns):                  3.474
+  Slack (ns):
+  Arrival (ns):                3.474
+  Required (ns):
+  Hold (ns):                   1.395
+
+Path 4
+  From:                        Webserver_0/MSS_ADLIB_INST/U_CORE:GLB
+  To:                          Webserver_0/MSS_ADLIB_INST/U_CORE:MSSPRDATA[9]
+  Delay (ns):                  3.482
+  Slack (ns):
+  Arrival (ns):                3.482
+  Required (ns):
+  Hold (ns):                   1.393
+
+Path 5
+  From:                        Webserver_0/MSS_ADLIB_INST/U_CORE:GLB
+  To:                          Webserver_0/MSS_ADLIB_INST/U_CORE:MSSPRDATA[30]
+  Delay (ns):                  3.552
+  Slack (ns):
+  Arrival (ns):                3.552
+  Required (ns):
+  Hold (ns):                   1.381
+
+
+Expanded Path 1
+  From: Webserver_0/MSS_ADLIB_INST/U_CORE:GLB
+  To: Webserver_0/MSS_ADLIB_INST/U_CORE:MSSPRDATA[15]
+  data arrival time                              3.401
+  data required time                         -   N/C
+  slack                                          N/C
+  ________________________________________________________
+  Data arrival time calculation
+  0.000                        mss_fabric_interface_clock
+               +     0.000          Clock source
+  0.000                        Webserver_0/MSS_ADLIB_INST/U_CORE:GLB (r)
+               +     1.674          cell: ADLIB:MSS_APB_IP
+  1.674                        Webserver_0/MSS_ADLIB_INST/U_CORE:MSSPADDR[11] (r)
+               +     0.060          net: Webserver_0/MSS_ADLIB_INST/MSSPADDR[11]INT_NET
+  1.734                        Webserver_0/MSS_ADLIB_INST/U_33:PIN3INT (r)
+               +     0.040          cell: ADLIB:MSS_IF
+  1.774                        Webserver_0/MSS_ADLIB_INST/U_33:PIN3 (r)
+               +     0.697          net: CoreAPB3_1_APBmslave0_PADDR[11]
+  2.471                        CoreAPB3_1/CAPB3O0OI_1_0[0]:B (r)
+               +     0.156          cell: ADLIB:NOR3A
+  2.627                        CoreAPB3_1/CAPB3O0OI_1_0[0]:Y (f)
+               +     0.186          net: CoreAPB3_1_APBmslave2_PSELx_1_0
+  2.813                        CoreAPB3_1/CAPB3lOII/PRDATA_15:A (f)
+               +     0.201          cell: ADLIB:NOR3C
+  3.014                        CoreAPB3_1/CAPB3lOII/PRDATA_15:Y (f)
+               +     0.139          net: Webserver_0_MSS_MASTER_APB_PRDATA[15]
+  3.153                        Webserver_0/MSS_ADLIB_INST/U_41:PIN6 (f)
+               +     0.044          cell: ADLIB:MSS_IF
+  3.197                        Webserver_0/MSS_ADLIB_INST/U_41:PIN6INT (f)
+               +     0.204          net: Webserver_0/MSS_ADLIB_INST/MSSPRDATA[15]INT_NET
+  3.401                        Webserver_0/MSS_ADLIB_INST/U_CORE:MSSPRDATA[15] (f)
+                                    
+  3.401                        data arrival time
+  ________________________________________________________
+  Data required time calculation
+  N/C                          mss_fabric_interface_clock
+               +     0.000          Clock source
+  N/C                          Webserver_0/MSS_ADLIB_INST/U_CORE:GLB (r)
+               +     1.379          Library hold time: ADLIB:MSS_APB_IP
+  N/C                          Webserver_0/MSS_ADLIB_INST/U_CORE:MSSPRDATA[15]
+
+
+END SET Register to Register
+
+----------------------------------------------------
+
+SET External Hold
+
+No Path
+
+END SET External Hold
+
+----------------------------------------------------
+
+SET Clock to Output
+
+No Path
+
+END SET Clock to Output
+
+----------------------------------------------------
+
+SET Register to Asynchronous
+
+No Path
+
+END SET Register to Asynchronous
+
+----------------------------------------------------
+
+SET External Removal
+
+No Path
+
+END SET External Removal
+
+----------------------------------------------------
+
+SET Asynchronous to Register
+
+No Path
+
+END SET Asynchronous to Register
+
+----------------------------------------------------
+
+Clock Domain mss_pclk1
+
+SET Register to Register
+
+No Path
+
+END SET Register to Register
+
+----------------------------------------------------
+
+SET External Hold
+
+Path 1
+  From:                        F2M_GPI_9
+  To:                          Webserver_0/MSS_ADLIB_INST/U_CORE:GPI[9]
+  Delay (ns):                  2.091
+  Slack (ns):
+  Arrival (ns):                2.091
+  Required (ns):
+  Hold (ns):                   0.976
+  External Hold (ns):          -1.115
+
+
+Expanded Path 1
+  From: F2M_GPI_9
+  To: Webserver_0/MSS_ADLIB_INST/U_CORE:GPI[9]
+  data arrival time                              2.091
+  data required time                         -   N/C
+  slack                                          N/C
+  ________________________________________________________
+  Data arrival time calculation
+  0.000                        F2M_GPI_9 (f)
+               +     0.000          net: F2M_GPI_9
+  0.000                        F2M_GPI_9_pad/U0/U0:PAD (f)
+               +     0.276          cell: ADLIB:IOPAD_IN
+  0.276                        F2M_GPI_9_pad/U0/U0:Y (f)
+               +     0.000          net: F2M_GPI_9_pad/U0/NET1
+  0.276                        F2M_GPI_9_pad/U0/U1:YIN (f)
+               +     0.018          cell: ADLIB:IOIN_IB
+  0.294                        F2M_GPI_9_pad/U0/U1:Y (f)
+               +     1.707          net: F2M_GPI_9_c
+  2.001                        Webserver_0/MSS_ADLIB_INST/U_29:PIN5 (f)
+               +     0.090          cell: ADLIB:MSS_IF
+  2.091                        Webserver_0/MSS_ADLIB_INST/U_29:PIN5INT (f)
+               +     0.000          net: Webserver_0/MSS_ADLIB_INST/GPI[9]INT_NET
+  2.091                        Webserver_0/MSS_ADLIB_INST/U_CORE:GPI[9] (f)
+                                    
+  2.091                        data arrival time
+  ________________________________________________________
+  Data required time calculation
+  N/C                          mss_pclk1
+               +     0.000          Clock source
+  N/C                          Webserver_0/MSS_ADLIB_INST/U_CORE:PCLK1 (r)
+               +     0.976          Library hold time: ADLIB:MSS_APB_IP
+  N/C                          Webserver_0/MSS_ADLIB_INST/U_CORE:GPI[9]
+
+
+END SET External Hold
+
+----------------------------------------------------
+
+SET Clock to Output
+
+Path 1
+  From:                        Webserver_0/MSS_ADLIB_INST/U_CORE:PCLK1
+  To:                          M2F_GPO_10
+  Delay (ns):                  3.992
+  Slack (ns):
+  Arrival (ns):                3.992
+  Required (ns):
+  Clock to Out (ns):           3.992
+
+
+Expanded Path 1
+  From: Webserver_0/MSS_ADLIB_INST/U_CORE:PCLK1
+  To: M2F_GPO_10
+  data arrival time                              3.992
+  data required time                         -   N/C
+  slack                                          N/C
+  ________________________________________________________
+  Data arrival time calculation
+  0.000                        mss_pclk1
+               +     0.000          Clock source
+  0.000                        Webserver_0/MSS_ADLIB_INST/U_CORE:PCLK1 (r)
+               +     1.962          cell: ADLIB:MSS_APB_IP
+  1.962                        Webserver_0/MSS_ADLIB_INST/U_CORE:GPO[10] (r)
+               +     0.000          net: Webserver_0/MSS_ADLIB_INST/GPO[10]INT_NET
+  1.962                        Webserver_0/MSS_ADLIB_INST/U_0:PIN1INT (r)
+               +     0.041          cell: ADLIB:MSS_IF
+  2.003                        Webserver_0/MSS_ADLIB_INST/U_0:PIN1 (r)
+               +     0.594          net: Webserver_0/GPO_net_0[10]
+  2.597                        M2F_GPO_10_pad/U0/U1:D (r)
+               +     0.279          cell: ADLIB:IOTRI_OB_EB
+  2.876                        M2F_GPO_10_pad/U0/U1:DOUT (r)
+               +     0.000          net: M2F_GPO_10_pad/U0/NET1
+  2.876                        M2F_GPO_10_pad/U0/U0:D (r)
+               +     1.116          cell: ADLIB:IOPAD_TRI
+  3.992                        M2F_GPO_10_pad/U0/U0:PAD (r)
+               +     0.000          net: M2F_GPO_10
+  3.992                        M2F_GPO_10 (r)
+                                    
+  3.992                        data arrival time
+  ________________________________________________________
+  Data required time calculation
+  N/C                          Webserver_0/MSS_ADLIB_INST/U_CORE:PCLK1 (r)
+                                    
+  N/C                          M2F_GPO_10 (r)
+                                    
+  N/C                          data required time
+
+
+END SET Clock to Output
+
+----------------------------------------------------
+
+SET Register to Asynchronous
+
+No Path
+
+END SET Register to Asynchronous
+
+----------------------------------------------------
+
+SET External Removal
+
+No Path
+
+END SET External Removal
+
+----------------------------------------------------
+
+SET Asynchronous to Register
+
+No Path
+
+END SET Asynchronous to Register
+
+----------------------------------------------------
+
+Clock Domain mss_ccc_gla0
+
+Info: The maximum frequency of this clock domain is limited by the period of pin Webserver_0/MSS_ADLIB_INST/U_CORE:FCLK
+
+SET Register to Register
+
+No Path
+
+END SET Register to Register
+
+----------------------------------------------------
+
+SET External Hold
+
+Path 1
+  From:                        MSS_RESET_N
+  To:                          Webserver_0/MSS_ADLIB_INST/U_CORE:MSSRESETn
+  Delay (ns):                  0.276
+  Slack (ns):
+  Arrival (ns):                0.276
+  Required (ns):
+  Hold (ns):                   1.354
+  External Hold (ns):          1.448
+
+
+Expanded Path 1
+  From: MSS_RESET_N
+  To: Webserver_0/MSS_ADLIB_INST/U_CORE:MSSRESETn
+  data arrival time                              0.276
+  data required time                         -   N/C
+  slack                                          N/C
+  ________________________________________________________
+  Data arrival time calculation
+  0.000                        MSS_RESET_N (f)
+               +     0.000          net: MSS_RESET_N
+  0.000                        Webserver_0/MSS_RESET_0_MSS_RESET_N:PAD (f)
+               +     0.276          cell: ADLIB:IOPAD_IN
+  0.276                        Webserver_0/MSS_RESET_0_MSS_RESET_N:Y (f)
+               +     0.000          net: Webserver_0/MSS_RESET_0_MSS_RESET_N_Y
+  0.276                        Webserver_0/MSS_ADLIB_INST/U_CORE:MSSRESETn (f)
+                                    
+  0.276                        data arrival time
+  ________________________________________________________
+  Data required time calculation
+  N/C                          mss_ccc_gla0
+               +     0.000          Clock source
+  N/C                          Webserver_0/MSS_CCC_0/I_MSSCCC/U_MSSCCC:GLAMSS (r)
+               +     0.370          net: Webserver_0/GLA0
+  N/C                          Webserver_0/MSS_ADLIB_INST/U_CORE:FCLK (r)
+               +     1.354          Library hold time: ADLIB:MSS_APB_IP
+  N/C                          Webserver_0/MSS_ADLIB_INST/U_CORE:MSSRESETn
+
+
+END SET External Hold
+
+----------------------------------------------------
+
+SET Clock to Output
+
+No Path
+
+END SET Clock to Output
+
+----------------------------------------------------
+
+SET Register to Asynchronous
+
+No Path
+
+END SET Register to Asynchronous
+
+----------------------------------------------------
+
+SET External Removal
+
+No Path
+
+END SET External Removal
+
+----------------------------------------------------
+
+SET Asynchronous to Register
+
+No Path
+
+END SET Asynchronous to Register
+
+----------------------------------------------------
+
+Clock Domain mss_ccc_glb
+
+SET Register to Register
+
+Path 1
+  From:                        CoreUARTapb_0/CUARTOOlI/CUARTIl1/CUARTI1Ol[1]:CLK
+  To:                          CoreUARTapb_0/CUARTOOlI/CUARTIl1/CUARTOOl[1]:D
+  Delay (ns):                  0.397
+  Slack (ns):
+  Arrival (ns):                0.718
+  Required (ns):
+  Hold (ns):                   0.000
+
+Path 2
+  From:                        CoreUARTapb_1/CUARTOOlI/CUARTIl1/CUARTI1Ol[3]:CLK
+  To:                          CoreUARTapb_1/CUARTOOlI/CUARTIl1/CUARTOOl[3]:D
+  Delay (ns):                  0.397
+  Slack (ns):
+  Arrival (ns):                0.717
+  Required (ns):
+  Hold (ns):                   0.000
+
+Path 3
+  From:                        CoreUARTapb_1/CUARTOOlI/CUARTI0I[7]:CLK
+  To:                          CoreUARTapb_1/CUARTOOlI/CUARTl10/CUARTl1ll[7]:D
+  Delay (ns):                  0.397
+  Slack (ns):
+  Arrival (ns):                0.703
+  Required (ns):
+  Hold (ns):                   0.000
+
+Path 4
+  From:                        CoreUARTapb_1/CUARTOOlI/CUARTIl1/CUARTI1Ol[0]:CLK
+  To:                          CoreUARTapb_1/CUARTOOlI/CUARTIl1/CUARTOOl[0]:D
+  Delay (ns):                  0.397
+  Slack (ns):
+  Arrival (ns):                0.711
+  Required (ns):
+  Hold (ns):                   0.000
+
+Path 5
+  From:                        CoreUARTapb_0/CUARTOOlI/CUARTIl1/CUARTI1Ol[0]:CLK
+  To:                          CoreUARTapb_0/CUARTOOlI/CUARTIl1/CUARTOOl[0]:D
+  Delay (ns):                  0.397
+  Slack (ns):
+  Arrival (ns):                0.705
+  Required (ns):
+  Hold (ns):                   0.000
+
+
+Expanded Path 1
+  From: CoreUARTapb_0/CUARTOOlI/CUARTIl1/CUARTI1Ol[1]:CLK
+  To: CoreUARTapb_0/CUARTOOlI/CUARTIl1/CUARTOOl[1]:D
+  data arrival time                              0.718
+  data required time                         -   N/C
+  slack                                          N/C
+  ________________________________________________________
+  Data arrival time calculation
+  0.000                        mss_ccc_glb
+               +     0.000          Clock source
+  0.000                        Webserver_0/MSS_CCC_0/I_MSSCCC/U_MSSCCC:GLB (r)
+               +     0.000          net: Webserver_0/MSS_CCC_0/I_MSSCCC/GLB_INT
+  0.000                        Webserver_0/MSS_CCC_0/I_MSSCCC/U_TILE2:PIN5INT (r)
+               +     0.000          cell: ADLIB:MSS_CCC_GL_IF
+  0.000                        Webserver_0/MSS_CCC_0/I_MSSCCC/U_TILE2:PIN5 (r)
+               +     0.321          net: FAB_CLK
+  0.321                        CoreUARTapb_0/CUARTOOlI/CUARTIl1/CUARTI1Ol[1]:CLK (r)
+               +     0.248          cell: ADLIB:DFN1E1C0
+  0.569                        CoreUARTapb_0/CUARTOOlI/CUARTIl1/CUARTI1Ol[1]:Q (r)
+               +     0.149          net: CoreUARTapb_0/CUARTOOlI/CUARTIl1/CUARTI1Ol[1]
+  0.718                        CoreUARTapb_0/CUARTOOlI/CUARTIl1/CUARTOOl[1]:D (r)
+                                    
+  0.718                        data arrival time
+  ________________________________________________________
+  Data required time calculation
+  N/C                          mss_ccc_glb
+               +     0.000          Clock source
+  N/C                          Webserver_0/MSS_CCC_0/I_MSSCCC/U_MSSCCC:GLB (r)
+               +     0.000          net: Webserver_0/MSS_CCC_0/I_MSSCCC/GLB_INT
+  N/C                          Webserver_0/MSS_CCC_0/I_MSSCCC/U_TILE2:PIN5INT (r)
+               +     0.000          cell: ADLIB:MSS_CCC_GL_IF
+  N/C                          Webserver_0/MSS_CCC_0/I_MSSCCC/U_TILE2:PIN5 (r)
+               +     0.342          net: FAB_CLK
+  N/C                          CoreUARTapb_0/CUARTOOlI/CUARTIl1/CUARTOOl[1]:CLK (r)
+               +     0.000          Library hold time: ADLIB:DFN1E1C0
+  N/C                          CoreUARTapb_0/CUARTOOlI/CUARTIl1/CUARTOOl[1]:D
+
+
+END SET Register to Register
+
+----------------------------------------------------
+
+SET External Hold
+
+Path 1
+  From:                        RX
+  To:                          uart_irq_delay_0/last_input[0]:D
+  Delay (ns):                  1.163
+  Slack (ns):
+  Arrival (ns):                1.163
+  Required (ns):
+  Hold (ns):                   0.000
+  External Hold (ns):          -0.801
+
+Path 2
+  From:                        RX
+  To:                          CoreUARTapb_0/CUARTOOlI/CUARTIl1/CUARTlOIl[2]:D
+  Delay (ns):                  1.267
+  Slack (ns):
+  Arrival (ns):                1.267
+  Required (ns):
+  Hold (ns):                   0.000
+  External Hold (ns):          -0.908
+
+Path 3
+  From:                        global_reset
+  To:                          motor_apb_interface_0/global_position_x[9]:D
+  Delay (ns):                  2.066
+  Slack (ns):
+  Arrival (ns):                2.066
+  Required (ns):
+  Hold (ns):                   0.000
+  External Hold (ns):          -1.693
+
+Path 4
+  From:                        global_reset
+  To:                          motor_apb_interface_0/num_step_movement_y[7]:D
+  Delay (ns):                  2.064
+  Slack (ns):
+  Arrival (ns):                2.064
+  Required (ns):
+  Hold (ns):                   0.000
+  External Hold (ns):          -1.694
+
+Path 5
+  From:                        global_reset
+  To:                          motor_apb_interface_0/num_step_movement_y[10]:D
+  Delay (ns):                  2.064
+  Slack (ns):
+  Arrival (ns):                2.064
+  Required (ns):
+  Hold (ns):                   0.000
+  External Hold (ns):          -1.694
+
+
+Expanded Path 1
+  From: RX
+  To: uart_irq_delay_0/last_input[0]:D
+  data arrival time                              1.163
+  data required time                         -   N/C
+  slack                                          N/C
+  ________________________________________________________
+  Data arrival time calculation
+  0.000                        RX (f)
+               +     0.000          net: RX
+  0.000                        RX_pad/U0/U0:PAD (f)
+               +     0.276          cell: ADLIB:IOPAD_IN
+  0.276                        RX_pad/U0/U0:Y (f)
+               +     0.000          net: RX_pad/U0/NET1
+  0.276                        RX_pad/U0/U1:YIN (f)
+               +     0.018          cell: ADLIB:IOIN_IB
+  0.294                        RX_pad/U0/U1:Y (f)
+               +     0.546          net: RX_c
+  0.840                        uart_irq_delay_0/last_input_RNO[0]:A (f)
+               +     0.167          cell: ADLIB:NOR2B
+  1.007                        uart_irq_delay_0/last_input_RNO[0]:Y (f)
+               +     0.156          net: uart_irq_delay_0/N_12
+  1.163                        uart_irq_delay_0/last_input[0]:D (f)
+                                    
+  1.163                        data arrival time
+  ________________________________________________________
+  Data required time calculation
+  N/C                          mss_ccc_glb
+               +     0.000          Clock source
+  N/C                          Webserver_0/MSS_CCC_0/I_MSSCCC/U_MSSCCC:GLB (r)
+               +     0.000          net: Webserver_0/MSS_CCC_0/I_MSSCCC/GLB_INT
+  N/C                          Webserver_0/MSS_CCC_0/I_MSSCCC/U_TILE2:PIN5INT (r)
+               +     0.000          cell: ADLIB:MSS_CCC_GL_IF
+  N/C                          Webserver_0/MSS_CCC_0/I_MSSCCC/U_TILE2:PIN5 (r)
+               +     0.362          net: FAB_CLK
+  N/C                          uart_irq_delay_0/last_input[0]:CLK (r)
+               +     0.000          Library hold time: ADLIB:DFN1
+  N/C                          uart_irq_delay_0/last_input[0]:D
+
+
+END SET External Hold
+
+----------------------------------------------------
+
+SET Clock to Output
+
+Path 1
+  From:                        uart_irq_delay_0/edge_detected:CLK
+  To:                          edge_detected
+  Delay (ns):                  1.734
+  Slack (ns):
+  Arrival (ns):                2.030
+  Required (ns):
+  Clock to Out (ns):           2.030
+
+Path 2
+  From:                        stepper_motor_control_0/motor_output[2]:CLK
+  To:                          motor_output[2]
+  Delay (ns):                  2.191
+  Slack (ns):
+  Arrival (ns):                2.501
+  Required (ns):
+  Clock to Out (ns):           2.501
+
+Path 3
+  From:                        uart_irq_delay_0/int:CLK
+  To:                          int
+  Delay (ns):                  2.275
+  Slack (ns):
+  Arrival (ns):                2.558
+  Required (ns):
+  Clock to Out (ns):           2.558
+
+Path 4
+  From:                        stepper_motor_control_0/motor_output[1]:CLK
+  To:                          motor_output[1]
+  Delay (ns):                  2.254
+  Slack (ns):
+  Arrival (ns):                2.564
+  Required (ns):
+  Clock to Out (ns):           2.564
+
+Path 5
+  From:                        stepper_motor_control_0/motor_output[3]:CLK
+  To:                          motor_output[3]
+  Delay (ns):                  2.441
+  Slack (ns):
+  Arrival (ns):                2.736
+  Required (ns):
+  Clock to Out (ns):           2.736
+
+
+Expanded Path 1
+  From: uart_irq_delay_0/edge_detected:CLK
+  To: edge_detected
+  data arrival time                              2.030
+  data required time                         -   N/C
+  slack                                          N/C
+  ________________________________________________________
+  Data arrival time calculation
+  0.000                        mss_ccc_glb
+               +     0.000          Clock source
+  0.000                        Webserver_0/MSS_CCC_0/I_MSSCCC/U_MSSCCC:GLB (r)
+               +     0.000          net: Webserver_0/MSS_CCC_0/I_MSSCCC/GLB_INT
+  0.000                        Webserver_0/MSS_CCC_0/I_MSSCCC/U_TILE2:PIN5INT (r)
+               +     0.000          cell: ADLIB:MSS_CCC_GL_IF
+  0.000                        Webserver_0/MSS_CCC_0/I_MSSCCC/U_TILE2:PIN5 (r)
+               +     0.296          net: FAB_CLK
+  0.296                        uart_irq_delay_0/edge_detected:CLK (r)
+               +     0.248          cell: ADLIB:DFN1
+  0.544                        uart_irq_delay_0/edge_detected:Q (r)
+               +     0.145          net: edge_detected_c
+  0.689                        edge_detected_pad/U0/U1:D (r)
+               +     0.256          cell: ADLIB:IOTRI_OB_EB
+  0.945                        edge_detected_pad/U0/U1:DOUT (r)
+               +     0.000          net: edge_detected_pad/U0/NET1
+  0.945                        edge_detected_pad/U0/U0:D (r)
+               +     1.085          cell: ADLIB:IOPAD_TRI
+  2.030                        edge_detected_pad/U0/U0:PAD (r)
+               +     0.000          net: edge_detected
+  2.030                        edge_detected (r)
+                                    
+  2.030                        data arrival time
+  ________________________________________________________
+  Data required time calculation
+  N/C                          mss_ccc_glb
+               +     0.000          Clock source
+  N/C                          Webserver_0/MSS_CCC_0/I_MSSCCC/U_MSSCCC:GLB (r)
+                                    
+  N/C                          edge_detected (r)
+
+
+END SET Clock to Output
+
+----------------------------------------------------
+
+SET Register to Asynchronous
+
+No Path
+
+END SET Register to Asynchronous
+
+----------------------------------------------------
+
+SET External Removal
+
+No Path
+
+END SET External Removal
+
+----------------------------------------------------
+
+SET Asynchronous to Register
+
+No Path
+
+END SET Asynchronous to Register
+
+----------------------------------------------------
+
+Clock Domain mss_ccc_macclk
+
+Info: The maximum frequency of this clock domain is limited by the period of pin Webserver_0/MSS_ADLIB_INST/U_CORE:MACCLKCCC
+
+SET Register to Register
+
+No Path
+
+END SET Register to Register
+
+----------------------------------------------------
+
+SET External Hold
+
+No Path
+
+END SET External Hold
+
+----------------------------------------------------
+
+SET Clock to Output
+
+No Path
+
+END SET Clock to Output
+
+----------------------------------------------------
+
+SET Register to Asynchronous
+
+No Path
+
+END SET Register to Asynchronous
+
+----------------------------------------------------
+
+SET External Removal
+
+No Path
+
+END SET External Removal
+
+----------------------------------------------------
+
+SET Asynchronous to Register
+
+No Path
+
+END SET Asynchronous to Register
+
+----------------------------------------------------
+
+Clock Domain Webserver_0/MSS_CCC_0/I_XTLOSC:CLKOUT
+
+SET Register to Register
+
+No Path
+
+END SET Register to Register
+
+----------------------------------------------------
+
+SET External Hold
+
+No Path
+
+END SET External Hold
+
+----------------------------------------------------
+
+SET Clock to Output
+
+Path 1
+  From:                        Webserver_0/MSS_CCC_0/I_MSSCCC/U_MSSCCC:CLKA
+  To:                          GLC
+  Delay (ns):                  2.634
+  Slack (ns):
+  Arrival (ns):                2.634
+  Required (ns):
+  Clock to Out (ns):           2.634
+
+
+Expanded Path 1
+  From: Webserver_0/MSS_CCC_0/I_MSSCCC/U_MSSCCC:CLKA
+  To: GLC
+  data arrival time                              2.634
+  data required time                         -   N/C
+  slack                                          N/C
+  ________________________________________________________
+  Data arrival time calculation
+  0.000                        Webserver_0/MSS_CCC_0/I_XTLOSC:CLKOUT
+               +     0.000          Clock source
+  0.000                        Webserver_0/MSS_CCC_0/I_XTLOSC:CLKOUT (r)
+               +     0.000          net: Webserver_0/MSS_CCC_0/N_CLKA_XTLOSC
+  0.000                        Webserver_0/MSS_CCC_0/I_MSSCCC/U_MSSCCC:CLKA (r)
+               +     0.957          cell: ADLIB:MSS_CCC_IP
+  0.957                        Webserver_0/MSS_CCC_0/I_MSSCCC/U_MSSCCC:GLC (r)
+               +     0.000          net: Webserver_0/MSS_CCC_0/I_MSSCCC/GLC_INT
+  0.957                        Webserver_0/MSS_CCC_0/I_MSSCCC/U_TILE3:PIN5INT (r)
+               +     0.000          cell: ADLIB:MSS_CCC_GL_IF
+  0.957                        Webserver_0/MSS_CCC_0/I_MSSCCC/U_TILE3:PIN5 (r)
+               +     0.282          net: GLC_c
+  1.239                        GLC_pad/U0/U1:D (r)
+               +     0.279          cell: ADLIB:IOTRI_OB_EB
+  1.518                        GLC_pad/U0/U1:DOUT (r)
+               +     0.000          net: GLC_pad/U0/NET1
+  1.518                        GLC_pad/U0/U0:D (r)
+               +     1.116          cell: ADLIB:IOPAD_TRI
+  2.634                        GLC_pad/U0/U0:PAD (r)
+               +     0.000          net: GLC
+  2.634                        GLC (r)
+                                    
+  2.634                        data arrival time
+  ________________________________________________________
+  Data required time calculation
+  N/C                          Webserver_0/MSS_CCC_0/I_XTLOSC:CLKOUT
+               +     0.000          Clock source
+  N/C                          Webserver_0/MSS_CCC_0/I_XTLOSC:CLKOUT (r)
+                                    
+  N/C                          GLC (r)
+
+
+END SET Clock to Output
+
+----------------------------------------------------
+
+SET Register to Asynchronous
+
+No Path
+
+END SET Register to Asynchronous
+
+----------------------------------------------------
+
+SET External Removal
+
+No Path
+
+END SET External Removal
+
+----------------------------------------------------
+
+SET Asynchronous to Register
+
+No Path
+
+END SET Asynchronous to Register
+
+----------------------------------------------------
+
+Path set Pin to Pin
+
+SET Input to Output
+
+No Path
+
+END SET Input to Output
+
+----------------------------------------------------
+
+Path set User Sets
+

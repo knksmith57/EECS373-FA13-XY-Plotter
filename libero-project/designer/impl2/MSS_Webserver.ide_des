@@ -1,0 +1,9 @@
+KEY IDE_DES_TOOL "Ide"
+KEY IDE_DES_ADB_PATH "F:\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\designer\impl2\MSS_Webserver.adb"
+LIST SOURCE_FILES
+ENDLIST
+LIST OPTIONAL_FILES
+VALUE "F:\Webserver_uIPRTOS_SC_DF\EVAL_KIT\SF_Webserver_Demo\component\work\MSS_Webserver\MSS_Webserver.pdc;Used"
+ENDLIST
+LIST VCD_FILES
+ENDLIST

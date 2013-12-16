@@ -1,0 +1,24 @@
+
+
+#### START OF CLOCK OPTIMIZATION REPORT #####[
+
+Clock optimization not enabled
+1 non-gated/non-generated clock tree(s) driving 534 clock pin(s) of sequential element(s)
+2 gated/generated clock tree(s) driving 8 clock pin(s) of sequential element(s)
+0 instances converted, 8 sequential instances remain driven by gated/generated clocks
+
+=================================== Non-Gated/Non-Generated Clocks ===================================
+Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance               
+------------------------------------------------------------------------------------------------------
+@K:CKID0003       Webserver_0         hierarchy              534        uart_irq_delay_0.edge_detected
+======================================================================================================
+========================================================================== Gated/Generated Clocks ==========================================================================
+Clock Tree ID     Driving Element                                      Drive Element Type     Fanout     Sample Instance                           Explanation              
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+@K:CKID0001       stepper_motor_control_0.motor_output_RNIF5JG2[0]     OR3                    4          stepper_motor_control_0.next_state[0]     No clocks found on inputs
+@K:CKID0002       stepper_motor_control_1.motor_output_RNIOLFI3[0]     OR3                    4          stepper_motor_control_1.next_state[0]     No clocks found on inputs
+============================================================================================================================================================================
+
+
+##### END OF CLOCK OPTIMIZATION REPORT ######]
+

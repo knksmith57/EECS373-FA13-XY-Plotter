@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Webserver_MSS_CM3_0_app/plotter/TOP_hw_platform.h&apos; to &apos;plotter_platform.h&apos;" description="Rename resource &apos;TOP_hw_platform.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="plotter/TOP_hw_platform.h" name="plotter_platform.h" stamp="1386291543662" updateReferences="true"/>
+</session>
