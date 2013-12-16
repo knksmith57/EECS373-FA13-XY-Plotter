@@ -59,6 +59,7 @@ This gets a little hairy. We use a lot of third-party code in this project-- see
 
 [SmartFusion]:    http://www.microsemi.com/products/fpga-soc/design-resources/dev-kits/smartfusion/smartfusion-evaluation-kit
 [EECS 373]:       http://www.eecs.umich.edu/eecs/courses/eecs373/
+[FreeRTOS]:       http://www.freertos.org/
 [uIP]:            http://en.wikipedia.org/wiki/UIP_(micro_IP)
 [Adam Dunkels]:   http://dunkels.com/adam/
 [JSMN]:           http://zserge.com/jsmn.html
